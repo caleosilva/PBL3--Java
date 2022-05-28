@@ -1,24 +1,41 @@
 package application;
 	
+import java.io.IOException;
+
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 
 
 public class Main extends Application {
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage){
+		
+		// Largura e Comprimento deve ser setado em outro lugar
+		int altura = 500;
+		int comprimento = 700;
+		
+		String url = "/view/Menu.fxml";
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+		Parent root;
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("Sample.fxml"));
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			root = loader.load();
+			Scene scene = new Scene(root);
+	        
+	        primaryStage.setResizable(false);
+	        primaryStage.centerOnScreen();
 			primaryStage.setScene(scene);
 			primaryStage.show();
-		} catch(Exception e) {
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        
+		
 	}
 	
 	public static void main(String[] args) {

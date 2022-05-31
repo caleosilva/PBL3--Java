@@ -5,52 +5,66 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
 
 public class MenuController {
-
+	
     @FXML
     private BorderPane painelPrincipal;
     
     @FXML
-    void abrirClientes(MouseEvent event) {
-    	System.out.println("cliente 1");
-    	abrir("/view/Cliente.fxml");
-    	System.out.println("cliente 2");
-    }
+    private AnchorPane centroTela;
 
     @FXML
-    void abrirFornecedores(MouseEvent event) {
-    	System.out.println("fornecedor 1");
-    	abrir("/view/Fornecedor.fxml");
-    	System.out.println("fornecedor 2");
+    void abrirFornecedor(ActionEvent event) {
+		abrir("/view/Fornecedor.fxml");
+		
     }
-
-    @FXML
-    void abrirUsuarios(MouseEvent event) {
-    	System.out.println("Usuario 1");
-    	abrir("/view/Usuario.fxml");
-    	System.out.println("Usuario 2");
-    }
-
     
     @FXML
-    void abrirClienteTeste(MouseEvent event) {
+    void abrirUsuario(ActionEvent event) {
+		abrir("/view/Usuario.fxml");
+		
+    }
+    
+    @FXML
+    void sairMenu(ActionEvent event) {
+    	abrirTelaLogin("/view/TelaLogin.fxml");
+    }
+    
+    public void abrir(String url){
+    	
+		try {
+			AnchorPane novaTela = (AnchorPane) FXMLLoader.load(getClass().getResource(url));
+			
+			AnchorPane.setTopAnchor(novaTela, 0.0);
+	    	AnchorPane.setBottomAnchor(novaTela, 0.0);
+	    	AnchorPane.setLeftAnchor(novaTela, 0.0);
+	    	AnchorPane.setRightAnchor(novaTela, 0.0);
+
+	    	centroTela.getChildren().add(novaTela);
+	    	
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     	
     }
     
-    public void abrir(String url) {
+    public void abrirTelaLogin(String url) {
     	
-        Parent root = null;
+    	Parent root = null;
+    	
         try {
             root = FXMLLoader.load(getClass().getResource(url));
         } catch (IOException ex) {
 
         }
-        this.painelPrincipal.setCenter(root);
-
+        
+        this.painelPrincipal.getScene().setRoot(root);
+        
     }
-
 }

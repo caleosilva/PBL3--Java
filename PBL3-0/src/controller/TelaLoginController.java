@@ -1,11 +1,21 @@
 package controller;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class TelaLoginController {
+	 
+	@FXML
+    private BorderPane painelLogin;
 
     @FXML
     private TextField campoLogin;
@@ -15,13 +25,30 @@ public class TelaLoginController {
 
     @FXML
     void fazerLogin(ActionEvent event) {
+    	
     	String login = campoLogin.getText();
     	String senha = campoSenha.getText();
+    	
     	System.out.println("Login: " + login);
     	System.out.println("Senha: " + senha);
     	
-    	MenuController mc = new MenuController();
-    	mc.abrir("/view/TelaLogin.fxml");
+    	
+    	abrirMenu("/view/Menu.fxml");
+    	
+    }
+    
+    public void abrirMenu(String url) {
+    	
+    	Parent root = null;
+    	
+        try {
+            root = FXMLLoader.load(getClass().getResource(url));
+        } catch (IOException ex) {
+
+        }
+        
+        this.painelLogin.getScene().setRoot(root);
+        
     }
 
 }

@@ -9,6 +9,8 @@
 .botaoLogin{
     -fx-background-color: #1E90FF;
     -fx-font-size: 14px;
+    -fx-text-fill: white;
+    
 }
 
 .receberInformacaoLogin{
@@ -25,10 +27,19 @@
 .labelUsuarioSenha{
 	-fx-font-weight:bold;
 	-fx-font-size: 18px;
-	-fx-font-color: #1E90FF;
+	-fx-text-fill: #1E90FF;
 }
 
-.menu-item:hover {
-    -fx-background-color: #e3e3e3;
+.clicarBotaoLogin:hover {
+    -fx-background-color:#87CEEB;
     -fx-cursor: hand;
+}
+
+
+.corTest{
+	-fx-background-color: #7FFF00;
+}
+
+.corTest2{
+	-fx-background-color: #7B68EE;
 }

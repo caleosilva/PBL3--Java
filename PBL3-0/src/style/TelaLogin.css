@@ -7,6 +7,7 @@
 }
 
 .botaoLogin{
+	-fx-font-weight:bold;
     -fx-background-color: #483D8B;
     -fx-font-size: 14px;
     -fx-text-fill: white;
@@ -31,7 +32,7 @@
 }
 
 .clicarBotaoLogin:hover {
-    -fx-background-color:#483D8B;
+    -fx-background-color:#836FFF;
     -fx-cursor: hand;
 }
 

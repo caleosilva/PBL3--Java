@@ -32,8 +32,9 @@ public class TelaLoginController {
     	System.out.println("Login: " + login);
     	System.out.println("Senha: " + senha);
     	
-    	
-    	abrirMenu("/view/Menu.fxml");
+    	abrirMenu("/view/MenuGerente.fxml");
+
+//    	abrirMenu("/view/MenuFuncionario.fxml");
     	
     }
     

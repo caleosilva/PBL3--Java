@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+   <left>
+      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="root" stylesheets="@../style/Menu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="176.0" styleClass="titulo" text="Menu - Funcionário">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dinheiro.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Vendas">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/listar.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Listar Dados">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pdf.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Gerar PDF's">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/deslogar.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" onMouseClicked="#deslogarSistema" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Deslogar">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </left>
+   <center>
+      <AnchorPane fx:id="centroTela" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>

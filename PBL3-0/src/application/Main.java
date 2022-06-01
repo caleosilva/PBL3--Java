@@ -30,7 +30,6 @@ public class Main extends Application {
 			primaryStage.show();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         

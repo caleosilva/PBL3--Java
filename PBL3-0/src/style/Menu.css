@@ -1,0 +1,30 @@
+.root {
+    -fx-background-color: #483D8B;
+}
+
+.mouseOn:hover {
+    -fx-background-color:#836FFF;
+    -fx-cursor: hand;
+}
+
+.highlight {
+    -fx-background-color: #E0FFFF;
+    -fx-background-radius: 15;
+}
+
+.titulo{
+	-fx-background-color: transparent;
+	-fx-border-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+	
+	-fx-font-family: "Comic Sans MS", "Comic Sans", cursive;
+	-fx-font-weight:bold;
+	-fx-font-size: 18px;
+	-fx-text-fill: white;
+}
+
+.itemMenu{
+	-fx-font-family: "Comic Sans MS", "Comic Sans", cursive;
+	-fx-font-size: 16px;
+	-fx-text-fill: white;
+}

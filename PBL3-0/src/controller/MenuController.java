@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 
 public class MenuController {
 	
@@ -18,19 +19,17 @@ public class MenuController {
     private AnchorPane centroTela;
 
     @FXML
-    void abrirFornecedor(ActionEvent event) {
-		abrir("/view/Fornecedor.fxml");
-		
+    void abrirTelaFornecedor(MouseEvent event) {
+    	abrir("/view/Fornecedor.fxml");
     }
-    
+
     @FXML
-    void abrirUsuario(ActionEvent event) {
-		abrir("/view/Usuario.fxml");
-		
+    void abrirTelaUsuarios(MouseEvent event) {
+    	abrir("/view/Usuario.fxml");
     }
-    
+
     @FXML
-    void sairMenu(ActionEvent event) {
+    void deslogarSistema(MouseEvent event) {
     	abrirTelaLogin("/view/TelaLogin.fxml");
     }
     
@@ -50,8 +49,6 @@ public class MenuController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
-    	
     }
     
     public void abrirTelaLogin(String url) {

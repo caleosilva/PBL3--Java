@@ -23,9 +23,9 @@ public class Main extends Application {
 			root = loader.load();
 			Scene scene = new Scene(root);
 	        
-//	        primaryStage.setResizable(false);
 	        primaryStage.centerOnScreen();
 			primaryStage.setScene(scene);
+			
 			primaryStage.setTitle("Gerenciador de bares/restaurantes");
 			primaryStage.show();
 			

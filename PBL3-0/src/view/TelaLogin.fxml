@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="painelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="root" stylesheets="@../style/TelaLogin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaLoginController">
+<BorderPane fx:id="painelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="root" stylesheets="@../style/TelaLogin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaLoginController">
    <left>
-      <AnchorPane prefHeight="506.0" prefWidth="204.0" styleClass="painel" stylesheets="@../style/TelaLogin.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="506.0" prefWidth="200.0" styleClass="painel" stylesheets="@../style/TelaLogin.css" BorderPane.alignment="CENTER">
          <children>
             <HBox alignment="CENTER" layoutY="166.0" prefHeight="98.0" prefWidth="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <opaqueInsets>
@@ -31,9 +31,9 @@
                         <Insets bottom="15.0" left="5.0" top="15.0" />
                      </HBox.margin>
                   </Label>
-                  <ImageView fitHeight="92.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/user%20(1).png" />
+                        <Image url="@../images/login.png" />
                      </image>
                      <HBox.margin>
                         <Insets bottom="30.0" left="20.0" right="10.0" top="30.0" />

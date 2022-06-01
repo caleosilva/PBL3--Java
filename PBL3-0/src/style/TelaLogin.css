@@ -1,5 +1,5 @@
 .painel {
-    -fx-background-color: linear-gradient(to bottom right, #1E90FF, #87CEEB	);
+    -fx-background-color: linear-gradient(to bottom right, #483D8B, #836FFF	);
 }
 
 .root {
@@ -7,7 +7,7 @@
 }
 
 .botaoLogin{
-    -fx-background-color: #1E90FF;
+    -fx-background-color: #483D8B;
     -fx-font-size: 14px;
     -fx-text-fill: white;
     
@@ -15,23 +15,23 @@
 
 .receberInformacaoLogin{
 	-fx-background-color: transparent;
-	-fx-border-color: #1E90FF;
+	-fx-border-color: #483D8B;
 	-fx-border-width: 0px 0px 2px 0px;
 	
 	-fx-font-size: 18px;
-	-fx-text-fill: #1E90FF;
+	-fx-text-fill: #483D8B;
 	
-	-fx-prompt-text-fill: #1E90FF;
+	-fx-prompt-text-fill: #483D8B;
 }
 
 .labelUsuarioSenha{
 	-fx-font-weight:bold;
 	-fx-font-size: 18px;
-	-fx-text-fill: #1E90FF;
+	-fx-text-fill: #483D8B;
 }
 
 .clicarBotaoLogin:hover {
-    -fx-background-color:#87CEEB;
+    -fx-background-color:#483D8B;
     -fx-cursor: hand;
 }
 

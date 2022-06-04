@@ -15,6 +15,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		
+		application.PreCadastro.main(null);
+		
 		String url = "/view/TelaLogin.fxml";
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
 		Parent root;

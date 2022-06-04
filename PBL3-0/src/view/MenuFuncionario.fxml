@@ -11,20 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuGerenteController">
+<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuGerenteController">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="root" stylesheets="@../style/Menu.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="barraLateral" stylesheets="@../style/EstiloMenu.css" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="176.0" styleClass="titulo" text="Menu - Funcionário">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Separator prefWidth="200.0" />
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -46,7 +37,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -63,7 +54,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -85,7 +76,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,4 +105,15 @@
    <center>
       <AnchorPane fx:id="centroTela" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <AnchorPane prefHeight="50.0" prefWidth="900.0" styleClass="barraSuperior" stylesheets="@../style/EstiloMenu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="5.0" prefHeight="40.0" prefWidth="176.0" styleClass="titulo" text="Menu - Funcionário" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

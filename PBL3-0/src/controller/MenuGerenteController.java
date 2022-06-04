@@ -11,7 +11,6 @@ import controller.MudarTelaController.*;
 public class MenuGerenteController {
 	
 	private Scene scene = null;
-	
 	private MudarTelaController mtc = new MudarTelaController();
 	
     @FXML
@@ -28,6 +27,11 @@ public class MenuGerenteController {
     @FXML
     void abrirTelaUsuarios(MouseEvent event) {
     	mtc.abrir("/view/Usuario.fxml", centroTela);
+    }
+    
+    @FXML
+    void abrirTelaProdutos(MouseEvent event) {
+    	mtc.abrir("/view/Produtos.fxml", centroTela);
     }
 
     @FXML

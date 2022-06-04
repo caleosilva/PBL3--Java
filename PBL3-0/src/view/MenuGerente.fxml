@@ -11,19 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuGerenteController">
+<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuGerenteController">
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="root" stylesheets="@../style/Menu.css" BorderPane.alignment="CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="barraLateral" stylesheets="@../style/EstiloMenu.css" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="42.0" prefWidth="160.0" styleClass="titulo" text="Menu - Gerente">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#abrirTelaProdutos" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,10 +29,10 @@
                   </Label>
                </children>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +49,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -74,14 +66,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#abrirTelaFornecedor" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/fornecedor.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" onMouseClicked="#abrirTelaFornecedor" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Fornecedores">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Fornecedores">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -91,14 +83,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#abrirTelaUsuarios" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/usuarios.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" onMouseClicked="#abrirTelaUsuarios" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Usuários">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Usuários">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -116,7 +108,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -133,7 +125,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -155,7 +147,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/Menu.css">
+            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,4 +176,15 @@
    <center>
       <AnchorPane fx:id="centroTela" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
    </center>
+   <top>
+      <AnchorPane prefHeight="50.0" prefWidth="900.0" styleClass="barraSuperior" stylesheets="@../style/EstiloMenu.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="4.0" prefHeight="40.0" prefWidth="160.0" styleClass="titulo" text="Menu - Gerente" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

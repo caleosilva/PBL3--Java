@@ -23,18 +23,12 @@ public class PreCadastro {
 	public static void main(String[] args) {
 		// Adicionando Usuários:
 		
-		Gerente g1 = new Gerente("1", "leo", "123");
-		Gerente g2 = new Gerente("2", "jao", "321");
-		Funcionario f1 = new Funcionario("3", "larissa", "nota10");
-		Funcionario f2 = new Funcionario("4", "raquel", "raquel123");
-		Funcionario f3 = new Funcionario("5", "a", "a");
+		Gerente g1 = new Gerente("1", "a", "a");
+		Funcionario f1 = new Funcionario("3", "b", "b");
 		
 		List<Usuario> lstU = Dados.getListaUsuario();
 		lstU.add(g1);
-		lstU.add(g2);
 		lstU.add(f1);
-		lstU.add(f2);
-		lstU.add(f3);
 		
 		// Adicionando Fornecedores:
 		Fornecedor forn1 = new Fornecedor("11", "11", "Barbosa", "Salvador");
@@ -100,10 +94,4 @@ public class PreCadastro {
 		Dados.getListaVendas().add(v1);
 		Dados.getListaVendas().add(v2);
 	}
-	
-
-	
-	
-	
-
 }

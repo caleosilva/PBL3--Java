@@ -1,4 +1,8 @@
-.root {
+.barraLateral {
+    -fx-background-color: #6959CD;
+}
+
+.barraSuperior {
     -fx-background-color: #483D8B;
 }
 

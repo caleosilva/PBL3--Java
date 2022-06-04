@@ -22,6 +22,12 @@ public class MudarTelaController {
     	abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
     }
 	
+	public void abrirTelaProdutos(Scene scene, BorderPane painelPrincipal) {
+    	abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
+    }
+	
+	
+	
 	
 	public void abrir(String url, AnchorPane centroTela){
     	
@@ -33,7 +39,7 @@ public class MudarTelaController {
 	    	AnchorPane.setRightAnchor(novaTela, 0.0);
 	    	centroTela.getChildren().add(novaTela);
 		} catch (IOException e) {
-			System.out.println("DEU ERRO AQ 1\n\n");
+			System.out.println("Erro em abrir - MudarTelaController\n");
 			e.printStackTrace();
 		}
     }
@@ -54,9 +60,8 @@ public class MudarTelaController {
             }
             
         } catch (IOException ex) {
-        	System.out.println("DEU ERRO AQ 2\n\n\n\n");
+        	System.out.println("Erro em abrirTelaLogin - MudarTelaControler\n");
         }
-        System.out.println("----1\n");
     }
 
 }

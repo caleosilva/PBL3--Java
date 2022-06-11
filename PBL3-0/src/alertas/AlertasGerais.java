@@ -42,10 +42,9 @@ public class AlertasGerais {
 		alertaErro.showAndWait();
 	}
 	
-	public void confirmarOperacao() {
+	public void informarSucessoOperacao() {
 		alertaErro.setTitle("Sucesso!");
 		alertaErro.setHeaderText("A operação foi realizada com êxito!");
-//		alertaErro.setContentText("");
 		alertaErro.showAndWait();
 	}
  

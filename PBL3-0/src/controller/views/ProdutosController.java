@@ -59,6 +59,12 @@ public class ProdutosController implements Initializable {
 
     @FXML
     private TableView<ProdutoEspecifico> tabelaInformacoes;
+    
+    @FXML
+    void botaoAtualizarTabela(ActionEvent event) {
+    	tabelaInformacoes.getItems().clear();
+//    	carregarInformacoesTableView();
+    }
 
     @FXML
     void botaoCadastrarProduto(ActionEvent event) {

@@ -60,14 +60,20 @@ public class ProdutoTelaCadastrarController implements Initializable {
 
     @FXML
     void botaoCancelar(ActionEvent event) {
-//    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-//    	stage.close();
+    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
     void botaoConfirmarCadastro(ActionEvent event) {
     	HashMap<String, Object> data = juntarInformacoes();
     	boolean sucesso = gdp.cadastrarProdutos(data);
+    	
+    	if(sucesso) {
+    		alertas.informarSucessoOperacao();
+    		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+        	stage.close();
+    	}
     }
 
 	@Override

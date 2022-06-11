@@ -24,8 +24,6 @@ public class Dados {
 	private static List <Vendas> listaVendas = new ArrayList<>();
 		
 	private static List <ProdutoGeral> listaProdutosGeral = new ArrayList<>();
-	
-	
 
 	// Lista que armazena informações dos Usuários:
 	private static List <Usuario> listaUsuario = new ArrayList<>();

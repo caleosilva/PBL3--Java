@@ -3,6 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
+
 /**
  * 
  * Classe que possui as caracteristicas referente a um fornecedor, além disso, ela que é instaciada para
@@ -20,7 +22,6 @@ public class Fornecedor {
 	private String endereco;
 	private List<String> listaNomeProdutos = new ArrayList<>();
 	
-	//private HashMap<String, list<ProdutosEspecificos> dados> listaDeProdutos;
 	
 	// Construtor para inicializar cada atributo com o valor correto.
 	public Fornecedor(String id, String cnpj, String nome, String endereco) {
@@ -57,5 +58,11 @@ public class Fornecedor {
 	}
 	public List<String> getListaNomeProdutos() {
 		return listaNomeProdutos;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return getNome();
 	}
 }

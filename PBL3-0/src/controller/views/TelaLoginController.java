@@ -1,4 +1,4 @@
-package controller;
+package controller.views;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,8 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import model.Funcionario;
 import model.Gerente;
-import model.Login;
 import model.Usuario;
+import model.concreto.GerenciadorDeLogin;
 import bancoDeDados.Dados;
 import excecoes.LoginSenhaInvalidos;
 
@@ -47,7 +47,7 @@ public class TelaLoginController implements Initializable{
     void fazerLogin(ActionEvent event) {
     	
     	try {
-    		Login login = new Login();
+    		GerenciadorDeLogin login = new GerenciadorDeLogin();
     		Usuario user = login.logarNoSistema(campoLogin.getText(), campoSenha.getText());
     		
     		if (user instanceof Gerente) {
@@ -66,8 +66,6 @@ public class TelaLoginController implements Initializable{
 			} else {
 				alertas.alertaErroLogin();
 			}
-			
-			
 		}
 	}
     

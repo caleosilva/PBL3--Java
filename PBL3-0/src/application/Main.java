@@ -1,5 +1,5 @@
 package application;
-	
+
 import java.io.IOException;
 
 
@@ -16,27 +16,22 @@ public class Main extends Application {
 	public void start(Stage primaryStage){
 		
 		application.PreCadastro.main(null);
-		
 		String url = "/view/TelaLogin.fxml";
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
 		Parent root;
 		
 		try {
 			root = loader.load();
 			Scene scene = new Scene(root);
-	        
 	        primaryStage.centerOnScreen();
 			primaryStage.setScene(scene);
-			
 			primaryStage.setTitle("Gerenciador de bares/restaurantes");
 			primaryStage.show();
-			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-		}
-        
-		
+		}		
 	}
 	
 	public static void main(String[] args) {

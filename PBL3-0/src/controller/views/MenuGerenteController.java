@@ -1,12 +1,10 @@
-package controller;
+package controller.views;
 
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-
-import controller.MudarTelaController.*;
 
 public class MenuGerenteController {
 	
@@ -21,21 +19,21 @@ public class MenuGerenteController {
 
     @FXML
     void abrirTelaFornecedor(MouseEvent event) {
-    	mtc.abrir("/view/Fornecedor.fxml", centroTela);
+    	mtc.mudarSubTela("/view/Fornecedor.fxml", centroTela);
     }
 
     @FXML
     void abrirTelaUsuarios(MouseEvent event) {
-    	mtc.abrir("/view/Usuario.fxml", centroTela);
+    	mtc.mudarSubTela("/view/Usuario.fxml", centroTela);
     }
     
     @FXML
     void abrirTelaProdutos(MouseEvent event) {
-    	mtc.abrir("/view/Produtos.fxml", centroTela);
+    	mtc.mudarSubTela("/view/ProdutosTelaGeral.fxml", centroTela);
     }
 
     @FXML
     void deslogarSistema(MouseEvent event) {
-    	mtc.abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
+    	mtc.mudarTelaCompleta("/view/TelaLogin.fxml", scene, painelPrincipal);
     }
 }

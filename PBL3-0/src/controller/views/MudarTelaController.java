@@ -1,4 +1,4 @@
-package controller;
+package controller.views;
 
 import java.io.IOException;
 
@@ -7,30 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class MudarTelaController {
 	
-	public void abrirTelaFornecedor(AnchorPane centroTela) {
-    	abrir("/view/Fornecedor.fxml", centroTela);
-    }
-    
-	public void abrirTelaUsuarios(AnchorPane centroTela) {
-    	abrir("/view/Usuario.fxml", centroTela);
-    }
-    
-	public void deslogarSistema(Scene scene, BorderPane painelPrincipal) {
-    	abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
-    }
-	
-	public void abrirTelaProdutos(Scene scene, BorderPane painelPrincipal) {
-    	abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
-    }
-	
-	
-	
-	
-	public void abrir(String url, AnchorPane centroTela){
-    	
+	public void mudarSubTela(String url, AnchorPane centroTela){
 		try {
 			AnchorPane novaTela = (AnchorPane) FXMLLoader.load(getClass().getResource(url));
 			AnchorPane.setTopAnchor(novaTela, 0.0);
@@ -44,24 +26,37 @@ public class MudarTelaController {
 		}
     }
 	
-	public void abrirTelaLogin(String url, Scene scene, BorderPane painelPrincipal) {
-    	
+	public void mudarTelaCompleta(String url, Scene scene, BorderPane painelPrincipal) {
     	Parent root = null;
-    	
         try {
             root = FXMLLoader.load(getClass().getResource(url));
             scene = painelPrincipal.getScene();
             
             if (scene!= null) {
-            	System.out.println("Não é null 1");
             	scene.setRoot(root);
-            } else {
-            	System.out.println("É null isso aq 1");
             }
-            
         } catch (IOException ex) {
         	System.out.println("Erro em abrirTelaLogin - MudarTelaControler\n");
         }
     }
+	
+	public void abrirNovaJanela(String url, Stage parentStage) {
+		Parent root = null;
+		
+		try {
+            root = FXMLLoader.load(getClass().getResource(url));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initOwner(parentStage);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait();
+            
+        } catch (IOException ex) {
+        	System.out.println("Erro em abrirNovajanela - MudarTelaControler\n");
+        }
+		
+	}
+	
 
 }

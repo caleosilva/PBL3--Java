@@ -28,6 +28,19 @@ public class AlertasGerais {
 		alertaErro.showAndWait();
 		
 	}
+	
+	public void erroNaOperacao() {
+		alertaErro.setTitle("Não foi possível realizar essa operação.");
+		alertaErro.setHeaderText("Tente novamente. Caso o erro persista reinicie o sistema!");
+		alertaErro.showAndWait();
+	}
+	
+	public void dadosIncorretos() {
+		alertaErro.setTitle("Não foi possível realizar essa operação.");
+		alertaErro.setHeaderText("Falta alguma informação ou ao menos um dos dados inseridos é inválido!");
+		alertaErro.setContentText("Tente novamente!");
+		alertaErro.showAndWait();
+	}
  
 
 }

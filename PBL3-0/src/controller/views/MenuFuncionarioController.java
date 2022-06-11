@@ -1,4 +1,4 @@
-package controller;
+package controller.views;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -20,7 +20,7 @@ public class MenuFuncionarioController {
 
     @FXML
     void deslogarSistema(MouseEvent event) {
-    	mtc.abrirTelaLogin("/view/TelaLogin.fxml", scene, painelPrincipal);
+    	mtc.mudarTelaCompleta("/view/TelaLogin.fxml", scene, painelPrincipal);
     }
 
 }

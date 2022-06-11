@@ -11,6 +11,10 @@ public class ProdutoEspecifico {
 	private Fornecedor fornecedor;
 	private int unidadeDeMedida;
 	
+	private String fornecedorToString;
+	private String nome;
+	private String unidadeDeMedidaFormatada;
+	
 	// Construtor:
 	public ProdutoEspecifico(double preco, String id, String validade, double quantidade, int unidadeDeMedida, Fornecedor fornecedor) {
 		this.preco = preco;
@@ -22,7 +26,46 @@ public class ProdutoEspecifico {
 	}
 	
 	
+	public String getUnidadeDeMedidaFormatada() {
+		
+		int unidadeDeMedida = getUnidadeDeMedida();
+		
+		String udm = null;
+		
+		switch (unidadeDeMedida) {
+		
+		case 1: {
+			udm = "Quilograma";
+			break;
+		}
+		case 2: {
+			udm = "Litro";
+			break;
+		}
+		
+		case 3: {
+			udm = "Unidade";
+			break;
+		}
+		
+		default:
+			this.unidadeDeMedidaFormatada = null;
+		}
+		
+		return this.unidadeDeMedidaFormatada = udm;
+	}
+	
+	
 	// Getters e Setters
+	
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+	
 	public String getValidade() {
 		return validade;
 	}
@@ -65,6 +108,10 @@ public class ProdutoEspecifico {
 
 	public void setUnidadeDeMedida(int unidadeDeMedida) {
 		this.unidadeDeMedida = unidadeDeMedida;
+	}
+	
+	public String getFornecedorToString() {
+		return this.fornecedorToString = fornecedor.getNome();
 	}
 	
 }

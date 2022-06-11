@@ -48,14 +48,14 @@ public class PreCadastro {
 		batata.getListaDeProdutos().add(batata1);
 		forn1.getListaNomeProdutos().add(batata.getNome());
 		
-		ProdutoEspecifico batata2 = new ProdutoEspecifico(10.50, "222", "22/08/2022", 45, 3, forn1);
+		ProdutoEspecifico batata2 = new ProdutoEspecifico(10.50, "222", "22/08/2022", 45, 3, forn2);
 		batata.getListaDeProdutos().add(batata2);
 		forn1.getListaNomeProdutos().add(batata.getNome());
 		
 		
 		ProdutoGeral arroz = new ProdutoGeral("Arroz");
 	
-		ProdutoEspecifico arroz1 = new ProdutoEspecifico(3.99, "333", "05/02/2023", 70, 1, forn1);
+		ProdutoEspecifico arroz1 = new ProdutoEspecifico(3.99, "333", "05/02/2023", 70, 1, forn3);
 		arroz.getListaDeProdutos().add(arroz1);
 		forn1.getListaNomeProdutos().add(arroz.getNome());
 		
@@ -65,8 +65,9 @@ public class PreCadastro {
 		
 		lstPG.add(batata);
 		lstPG.add(leite);
-
 		lstPG.add(arroz);
+		
+		// Adicionando
 		
 		HashMap<String, Double> item1 = new HashMap<String, Double>();
 		HashMap<String, Double> item2 = new HashMap<String, Double>();

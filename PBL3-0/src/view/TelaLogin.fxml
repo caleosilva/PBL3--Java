@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="painelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="root" stylesheets="@../style/TelaLogin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaLoginController">
+<BorderPane fx:id="painelLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" styleClass="root" stylesheets="@../style/TelaLogin.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.views.TelaLoginController">
    <left>
       <AnchorPane prefHeight="506.0" prefWidth="200.0" styleClass="painel" stylesheets="@../style/TelaLogin.css" BorderPane.alignment="CENTER">
          <children>

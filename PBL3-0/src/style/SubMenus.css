@@ -18,3 +18,48 @@
 	-fx-font-size: 16px;
 	-fx-text-fill: white;
 }
+
+.tituloIdentificacao{
+	-fx-font-weight:bold;
+	-fx-font-size: 20px;
+	-fx-text-fill: #6959CD;
+	
+	-fx-background-color: transparent;
+	-fx-border-color: #6959CD;
+	-fx-border-width: 0px 0px 2px 0px;
+}
+
+.table-view {
+    -fx-base: #FFFFFF;
+    -fx-control-inner-background: #FFFFFF;
+    -fx-background-color: #FFFFFF;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+    -fx-border-color: #6959CD;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 25;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: #6959CD;
+    -fx-border-insets: 0 10 1 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI SemiBold";
+    -fx-text-fill: #6959CD;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #6959CD, #836FFF);
+    -fx-table-cell-border-color: transparent;
+}

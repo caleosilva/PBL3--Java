@@ -41,6 +41,13 @@ public class AlertasGerais {
 		alertaErro.setContentText("Tente novamente!");
 		alertaErro.showAndWait();
 	}
+	
+	public void confirmarOperacao() {
+		alertaErro.setTitle("Sucesso!");
+		alertaErro.setHeaderText("A operação foi realizada com êxito!");
+//		alertaErro.setContentText("");
+		alertaErro.showAndWait();
+	}
  
 
 }

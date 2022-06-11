@@ -1,15 +1,13 @@
 package model.concreto;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import alertas.AlertasGerais;
 import bancoDeDados.Dados;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import model.interfaces.ProdutosInterface;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
@@ -25,6 +23,7 @@ public class GerenciadorDeProduto {
 	
 	private AlertasGerais alertas = new AlertasGerais();
 	private List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
+	private List<Fornecedor> listaDeFornecedores = Dados.getListaFornecedor();
 		
 	public boolean excluirProdutos(ProdutoEspecifico produto, TableView<ProdutoEspecifico> tabelaInformacoes) {
 		try {
@@ -44,14 +43,11 @@ public class GerenciadorDeProduto {
 	}
 	
 	
-	public boolean cadastrarProdutos(List<ProdutoGeral> listaDeProdutos, List<Fornecedor> listaDeFornecedores, HashMap<String, Object> listaDados) {
+	public boolean cadastrarProdutos(HashMap<String, Object> listaDados) {
 		
 		// Gerando o Id:
 		String id;
-		boolean exclusivo = false;
-		
-		//
-		
+		boolean exclusivo = false;		
 		do {
 			id = GerenciadorDeId.gerarId(4);
 			
@@ -144,11 +140,8 @@ public class GerenciadorDeProduto {
 	public static HashMap<String, Object> encontrarProduto(List<ProdutoGeral> listaDeProdutos, String id) {
 		
 		try {
-			
 			boolean achou = false;
-			
 			HashMap<String, Object> dadosProduto = new HashMap<>();
-			
 			
 			// Itera sobre a lista que possui ProdutoGeral
 			for(int i = 0; i < listaDeProdutos.size(); i++){

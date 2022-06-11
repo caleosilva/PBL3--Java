@@ -16,14 +16,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
+import model.concreto.GerenciadorDeProduto;
 
 import static java.lang.Integer.parseInt;
 
+import java.awt.Button;
 import java.lang.reflect.InvocationTargetException;
 
 import alertas.AlertasGerais;
@@ -34,6 +38,7 @@ public class ProdutoTelaCadastrarController implements Initializable {
 	private String[] unidadesDeMedida = {"Quilograma(s)", "Unidade(s)", "Litro(s)"};
 	private ObservableList<String> dadosUnidadesDeMedida;;
 	private ObservableList<Fornecedor> dadosFornecedores;
+	private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
 	
     @FXML
     private ChoiceBox<Fornecedor> campoFornecedor;
@@ -55,23 +60,14 @@ public class ProdutoTelaCadastrarController implements Initializable {
 
     @FXML
     void botaoCancelar(ActionEvent event) {
-
+//    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+//    	stage.close();
     }
 
     @FXML
     void botaoConfirmarCadastro(ActionEvent event) {
-    	
-    	juntarInformacoes();
-    	
-//    	verificarInformacoes();
-    	
-//    	System.out.println("Nome: " + campoNome.getText());
-//    	System.out.println("Preço: "+ campoPreco.getText());
-//    	System.out.println("Quantidade: "+ campoQuantidade.getText());
-//    	
-//    	System.out.println("UnidadeDeMedida: " + campoUnidadeDeMedida.getValue());
-//    	System.out.println("Validade: "+ campoValidade.getValue());
-//    	System.out.println("Fornecedor1 : "+ campoFornecedor.getValue());
+    	HashMap<String, Object> data = juntarInformacoes();
+    	boolean sucesso = gdp.cadastrarProdutos(data);
     }
 
 	@Override
@@ -192,8 +188,7 @@ public class ProdutoTelaCadastrarController implements Initializable {
 	}
 	
 	public HashMap<String, Object> juntarInformacoes() {
-		
-		HashMap<String, Object> listaDados = null;
+		HashMap<String, Object> informacoes = null;
 		try {
 			String nome = verificarTextField(campoNome);
 			double preco = Double.parseDouble(verificarTextField(campoPreco));
@@ -202,20 +197,18 @@ public class ProdutoTelaCadastrarController implements Initializable {
 			Fornecedor fornecedor = getCampoFornecedor();
 			String validade = validarData(campoValidade);
 			
-			listaDados = new HashMap<>();
+			informacoes = new HashMap<>();
 			
-			listaDados.put("nome", nome);
-			listaDados.put("preco", preco);
-			listaDados.put("quantidade", quantidade);
-			listaDados.put("unidadeDeMedida", unidadeDeMedida);
-			listaDados.put("fornecedor", fornecedor);
-			listaDados.put("validade", validade);
-			
+			informacoes.put("nome", nome);
+			informacoes.put("preco", preco);
+			informacoes.put("quantidade", quantidade);
+			informacoes.put("unidadeDeMedida", unidadeDeMedida);
+			informacoes.put("fornecedor", fornecedor);
+			informacoes.put("validade", validade);
 		} catch(InputsIncorretos e) {
 			alertas.dadosIncorretos();
 		}
-		
-		return listaDados;
-	} 
+		return informacoes;
+	}
 	
 }

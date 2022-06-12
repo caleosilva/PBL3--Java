@@ -88,8 +88,7 @@ public class GerenciadorDeProduto {
 			}
 			
 			// Se não tiver:			
-			if (!achou) {
-								
+			if (!achou) {								
 				ProdutoGeral pg = new ProdutoGeral((String) listaDados.get("nome"));
 				listaDeProdutos.add(pg);
 				

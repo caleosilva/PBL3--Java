@@ -1,21 +1,19 @@
 package application;
 
 import java.io.IOException;
-
-
-import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
+import javafx.application.Application;
 
 public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage){
 		
-		application.PreCadastro.main(null);
+		PreCadastro.main(null);
 		String url = "/view/TelaLogin.fxml";
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(url));

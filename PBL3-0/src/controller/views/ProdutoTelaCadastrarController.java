@@ -34,11 +34,13 @@ import alertas.AlertasGerais;
 
 public class ProdutoTelaCadastrarController implements Initializable {
 	
-	private AlertasGerais alertas = new AlertasGerais();
 	private String[] unidadesDeMedida = {"Quilograma(s)", "Unidade(s)", "Litro(s)"};
 	private ObservableList<String> dadosUnidadesDeMedida;;
 	private ObservableList<Fornecedor> dadosFornecedores;
+	
 	private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
+	private AlertasGerais alertas = new AlertasGerais();
+	private Uteis utilidades = new Uteis();
 	
     @FXML
     private ChoiceBox<Fornecedor> campoFornecedor;
@@ -83,38 +85,8 @@ public class ProdutoTelaCadastrarController implements Initializable {
 		carregarNomeFornecedores();
 		carregarUnidadeDeMedidas();
 		
-		validarCampoDecimal(campoQuantidade);
-		validarCampoDecimal(campoPreco);
-		
-	}
-	
-	public void validarCampoNumerico(TextField campo) {
-		campo.textProperty().addListener(
-				(observable, oldValue, newValue) -> {
-					try {
-						if (!newValue.isBlank()) {
-							parseInt(newValue);
-						}
-						
-					} catch(Exception e) {
-						this.campoQuantidade.setText(oldValue);
-					}
-				}
-		);
-	}
-	
-	public void validarCampoDecimal(TextField textfield) {
-		textfield.textProperty().addListener(
-				(observable, oldValue, newValue) -> {
-					try {						
-						if (!newValue.matches("\\d*(\\.\\d*)?")) {
-							textfield.setText(oldValue);
-						}
-					} catch(Exception e) {
-						textfield.setText(oldValue);
-					}
-				}
-		);
+		utilidades.validarCampoDecimal(campoQuantidade);
+		utilidades.validarCampoDecimal(campoPreco);
 	}
 
 	public void getCampoUnidadeDeMedida(ActionEvent event) {

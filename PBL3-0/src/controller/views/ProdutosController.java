@@ -86,7 +86,6 @@ public class ProdutosController implements Initializable {
 		carregarInformacoesTableView();
 	}
 	
-	
     public void atualizarTabela() {
     	try {
     		observableInformacoes.clear();
@@ -95,8 +94,6 @@ public class ProdutosController implements Initializable {
     	} catch (NullPointerException npe) {
 			System.out.println("Não há dados para serem apresentados!");
 		}
-    	
-    	
     }
 	
 	public void carregarInformacoesTableView() {
@@ -115,7 +112,6 @@ public class ProdutosController implements Initializable {
 				informacoes.add(pe);
 			}
 		}
-		
 		observableInformacoes = FXCollections.observableArrayList(informacoes);
 		tabelaInformacoes.setItems(observableInformacoes);
 	}

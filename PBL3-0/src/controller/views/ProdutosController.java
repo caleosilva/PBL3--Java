@@ -29,7 +29,7 @@ import model.concreto.GerenciadorDeProduto;
 public class ProdutosController implements Initializable {
 	
 	private List<ProdutoEspecifico> informacoes = new ArrayList<>();
-    private ObservableList<ProdutoEspecifico> observableInformacoes;
+    private ObservableList<ProdutoEspecifico> observableInformacoes = null;;
     private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
     private MudarTelaController mtc = new MudarTelaController();
 
@@ -62,8 +62,7 @@ public class ProdutosController implements Initializable {
     
     @FXML
     void botaoAtualizarTabela(ActionEvent event) {
-    	tabelaInformacoes.getItems().clear();
-//    	carregarInformacoesTableView();
+    	atualizarTabela();
     }
 
     @FXML
@@ -86,6 +85,19 @@ public class ProdutosController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarInformacoesTableView();
 	}
+	
+	
+    public void atualizarTabela() {
+    	try {
+    		observableInformacoes.clear();
+        	informacoes.clear();
+        	carregarInformacoesTableView();
+    	} catch (NullPointerException npe) {
+			System.out.println("Não há dados para serem apresentados!");
+		}
+    	
+    	
+    }
 	
 	public void carregarInformacoesTableView() {
 		

@@ -74,6 +74,8 @@ public class ProdutoTelaCadastrarController implements Initializable {
     		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         	stage.close();
     	}
+    	
+    	
     }
 
 	@Override

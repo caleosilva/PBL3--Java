@@ -6,6 +6,7 @@ import javafx.scene.control.Alert.AlertType;
 public class AlertasGerais {
 	
 	private Alert alertaErro = new Alert(AlertType.ERROR);
+	private Alert alertaSucesso = new Alert(AlertType.INFORMATION);
 	
 	public void alertaErroLogin() {
 		alertaErro.setTitle("Não foi possível realizar o login.");
@@ -43,9 +44,9 @@ public class AlertasGerais {
 	}
 	
 	public void informarSucessoOperacao() {
-		alertaErro.setTitle("Sucesso!");
-		alertaErro.setHeaderText("A operação foi realizada com êxito!");
-		alertaErro.showAndWait();
+		alertaSucesso.setTitle("Sucesso!");
+		alertaSucesso.setHeaderText("A operação foi realizada com êxito!");
+		alertaSucesso.showAndWait();
 	}
  
 

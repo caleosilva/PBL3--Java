@@ -123,7 +123,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" onAction="#botaoConfirmarCadastro" prefHeight="40.0" prefWidth="250.0" text="Confirmar novas informações">
+                  <Button mnemonicParsing="false" onAction="#botaoConfirmarEdicao" prefHeight="40.0" prefWidth="250.0" text="Confirmar novas informações">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

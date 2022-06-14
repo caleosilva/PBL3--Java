@@ -43,6 +43,13 @@ public class AlertasGerais {
 		alertaErro.showAndWait();
 	}
 	
+	public void itemNaoSelecionado() {
+		alertaErro.setTitle("Não foi possível realizar esse procedimento!");
+		alertaErro.setHeaderText("Selecione um item da tabela para realizar essa operação!");
+		alertaErro.setContentText("Tente novamente!");
+		alertaErro.showAndWait();
+	}
+	
 	public void informarSucessoOperacao() {
 		alertaSucesso.setTitle("Sucesso!");
 		alertaSucesso.setHeaderText("A operação foi realizada com êxito!");

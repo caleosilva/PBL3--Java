@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.JFrame;
 
+import alertas.AlertasGerais;
 import bancoDeDados.Dados;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,15 +21,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
 import model.facade.GerenciadorDeProduto;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ProdutosController implements Initializable {
 	
@@ -36,6 +44,7 @@ public class ProdutosController implements Initializable {
     private ObservableList<ProdutoEspecifico> observableInformacoes = null;;
     private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
     private MudarTelaController mtc = new MudarTelaController();
+    private AlertasGerais alertas = new AlertasGerais();
 
     @FXML
     private TableColumn<ProdutoEspecifico, String> colunaFornecedor;
@@ -79,18 +88,76 @@ public class ProdutosController implements Initializable {
     	
     	ProdutoEspecifico produtoEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
     	
-    	HashMap<String, Object> dados = new HashMap<>();
-    	
-    	if (produtoEspecifico != null) {    		
-        	mtc.abrirNovaJanela("/view/ProdutoTelaEditar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	if (produtoEspecifico != null) {
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/ProdutoTelaEditar.fxml"));
+            try {
+                loader.load();
+            } catch (IOException ex) {
+                System.out.println("Ruim aq papai");
+            }
+            
+            // Controller:
+            ProdutoTelaEditarController controllerEditar =  loader.getController();
+            
+            LocalDate data = LocalDate.parse(produtoEspecifico.getValidade(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+
+            controllerEditar.adicionarInformacoes(produtoEspecifico.getNome(), produtoEspecifico.getPreco(),
+            		 data, produtoEspecifico.getQuantidade(), produtoEspecifico.getFornecedor(),
+            		 produtoEspecifico.getUnidadeDeMedidaFormatada(), produtoEspecifico.getId());
+            
+            // Abrindo nova tela:
+            Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initOwner(parentStage);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+    	} else {
+    		alertas.itemNaoSelecionado();
     	}
     	
+    	
+    	    	
     }
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
     	ProdutoEspecifico produtoEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
-    	gdp.excluirProdutos(produtoEspecifico, tabelaInformacoes);
+    	
+    	if (produtoEspecifico != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/ProdutoTelaExcluir.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+                System.out.println("Ruim aq papai 2");
+            }
+            
+            ProdutoTelaExcluirController controllerExcluir =  loader.getController();
+            controllerExcluir.atualizarProduto(produtoEspecifico, tabelaInformacoes);
+            
+            // Abrindo nova tela:
+            Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initOwner(parentStage);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+    		
+    		
+    		
+    		//gdp.excluirProdutos(produtoEspecifico, tabelaInformacoes);
+    	} else {
+    		alertas.itemNaoSelecionado();
+    	}
+    	
     }
 
 	@Override

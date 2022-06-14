@@ -1,16 +1,14 @@
 package controller.views;
 
 import java.net.URL;
+
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 import alertas.AlertasGerais;
 import bancoDeDados.Dados;
 import excecoes.InputsIncorretos;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,25 +20,22 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Fornecedor;
-import model.ProdutoEspecifico;
 import model.facade.GerenciadorDeProduto;
+import uteisProduto.UteisGeral;
+import uteisProduto.UteisProduto;
 
-import static java.lang.Integer.parseInt;
-
-import java.awt.Button;
-import java.lang.reflect.InvocationTargetException;
-
-import alertas.AlertasGerais;
 
 public class ProdutoTelaCadastrarController implements Initializable {
 	
-	private String[] unidadesDeMedida = {"Quilograma(s)", "Unidade(s)", "Litro(s)"};
-	private ObservableList<String> dadosUnidadesDeMedida;;
+	private String[] unidadesDeMedida = {"Quilograma", "Litro", "Unidade"};
+	private ObservableList<String> dadosUnidadesDeMedida;
 	private ObservableList<Fornecedor> dadosFornecedores;
 	
 	private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
 	private AlertasGerais alertas = new AlertasGerais();
-	private Uteis utilidades = new Uteis();
+	
+	private UteisProduto uteisProduto = new UteisProduto();
+	private UteisGeral uteisGeral = new UteisGeral();
 	
     @FXML
     private ChoiceBox<Fornecedor> campoFornecedor;
@@ -85,8 +80,8 @@ public class ProdutoTelaCadastrarController implements Initializable {
 		carregarNomeFornecedores();
 		carregarUnidadeDeMedidas();
 		
-		utilidades.validarCampoDecimal(campoQuantidade);
-		utilidades.validarCampoDecimal(campoPreco);
+		uteisGeral.validarCampoDecimal(campoQuantidade);
+		uteisGeral.validarCampoDecimal(campoPreco);
 	}
 
 	public void getCampoUnidadeDeMedida(ActionEvent event) {
@@ -103,79 +98,15 @@ public class ProdutoTelaCadastrarController implements Initializable {
 		campoUnidadeDeMedida.setItems(dadosUnidadesDeMedida);
 	}
 	
-	//=============================================================================================
-	public Object verificarChoiceBoxObjeto(ChoiceBox<Object> informacao) throws InputsIncorretos {
-		if (informacao.getValue() == null) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getValue();
-	}
-	
-	public String verificarChoiceBoxString(ChoiceBox<String> informacao) throws InputsIncorretos {
-		if (informacao.getValue() == null) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getValue();
-	}
-	
-	public String verificarTextField(TextField informacao) throws InputsIncorretos {
-		if (informacao.getText().isBlank()) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getText();
-	}
-	
-	public Integer transformarUnidadeDeMedida(String informacao) {
-		
-		int novoValor = 0;
-		
-		switch(informacao) {
-		
-			case "Quilograma(s)": {
-				novoValor = 1;
-				break;
-			}
-			case "Litro(s)": {
-				novoValor = 2;
-				break;
-			}
-			case "Unidade(s)": {
-				novoValor = 3;
-				break;
-			}
-			default:
-				return null;
-			
-		}
-		return novoValor;
-	}	
-
-	public String validarData(DatePicker informacao) throws InputsIncorretos{
-		if(informacao.getValue() == null) {
-			throw new InputsIncorretos("Data incorreta!");
-		}
-		DateTimeFormatter fomatoDataBr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		String validade = informacao.getValue().format(fomatoDataBr);
-		return validade;
-	}
-	
-	public Fornecedor getCampoFornecedor() throws InputsIncorretos{
-		Fornecedor fornecedor = campoFornecedor.getSelectionModel().getSelectedItem();
-		if(fornecedor == null) {
-			throw new InputsIncorretos("Fornecedor incorreto!");
-		}
-		return fornecedor;
-	}
-	
 	public HashMap<String, Object> juntarInformacoes() {
 		HashMap<String, Object> informacoes = null;
 		try {
-			String nome = verificarTextField(campoNome);
-			double preco = Double.parseDouble(verificarTextField(campoPreco));
-			double quantidade = Double.parseDouble(verificarTextField(campoQuantidade));
-			int unidadeDeMedida = transformarUnidadeDeMedida(verificarChoiceBoxString(campoUnidadeDeMedida));
-			Fornecedor fornecedor = getCampoFornecedor();
-			String validade = validarData(campoValidade);
+			String nome = uteisProduto.verificarTextField(campoNome);
+			double preco = Double.parseDouble(uteisProduto.verificarTextField(campoPreco));
+			double quantidade = Double.parseDouble(uteisProduto.verificarTextField(campoQuantidade));
+			int unidadeDeMedida = uteisProduto.transformarUnidadeDeMedida(uteisProduto.verificarChoiceBoxString(campoUnidadeDeMedida));
+			Fornecedor fornecedor = uteisProduto.getCampoFornecedor(campoFornecedor.getValue());
+			String validade = uteisProduto.validarData(campoValidade);
 			
 			informacoes = new HashMap<>();
 			

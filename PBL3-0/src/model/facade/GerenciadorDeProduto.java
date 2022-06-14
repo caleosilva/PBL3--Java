@@ -22,12 +22,11 @@ import model.ProdutoGeral;
 public class GerenciadorDeProduto {
 	
 	private AlertasGerais alertas = new AlertasGerais();
-	private List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
-	private List<Fornecedor> listaDeFornecedores = Dados.getListaFornecedor();
+	private static List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
 		
 	public boolean excluirProdutos(ProdutoEspecifico produto, TableView<ProdutoEspecifico> tabelaInformacoes) {
 		try {
-			for (ProdutoGeral pg : this.listaDeProdutos){
+			for (ProdutoGeral pg : listaDeProdutos){
 				for (ProdutoEspecifico pe : pg.getListaDeProdutos()) {
 					if (pe.equals(produto)) {
 						tabelaInformacoes.getItems().remove(produto);
@@ -38,10 +37,8 @@ public class GerenciadorDeProduto {
 		} catch(NullPointerException npe) {
 			alertas.erroNaOperacao();
 		}
-		
 		return false;
 	}
-	
 	
 	public boolean cadastrarProdutos(HashMap<String, Object> listaDados) {
 		
@@ -54,7 +51,7 @@ public class GerenciadorDeProduto {
 			HashMap<String, Object> dados = null;
 			
 			try {
-				dados = encontrarProduto(listaDeProdutos, id);
+				dados = encontrarProduto(id);
 			} catch(NullPointerException npe) {
 				//ViewMetodosGerais.mensagemErroGeral();
 			}
@@ -63,10 +60,7 @@ public class GerenciadorDeProduto {
 			
 		} while (!exclusivo);
 		
-		System.out.printf("Id do produto: %s\n", id);
-		
 		boolean confirmacao = false;
-		
 		// Verifica se o nome dele já tá na lista de produto:
 		try {
 			boolean achou = false;
@@ -136,7 +130,7 @@ public class GerenciadorDeProduto {
 		
 	}
 	
-	public static HashMap<String, Object> encontrarProduto(List<ProdutoGeral> listaDeProdutos, String id) {
+	public HashMap<String, Object> encontrarProduto(String id) {
 		
 		try {
 			boolean achou = false;
@@ -183,30 +177,16 @@ public class GerenciadorDeProduto {
 		try {
 			
 			ProdutoEspecifico pe = (ProdutoEspecifico) dadosProduto.get("produtoEspecifico");
+			ProdutoGeral pg = (ProdutoGeral) dadosProduto.get("produtoGeral");
 			
-			if (novaInformacao.containsKey("nome")) {
-				ProdutoGeral pg = (ProdutoGeral) dadosProduto.get("produtoGeral");
+			if(dadosProduto != null && novaInformacao != null) {
 				pg.setNome( (String) novaInformacao.get("nome"));
-				confirmacao = true;
-				
-			} else if (novaInformacao.containsKey("preco")) {
 				pe.setPreco((double) novaInformacao.get("preco"));
-				confirmacao = true;
-				
-			} else if (novaInformacao.containsKey("validade")) {
 				pe.setValidade((String) novaInformacao.get("validade"));
-				confirmacao = true;
-				
-			} else if (novaInformacao.containsKey("quantidade")) {
 				pe.setQuantidade((double) novaInformacao.get("quantidade"));
-				confirmacao = true;
-				
-			} else if (novaInformacao.containsKey("unidadeDeMedida")) {
 				pe.setUnidadeDeMedida((int) novaInformacao.get("unidadeDeMedida"));
-				confirmacao = true;
-				
-			} else if (novaInformacao.containsKey("fornecedor")) {
 				pe.setFornecedor((Fornecedor) novaInformacao.get("fornecedor"));
+				
 				confirmacao = true;
 			}
 			

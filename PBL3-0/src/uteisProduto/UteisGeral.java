@@ -1,10 +1,10 @@
-package controller.views;
+package uteisProduto;
 
 import static java.lang.Integer.parseInt;
 
 import javafx.scene.control.TextField;
 
-public class Uteis {
+public class UteisGeral {
 	
 	public void validarCampoNumerico(TextField campo) {
 		campo.textProperty().addListener(
@@ -33,5 +33,6 @@ public class Uteis {
 				}
 		);
 	}
-
+	
+	
 }

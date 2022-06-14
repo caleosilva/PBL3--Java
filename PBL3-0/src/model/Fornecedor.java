@@ -22,6 +22,8 @@ public class Fornecedor {
 	private String endereco;
 	private List<String> listaNomeProdutos = new ArrayList<>();
 	
+	private String produtoPorString;
+	
 	
 	// Construtor para inicializar cada atributo com o valor correto.
 	public Fornecedor(String id, String cnpj, String nome, String endereco) {
@@ -64,5 +66,15 @@ public class Fornecedor {
 	@Override
 	public String toString() {
 		return getNome();
+	}
+	
+	public String getNomeDeProdutos() {
+		String nomes = "";
+		
+		for (String produto : listaNomeProdutos) {
+			produtoPorString.concat(" " + produto);
+		}
+		
+		return nomes;
 	}
 }

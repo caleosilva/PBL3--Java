@@ -19,7 +19,7 @@ public class MenuGerenteController {
 
     @FXML
     void abrirTelaFornecedor(MouseEvent event) {
-    	mtc.mudarSubTela("/view/Fornecedor.fxml", centroTela);
+    	mtc.mudarSubTela("/view/FornecedorTelaGeral.fxml", centroTela);
     }
 
     @FXML

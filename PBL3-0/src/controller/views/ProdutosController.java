@@ -41,7 +41,7 @@ import java.time.format.DateTimeFormatter;
 public class ProdutosController implements Initializable {
 	
 	private List<ProdutoEspecifico> informacoes = new ArrayList<>();
-    private ObservableList<ProdutoEspecifico> observableInformacoes = null;;
+    private ObservableList<ProdutoEspecifico> observableInformacoes = null;
     private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
     private MudarTelaController mtc = new MudarTelaController();
     private AlertasGerais alertas = new AlertasGerais();

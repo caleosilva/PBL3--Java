@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
+import bancoDeDados.Dados;
+
 /**
  * 
  * Classe que possui as caracteristicas referente a um fornecedor, além disso, ela que é instaciada para
@@ -68,13 +70,23 @@ public class Fornecedor {
 		return getNome();
 	}
 	
-	public String getNomeDeProdutos() {
-		String nomes = "";
+	public String getProdutoPorString() {
 		
-		for (String produto : listaNomeProdutos) {
-			produtoPorString.concat(" " + produto);
+		if (getListaNomeProdutos().size() == 0) {
+			produtoPorString = "Vazio";
+			return produtoPorString;
+		} else {
+			
 		}
 		
-		return nomes;
+		String nomes = "";
+		
+		for (String produto : getListaNomeProdutos()) {
+			nomes += produto + ", ";
+		}
+		
+		int fim = nomes.length() - 2;
+		produtoPorString = nomes.substring(0, fim);
+		return produtoPorString;
 	}
 }

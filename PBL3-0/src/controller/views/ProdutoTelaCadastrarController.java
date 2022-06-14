@@ -21,8 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Fornecedor;
 import model.facade.GerenciadorDeProduto;
-import uteisProduto.UteisGeral;
-import uteisProduto.UteisProduto;
+import uteis.UteisGeral;
+import uteis.UteisProduto;
 
 
 public class ProdutoTelaCadastrarController implements Initializable {

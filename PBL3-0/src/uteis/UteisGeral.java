@@ -1,4 +1,4 @@
-package uteisProduto;
+package uteis;
 
 import static java.lang.Integer.parseInt;
 
@@ -23,7 +23,7 @@ public class UteisGeral {
 	public void validarCampoDecimal(TextField textfield) {
 		textfield.textProperty().addListener(
 				(observable, oldValue, newValue) -> {
-					try {						
+					try {
 						if (!newValue.matches("\\d*(\\.\\d*)?")) {
 							textfield.setText(oldValue);
 						}

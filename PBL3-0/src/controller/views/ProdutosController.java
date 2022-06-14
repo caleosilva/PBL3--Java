@@ -94,7 +94,7 @@ public class ProdutosController implements Initializable {
             try {
                 loader.load();
             } catch (IOException ex) {
-                System.out.println("Ruim aq papai");
+                System.out.println("Erro");
             }
             
             // Controller:
@@ -125,6 +125,7 @@ public class ProdutosController implements Initializable {
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
+    	
     	ProdutoEspecifico produtoEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
     	
     	if (produtoEspecifico != null) {

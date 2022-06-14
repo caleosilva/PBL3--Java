@@ -1,4 +1,4 @@
-package uteisProduto;
+package uteis;
 
 import java.time.format.DateTimeFormatter;
 

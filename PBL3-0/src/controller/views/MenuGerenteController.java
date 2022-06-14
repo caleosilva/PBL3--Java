@@ -24,7 +24,7 @@ public class MenuGerenteController {
 
     @FXML
     void abrirTelaUsuarios(MouseEvent event) {
-    	mtc.mudarSubTela("/view/Usuario.fxml", centroTela);
+    	mtc.mudarSubTela("/view/UsuariosTelaGeral.fxml", centroTela);
     }
     
     @FXML

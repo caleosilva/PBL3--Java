@@ -7,11 +7,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Fornecedor;
 
 public class ProdutoTelaEditarController {
 
     @FXML
-    private ChoiceBox<?> campoFornecedor;
+    private ChoiceBox<Fornecedor> campoFornecedor;
 
     @FXML
     private TextField campoNome;
@@ -23,7 +24,7 @@ public class ProdutoTelaEditarController {
     private TextField campoQuantidade;
 
     @FXML
-    private ChoiceBox<?> campoUnidadeDeMedida;
+    private ChoiceBox<String> campoUnidadeDeMedida;
 
     @FXML
     private DatePicker campoValidade;
@@ -38,5 +39,12 @@ public class ProdutoTelaEditarController {
     void botaoConfirmarCadastro(ActionEvent event) {
 
     }
+    
+//    public void adicionarInformacoes(String nome) {
+//    	this.campoPreco.setText(nome);
+//    	System.out.println("Antes: " + campoPreco.getPromptText());
+//    	this.campoPreco.setPromptText(nome);
+//    	System.out.println("Depois: " + campoPreco.getPromptText());
+//    }
 
 }

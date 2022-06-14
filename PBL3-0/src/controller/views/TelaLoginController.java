@@ -19,7 +19,7 @@ import javafx.scene.layout.BorderPane;
 import model.Funcionario;
 import model.Gerente;
 import model.Usuario;
-import model.concreto.GerenciadorDeLogin;
+import model.facade.GerenciadorDeLogin;
 import bancoDeDados.Dados;
 import excecoes.LoginSenhaInvalidos;
 

@@ -1,5 +1,6 @@
 package controller.views;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,6 +8,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.ResourceBundle;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import javax.swing.JFrame;
 
 import bancoDeDados.Dados;
@@ -14,8 +16,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,7 +28,7 @@ import javafx.stage.Stage;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
-import model.concreto.GerenciadorDeProduto;
+import model.facade.GerenciadorDeProduto;
 
 public class ProdutosController implements Initializable {
 	
@@ -72,7 +76,15 @@ public class ProdutosController implements Initializable {
 
     @FXML
     void botaoEditarProduto(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/ProdutoTelaEditar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	
+    	ProdutoEspecifico produtoEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
+    	
+    	HashMap<String, Object> dados = new HashMap<>();
+    	
+    	if (produtoEspecifico != null) {    		
+        	mtc.abrirNovaJanela("/view/ProdutoTelaEditar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	}
+    	
     }
 
     @FXML

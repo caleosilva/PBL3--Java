@@ -1,6 +1,6 @@
 package testandoFuncionalidades;
 
-public class Main {
+public class MainTest {
 	
 	static MainCopy m = new MainCopy();
 

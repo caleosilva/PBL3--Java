@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
-import model.concreto.GerenciadorDeProduto;
+import model.facade.GerenciadorDeProduto;
 
 import static java.lang.Integer.parseInt;
 

@@ -27,7 +27,6 @@ public class Main extends Application {
 			primaryStage.setTitle("Gerenciador de bares/restaurantes");
 			primaryStage.show();
 		} catch (IOException e) {
-			
 			e.printStackTrace();
 		}		
 	}

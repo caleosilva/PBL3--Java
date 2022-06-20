@@ -15,7 +15,7 @@
          <children>
             <HBox alignment="CENTER" layoutY="-8.0" prefHeight="70.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <Label styleClass="tituloIdentificacao" stylesheets="@../style/SubMenus.css" text="Cardapio">
+                  <Label alignment="CENTER" contentDisplay="CENTER" minHeight="10.0" prefWidth="150.0" styleClass="tituloIdentificacao" stylesheets="@../style/SubMenus.css" text="Cardapio">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>

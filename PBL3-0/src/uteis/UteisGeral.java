@@ -2,6 +2,8 @@ package uteis;
 
 import static java.lang.Integer.parseInt;
 
+import excecoes.InputsIncorretos;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 
 public class UteisGeral {
@@ -32,6 +34,27 @@ public class UteisGeral {
 					}
 				}
 		);
+	}
+	
+	public Object verificarChoiceBoxObjeto(ChoiceBox<Object> informacao) throws InputsIncorretos {
+		if (informacao.getValue() == null) {
+			throw new InputsIncorretos("Informação inválida!");
+		}
+		return informacao.getValue();
+	}
+	
+	public String verificarChoiceBoxString(ChoiceBox<String> informacao) throws InputsIncorretos {
+		if (informacao.getValue() == null) {
+			throw new InputsIncorretos("Informação inválida!");
+		}
+		return informacao.getValue();
+	}
+	
+	public String verificarTextField(TextField informacao) throws InputsIncorretos {
+		if (informacao.getText().isBlank()) {
+			throw new InputsIncorretos("Informação inválida!");
+		}
+		return informacao.getText();
 	}
 	
 	

@@ -36,7 +36,7 @@ public class AlertasGerais {
 		alertaErro.showAndWait();
 	}
 	
-	public void dadosIncorretos() {
+	public void faltaDadosOuIncorretos() {
 		alertaErro.setTitle("Não foi possível realizar essa operação.");
 		alertaErro.setHeaderText("Falta alguma informação ou ao menos um dos dados inseridos é inválido!");
 		alertaErro.setContentText("Tente novamente!");

@@ -10,27 +10,6 @@ import model.Fornecedor;
 
 public class UteisProduto {
 	
-	public Object verificarChoiceBoxObjeto(ChoiceBox<Object> informacao) throws InputsIncorretos {
-		if (informacao.getValue() == null) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getValue();
-	}
-	
-	public String verificarChoiceBoxString(ChoiceBox<String> informacao) throws InputsIncorretos {
-		if (informacao.getValue() == null) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getValue();
-	}
-	
-	public String verificarTextField(TextField informacao) throws InputsIncorretos {
-		if (informacao.getText().isBlank()) {
-			throw new InputsIncorretos("Informação inválida!");
-		}
-		return informacao.getText();
-	}
-	
 	public Integer transformarUnidadeDeMedida(String informacao) {
 		
 		int novoValor = 0;

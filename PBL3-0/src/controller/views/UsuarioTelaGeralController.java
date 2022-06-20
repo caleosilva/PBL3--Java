@@ -11,14 +11,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.Usuario;
 
 public class UsuarioTelaGeralController implements Initializable {
 	
+	MudarTelaController mtc = new MudarTelaController();
 	private List<Usuario> informacoes = new ArrayList<>();
     private ObservableList<Usuario> observableInformacoes = null;;
 
@@ -44,7 +47,7 @@ public class UsuarioTelaGeralController implements Initializable {
 
     @FXML
     void botaoCadastrarUsuario(ActionEvent event) {
-
+    	mtc.abrirNovaJanela("/view/UsuarioTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
     }
 
     @FXML

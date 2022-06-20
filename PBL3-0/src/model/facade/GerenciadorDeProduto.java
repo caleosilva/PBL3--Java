@@ -44,7 +44,7 @@ public class GerenciadorDeProduto {
 		
 		// Gerando o Id:
 		String id;
-		boolean exclusivo = false;		
+		boolean exclusivo = false;
 		do {
 			id = GerenciadorDeId.gerarId(4);
 			

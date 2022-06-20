@@ -20,8 +20,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Fornecedor;
 import model.facade.GerenciadorDeProduto;
-import uteisProduto.UteisGeral;
-import uteisProduto.UteisProduto;
+import uteis.UteisGeral;
+import uteis.UteisProduto;
 
 public class ProdutoTelaEditarController implements Initializable{
 	
@@ -76,12 +76,8 @@ public class ProdutoTelaEditarController implements Initializable{
     		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         	stage.close();
     	} else {
-    		alertas.dadosIncorretos();
-    	}
-    	
-    	
-    	
-    	
+    		alertas.faltaDadosOuIncorretos();
+    	}    	
     }
     
     @Override
@@ -96,10 +92,10 @@ public class ProdutoTelaEditarController implements Initializable{
     public HashMap<String, Object> juntarInformacoes() {
 		HashMap<String, Object> informacoes = null;
 		try {
-			String nome = uteisProduto.verificarTextField(campoNome);
-			double preco = Double.parseDouble(uteisProduto.verificarTextField(campoPreco));
-			double quantidade = Double.parseDouble(uteisProduto.verificarTextField(campoQuantidade));
-			int unidadeDeMedida = uteisProduto.transformarUnidadeDeMedida(uteisProduto.verificarChoiceBoxString(campoUnidadeDeMedida));
+			String nome = uteisGeral.verificarTextField(campoNome);
+			double preco = Double.parseDouble(uteisGeral.verificarTextField(campoPreco));
+			double quantidade = Double.parseDouble(uteisGeral.verificarTextField(campoQuantidade));
+			int unidadeDeMedida = uteisProduto.transformarUnidadeDeMedida(uteisGeral.verificarChoiceBoxString(campoUnidadeDeMedida));
 			Fornecedor fornecedor = uteisProduto.getCampoFornecedor(campoFornecedor.getValue());
 			String validade = uteisProduto.validarData(campoValidade);
 			
@@ -112,7 +108,7 @@ public class ProdutoTelaEditarController implements Initializable{
 			informacoes.put("fornecedor", fornecedor);
 			informacoes.put("validade", validade);
 		} catch(InputsIncorretos e) {
-			alertas.dadosIncorretos();
+			alertas.faltaDadosOuIncorretos();
 		}
 		return informacoes;
 	}

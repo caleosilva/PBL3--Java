@@ -41,7 +41,7 @@ import java.time.format.DateTimeFormatter;
 public class ProdutosController implements Initializable {
 	
 	private List<ProdutoEspecifico> informacoes = new ArrayList<>();
-    private ObservableList<ProdutoEspecifico> observableInformacoes = null;;
+    private ObservableList<ProdutoEspecifico> observableInformacoes = null;
     private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
     private MudarTelaController mtc = new MudarTelaController();
     private AlertasGerais alertas = new AlertasGerais();
@@ -94,7 +94,7 @@ public class ProdutosController implements Initializable {
             try {
                 loader.load();
             } catch (IOException ex) {
-                System.out.println("Ruim aq papai");
+                System.out.println("Erro");
             }
             
             // Controller:
@@ -125,6 +125,7 @@ public class ProdutosController implements Initializable {
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
+    	
     	ProdutoEspecifico produtoEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
     	
     	if (produtoEspecifico != null) {

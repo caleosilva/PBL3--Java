@@ -24,7 +24,10 @@ public class UsuarioTelaGeralController implements Initializable {
 	MudarTelaController mtc = new MudarTelaController();
 	private List<Usuario> informacoes = new ArrayList<>();
     private ObservableList<Usuario> observableInformacoes = null;;
-
+    
+    @FXML
+    private TableColumn<Usuario, String> colunaCargo;
+    
     @FXML
     private TableColumn<Usuario, String> colunaId;
 
@@ -42,7 +45,7 @@ public class UsuarioTelaGeralController implements Initializable {
 
     @FXML
     void botaoAtualizarTabela(ActionEvent event) {
-
+    	atualizarTabela();
     }
 
     @FXML
@@ -60,13 +63,22 @@ public class UsuarioTelaGeralController implements Initializable {
 
     }
     
-    
+    public void atualizarTabela() {
+    	try {
+    		observableInformacoes.clear();
+        	informacoes.clear();
+        	carregarInformacoesTableView();
+    	} catch (NullPointerException npe) {
+			System.out.println("Não há dados para serem apresentados!");
+		}
+    }
     
     public void carregarInformacoesTableView() {
 		
     	colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     	colunaLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
-    	colunaSenha.setCellValueFactory(new PropertyValueFactory<>("senha"));;
+    	colunaSenha.setCellValueFactory(new PropertyValueFactory<>("senha"));
+    	colunaCargo.setCellValueFactory(new PropertyValueFactory<>("cargo"));
     	
     	for (Usuario u :Dados.getListaUsuario()) {
     		informacoes.add(u);

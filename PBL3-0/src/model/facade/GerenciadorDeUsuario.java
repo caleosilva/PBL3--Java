@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import bancoDeDados.Dados;
+import excecoes.ErroNaOperacao;
+import excecoes.LoginExistente;
+import javafx.fxml.LoadException;
 import model.Funcionario;
 import model.Gerente;
 import model.Usuario;
@@ -64,9 +67,9 @@ public class GerenciadorDeUsuario{
 		} else if (informacao[0].equals("1")) {
 			
 			// Verifica se o login escolhido já existe.
-			int loginExistente = GerenciadorDeUsuario.encontrarUsuarioPorLogin(informacao[1]);
+			boolean loginExistente = encontrarUsuarioPorLogin(informacao[1]);
 			
-			if (loginExistente == 1) {
+			if (loginExistente) {
 				return null;
 			}
 			
@@ -105,78 +108,56 @@ public class GerenciadorDeUsuario{
 	 * 
 	 * @return 1 caso encontre, 0 caso não encontre.
 	 */
-	public static int encontrarUsuarioPorLogin(String login) {		
-		for(int i = 0; i < listaDeUsuario.size(); i++){
-			
-	        Usuario user = listaDeUsuario.get(i);
-	        
-	        if(user.getLogin().equals(login)) {
-//	        	ViewGerenciamentoUsuario.mensagemLoginJaExistente();
-	        	return 1;
+	public boolean encontrarUsuarioPorLogin(String login) {
+		
+		for (Usuario user : listaDeUsuario) {
+			if(user.getLogin().equals(login)) {
+				return true;
 	        }
 		}
-		return 0;
+		return false;
 	}
 
 	
-	public Usuario cadastrarUsuario(HashMap<String, String> dadosCadastro) {
-		
-		// Verificando se algum dado é null:
-		if (dadosCadastro.get("login") == null || dadosCadastro.get("senha") == null  || dadosCadastro.get("funcao") == null ) {
-			return null;
-		}
+	public boolean cadastrarUsuario(HashMap<String, String> dadosCadastro) throws LoginExistente, ErroNaOperacao {
 		
 		// Verificando se o LOGIN já existe no sistema:
-		int loginUsado = GerenciadorDeUsuario.encontrarUsuarioPorLogin(dadosCadastro.get("login"));
-		if (loginUsado == 1) return null;
-		
+		if (dadosCadastro == null) {
+			System.out.println("Achei papai");
+		}
+		boolean loginUsado = encontrarUsuarioPorLogin(dadosCadastro.get("login"));
+		if (loginUsado) throw new LoginExistente("Login já presente no sistema!");
 		
 		// Gerando um ID exclusivo.
 		int liberado = 0;
 		String id = "0";
-		
 		do {
 			id = GerenciadorDeId.gerarId(1);
-
 			Usuario user = GerenciadorDeUsuario.encontrarUsuarioPorId(id, false);
-			
 			// Se não houver nenhum usuário com o ID gerado:
 			if (user == null) liberado = 1;
-			
 		} while(liberado == 0);
-		
-		//APAGAR ISSO AQ DEPOIS
-		System.out.println("PRINT TESTE - [CADASTRAR USUARIO] ID:" + id);
 
 		//Cadastrando um gerente:
-		if (dadosCadastro.get("funcao").equals("1")) {
-			
+		if (dadosCadastro.get("cargo").equals("Gerente")) {
 			// Criando o objeto:
-			Gerente novoGerente = new Gerente(id, dadosCadastro.get("login"), dadosCadastro.get("senha"));
+			Gerente novoGerente = new Gerente(id, dadosCadastro.get("login"), dadosCadastro.get("senha"), "Gerente");
 			
 			// Adicionando na lista:
 			listaDeUsuario.add(novoGerente);
-			
-			// Mensagem de confirmação:
-//			ViewMetodosGerais.mensagemConfirmandoCadastro("Gerente");
-			return novoGerente;
+			return true;
 		
 		//Cadastrando um funcionário:
-		} else if (dadosCadastro.get("funcao").equals("2")) {
-			
+		} else if (dadosCadastro.get("cargo").equals("Funcionario")) {
 			// Criando o objeto:
-			Funcionario novoFuncionario = new Funcionario(id, dadosCadastro.get("login"), dadosCadastro.get("senha"));
+			Funcionario novoFuncionario = new Funcionario(id, dadosCadastro.get("login"), dadosCadastro.get("senha"), "Funcionario");
 			
 			// Adicionando na lista:
 			listaDeUsuario.add(novoFuncionario);
-			
-			// Mensagem de confirmação:
-//			ViewMetodosGerais.mensagemConfirmandoCadastro("Funcionario");
-			return novoFuncionario;
+			return true;
 
 		} else {
-//			ViewGerenciamentoUsuario.mensagemTipoDeUsuarioInvalido();
-			return null;
+			throw new ErroNaOperacao("Erro desconhecido!");
 		}
 		
 	}

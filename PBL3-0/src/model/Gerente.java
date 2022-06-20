@@ -8,7 +8,7 @@ package model;
  */
 public class Gerente extends Usuario {
 		
-	public  Gerente(String newId, String newLogin, String newSenha) {
-		super(newId, newLogin, newSenha);
+	public  Gerente(String newId, String newLogin, String newSenha, String newCargo) {
+		super(newId, newLogin, newSenha, newCargo);
 	}
 }

@@ -8,8 +8,8 @@ package model;
  */
 public class Funcionario extends Usuario{
 	
-	public  Funcionario(String newId, String newLogin, String newSenha) {
-		super(newId, newLogin, newSenha);
+	public  Funcionario(String newId, String newLogin, String newSenha, String newCargo) {
+		super(newId, newLogin, newSenha, newCargo);
 		
 	}
 }

@@ -14,11 +14,14 @@ public abstract class Usuario {
 	private String senha;
 	private String login;
 	
+	private String cargo;
+	
 	// Construtor utilizado para inicializar o objeto já com as informações adicionadas.
-	public Usuario(String newId, String newLogin, String newSenha) {
+	public Usuario(String newId, String newLogin, String newSenha, String newCargo) {
 		this.id = newId;
 		this.login = newLogin;
 		this.senha = newSenha;
+		this.setCargo(newCargo);
 	}
 	
 	// Getters e Setters
@@ -49,6 +52,14 @@ public abstract class Usuario {
 
 	public void setLogin(String login) {
 		this.login = login;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 }

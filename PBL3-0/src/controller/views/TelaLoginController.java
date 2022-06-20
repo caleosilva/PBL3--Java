@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import alertas.AlertasGerais;
+import alertas.AlertasLogin;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,7 +28,7 @@ public class TelaLoginController implements Initializable{
 	
 	private Scene scene = null;
 	
-	private AlertasGerais alertas = new AlertasGerais();
+	private AlertasLogin alertas = new AlertasLogin();
 	 
 	@FXML
     private BorderPane painelLogin;

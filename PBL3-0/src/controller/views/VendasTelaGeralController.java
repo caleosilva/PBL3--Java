@@ -120,7 +120,7 @@ public class VendasTelaGeralController implements Initializable {
     	colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
     	colunaItens.setCellValueFactory(new PropertyValueFactory<>("itens"));
     	colunaprecoTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
-    	colunamodoPagamento.setCellValueFactory(new PropertyValueFactory<>("modoPagamento"));;
+    	colunamodoPagamento.setCellValueFactory(new PropertyValueFactory<>("modoPagamento"));
     	
     	for (Vendas u :Dados.getListaVendas()) {
     		informacoes.add(u);

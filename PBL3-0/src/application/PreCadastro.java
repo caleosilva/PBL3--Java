@@ -23,8 +23,8 @@ public class PreCadastro {
 	public static void main(String[] args) {
 		// Adicionando Usuários:
 		
-		Gerente g1 = new Gerente("1", "a", "a");
-		Funcionario f1 = new Funcionario("3", "b", "b");
+		Gerente g1 = new Gerente("1", "a", "a", "Gerente");
+		Funcionario f1 = new Funcionario("3", "jose", "123", "Funcionario");
 		
 		List<Usuario> lstU = Dados.getListaUsuario();
 		lstU.add(g1);

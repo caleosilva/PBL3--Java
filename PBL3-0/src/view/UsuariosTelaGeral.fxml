@@ -64,9 +64,10 @@
          <children>
             <TableView fx:id="tabelaInformacoes" prefHeight="370.0" prefWidth="660.0" stylesheets="@../style/SubMenus.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="colunaId" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Id" />
-                <TableColumn fx:id="colunaLogin" minWidth="200.0" prefWidth="200.0" text="Login" />
-                  <TableColumn fx:id="colunaSenha" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" text="Senha" />
+                <TableColumn fx:id="colunaId" maxWidth="165.0" minWidth="165.0" prefWidth="165.0" text="Id" />
+                <TableColumn fx:id="colunaLogin" minWidth="165.0" prefWidth="165.0" text="Login" />
+                  <TableColumn fx:id="colunaSenha" minWidth="165.0" prefWidth="165.0" text="Senha" />
+                  <TableColumn fx:id="colunaCargo" maxWidth="165.0" minWidth="165.0" prefWidth="165.0" text="Cargo" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

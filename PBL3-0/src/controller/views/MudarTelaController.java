@@ -50,6 +50,7 @@ public class MudarTelaController {
             stage.setScene(scene);
             stage.initOwner(parentStage);
             stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.showAndWait();
             
         } catch (IOException ex) {

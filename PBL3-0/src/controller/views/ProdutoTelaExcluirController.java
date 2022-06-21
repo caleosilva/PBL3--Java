@@ -11,7 +11,6 @@ import model.facade.GerenciadorDeProduto;
 
 public class ProdutoTelaExcluirController {
 	
-	private TableView<ProdutoEspecifico> tabelaInformacoes;
 	private ProdutoEspecifico produtoEspecifico = null;
 	private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
 	private AlertasGerais alertas = new AlertasGerais();
@@ -24,20 +23,22 @@ public class ProdutoTelaExcluirController {
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
-		boolean sucesso = gdp.excluirProdutos(produtoEspecifico, tabelaInformacoes);
-		
-		if (sucesso) {
-			alertas.informarSucessoOperacao();
-    		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-        	stage.close();
-		} else {
-			alertas.erroNaOperacao();
-		}
+    	try {
+    		boolean sucesso = gdp.excluirProdutos(produtoEspecifico);
+    		if (sucesso) {
+    			alertas.informarSucessoOperacao();
+        		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            	stage.close();
+    		} else {
+    			alertas.erroNaOperacao();
+    		}
+    	} catch(NullPointerException npe) {
+    		alertas.erroNaOperacao();
+    	}
     }
     
-    public void receberInformacao(ProdutoEspecifico pe, TableView<ProdutoEspecifico> tabela) {
+    public void receberInformacao(ProdutoEspecifico pe) {
     	this.produtoEspecifico = pe;
-    	this.tabelaInformacoes = tabela;
     }
 
 }

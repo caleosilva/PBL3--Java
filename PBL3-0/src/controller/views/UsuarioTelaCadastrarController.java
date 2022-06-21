@@ -2,6 +2,7 @@ package controller.views;
 
 import java.net.URL;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 import java.util.ResourceBundle;
 
 import javax.security.auth.login.LoginException;
@@ -9,6 +10,7 @@ import javax.security.auth.login.LoginException;
 import alertas.AlertasGerais;
 import alertas.AlertasUsuario;
 import excecoes.ErroNaOperacao;
+import excecoes.InformacoesInvalidas;
 import excecoes.InputsIncorretos;
 import excecoes.LoginExistente;
 import javafx.collections.FXCollections;
@@ -71,6 +73,12 @@ public class UsuarioTelaCadastrarController implements Initializable{
     		alertasUsuario.alertaLoginExistente();
 		} catch (NullPointerException e) {
 			alertasGerais.erroNaOperacao();
+		} catch(ClassCastException cce) {
+			alertasGerais.erroNaOperacao();
+		}  catch (NoSuchElementException nsee) {
+			alertasGerais.erroNaOperacao();
+		} catch(InformacoesInvalidas ii) {
+			alertasGerais.loginESenhaReservado();
 		}
     }
     

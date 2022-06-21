@@ -6,6 +6,7 @@ import java.util.List;
 
 import bancoDeDados.Dados;
 import excecoes.ErroNaOperacao;
+import excecoes.InformacoesInvalidas;
 import excecoes.LoginExistente;
 import javafx.fxml.LoadException;
 import model.Funcionario;
@@ -98,12 +99,13 @@ public class GerenciadorDeUsuario{
 	}
 
 	
-	public boolean cadastrarUsuario(HashMap<String, String> dadosCadastro) throws LoginExistente, ErroNaOperacao {
+	public boolean cadastrarUsuario(HashMap<String, String> dadosCadastro) throws LoginExistente, ErroNaOperacao, InformacoesInvalidas {
+		
+		if (dadosCadastro.get("login").equals("admin") && dadosCadastro.get("senha").equals("admin")) {
+			throw new InformacoesInvalidas("Login e senha inválidos");
+		}
 		
 		// Verificando se o LOGIN já existe no sistema:
-		if (dadosCadastro == null) {
-			System.out.println("Achei papai");
-		}
 		boolean loginUsado = encontrarUsuarioPorLogin(dadosCadastro.get("login"));
 		if (loginUsado) throw new LoginExistente("Login já presente no sistema!");
 		

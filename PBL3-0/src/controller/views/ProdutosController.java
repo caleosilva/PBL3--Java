@@ -139,7 +139,7 @@ public class ProdutosController implements Initializable {
             }
             
             ProdutoTelaExcluirController controllerExcluir =  loader.getController();
-            controllerExcluir.receberInformacao(produtoEspecifico, tabelaInformacoes);
+            controllerExcluir.receberInformacao(produtoEspecifico);
             
             // Abrindo nova tela:
             Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();

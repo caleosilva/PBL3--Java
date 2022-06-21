@@ -26,7 +26,6 @@ public class Fornecedor {
 	
 	private String produtoPorString;
 	
-	
 	// Construtor para inicializar cada atributo com o valor correto.
 	public Fornecedor(String id, String cnpj, String nome, String endereco) {
 		this.id = id;
@@ -76,17 +75,13 @@ public class Fornecedor {
 			produtoPorString = "Vazio";
 			return produtoPorString;
 		} else {
-			
+			String nomes = "";
+			for (String produto : getListaNomeProdutos()) {
+				nomes += produto + ", ";
+			}
+			int fim = nomes.length() - 2;
+			produtoPorString = nomes.substring(0, fim);
 		}
-		
-		String nomes = "";
-		
-		for (String produto : getListaNomeProdutos()) {
-			nomes += produto + ", ";
-		}
-		
-		int fim = nomes.length() - 2;
-		produtoPorString = nomes.substring(0, fim);
 		return produtoPorString;
 	}
 }

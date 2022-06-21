@@ -33,6 +33,13 @@ public class AlertasGerais {
 		alertaSucesso.setHeaderText("A operação foi realizada com êxito!");
 		alertaSucesso.showAndWait();
 	}
+	
+	public void loginESenhaReservado() {
+		alertaErro.setTitle("Erro!");
+		alertaErro.setHeaderText("O login e a senha inseridos são reservados ao sistema!");
+		alertaErro.setContentText("Tente novamente com outros dados!");
+		alertaErro.showAndWait();
+	}
  
 
 }

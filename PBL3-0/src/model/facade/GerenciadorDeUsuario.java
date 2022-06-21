@@ -53,51 +53,30 @@ public class GerenciadorDeUsuario{
 	}
 	
 	
-	public Usuario editarUsuario(Usuario usuario, String[] informacao) {
-	    
-		// Se a informação passada for null.
-		if(informacao[1] == null) {
-			return null;
+	public boolean editarUsuario(Usuario usuario, HashMap<String, String> informacao) throws LoginExistente {
+		
+		boolean sucesso = false;
+		
+		// Se o login já existir no sistema:
+		if (encontrarUsuarioPorLogin(informacao.get("login"))){
+			throw new LoginExistente("Login já existe no sistema");
+		
+		//Caso contrário, a edição é permitida:
+		} else {
+			usuario.setLogin(informacao.get("login"));
+			usuario.setSenha(informacao.get("senha"));
+			sucesso = true;
 		}
-		
-		if(informacao[0] == "0") {
-//			ViewGerenciamentoUsuario.mensagemUserNaoEncontrado();
-		
-		// Editar login.
-		} else if (informacao[0].equals("1")) {
-			
-			// Verifica se o login escolhido já existe.
-			boolean loginExistente = encontrarUsuarioPorLogin(informacao[1]);
-			
-			if (loginExistente) {
-				return null;
-			}
-			
-			usuario.setLogin(informacao[1]);
-//			ViewMetodosGerais.mensagemConfirmandoMudanca();
-    		
-		// Editar senha.	
-    	} else if (informacao[0].equals("2")) {
-    		usuario.setSenha(informacao[1]);
-//    		ViewMetodosGerais.mensagemConfirmandoMudanca();	
-    	} 
-
-		
-		return usuario;
+		return sucesso;
     }
 	
 	
 	public boolean excluirUsuario(Usuario usuario) {
-		
 		boolean excluido = false;
-		
 		if(usuario != null) {
 			excluido = listaDeUsuario.remove(usuario);
-//			ViewGerenciamentoUsuario.mensagemExclusao(excluido);
 		}
-		
 		return excluido;
-		
 	}
 	
 	/**

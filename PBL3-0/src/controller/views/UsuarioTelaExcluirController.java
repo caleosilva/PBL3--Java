@@ -4,17 +4,16 @@ import alertas.AlertasGerais;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import model.ProdutoEspecifico;
-import model.facade.GerenciadorDeProduto;
+import model.Usuario;
+import model.facade.GerenciadorDeUsuario;
 
-public class ProdutoTelaExcluirController {
+public class UsuarioTelaExcluirController {
 	
-	private TableView<ProdutoEspecifico> tabelaInformacoes;
-	private ProdutoEspecifico produtoEspecifico = null;
-	private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
+	private Usuario usuario = null;
+	
 	private AlertasGerais alertas = new AlertasGerais();
+	private GerenciadorDeUsuario gdu = new GerenciadorDeUsuario();
 
     @FXML
     void BotaoCancelarOperacao(ActionEvent event) {
@@ -24,9 +23,9 @@ public class ProdutoTelaExcluirController {
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
-		boolean sucesso = gdp.excluirProdutos(produtoEspecifico, tabelaInformacoes);
-		
-		if (sucesso) {
+    	boolean sucesso = gdu.excluirUsuario(usuario);
+    	
+    	if (sucesso) {
 			alertas.informarSucessoOperacao();
     		Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
         	stage.close();
@@ -35,9 +34,8 @@ public class ProdutoTelaExcluirController {
 		}
     }
     
-    public void receberInformacao(ProdutoEspecifico pe, TableView<ProdutoEspecifico> tabela) {
-    	this.produtoEspecifico = pe;
-    	this.tabelaInformacoes = tabela;
+    public void receberInformacao(Usuario user) {
+    	this.usuario = user;
     }
 
 }

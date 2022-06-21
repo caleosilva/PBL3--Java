@@ -42,7 +42,6 @@ public class ProdutosController implements Initializable {
 	
 	private List<ProdutoEspecifico> informacoes = new ArrayList<>();
     private ObservableList<ProdutoEspecifico> observableInformacoes = null;
-    private GerenciadorDeProduto gdp = new GerenciadorDeProduto();
     private MudarTelaController mtc = new MudarTelaController();
     private AlertasGerais alertas = new AlertasGerais();
 
@@ -136,11 +135,11 @@ public class ProdutosController implements Initializable {
             try {
                 loader.load();
             } catch (IOException ex) {
-                System.out.println("Ruim aq papai 2");
+            	alertas.erroNaOperacao();
             }
             
             ProdutoTelaExcluirController controllerExcluir =  loader.getController();
-            controllerExcluir.atualizarProduto(produtoEspecifico, tabelaInformacoes);
+            controllerExcluir.receberInformacao(produtoEspecifico, tabelaInformacoes);
             
             // Abrindo nova tela:
             Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
@@ -151,10 +150,6 @@ public class ProdutosController implements Initializable {
             stage.setResizable(false);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
-    		
-    		
-    		
-    		//gdp.excluirProdutos(produtoEspecifico, tabelaInformacoes);
     	} else {
     		alertas.itemNaoSelecionado();
     	}

@@ -79,40 +79,35 @@ public class GerenciadorDeFornecedor{
 	}
 	
 	
-	public boolean cadastrarFornecedor(List<Fornecedor> listaDeFornecedor, HashMap<String, String> dados) {
-		
-		if (dados.get("cnpj") == null || dados.get("nome") == null ||  dados.get("endereco") == null) {
-			return false;
-		}
-		
+	public boolean cadastrarFornecedor(HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;
 	
 		//Criando um id exclusivo:
 		String id;
 		int exclusivo = 0;
-		
 		do {
 			id = GerenciadorDeId.gerarId(2);
 			Fornecedor f = GerenciadorDeFornecedor.buscarFornecedorPeloID(listaDeFornecedor, id);
-			
 			if (f == null) exclusivo = 1;
-			
 		} while (exclusivo == 0);
-		 
+		
+		String nome = String.valueOf(dados.get("nome"));
+		String cnpj = String.valueOf(dados.get("cnpj"));
+		String endereco = String.valueOf(dados.get("endereco"));
+//		String todosProdutos = uteisGeral.verificarTextField(campoTodosProdutos);
 		
 		// Criar o novo objeto
-		Fornecedor novoFornecedor = new Fornecedor(id, dados.get("cnpj"), dados.get("nome"), dados.get("endereco"));
+		Fornecedor novoFornecedor = new Fornecedor(id, cnpj, nome, endereco);
+		
+		List<String> x = (List<String>) dados.get("produtos");
+		for (String produto: x) {
+			novoFornecedor.getListaNomeProdutos().add(produto);
+		}
+		
 		
 		//Adicionar na lista
 		sucesso = listaDeFornecedor.add(novoFornecedor);
-		
-		// Verificando se foi adicionado com sucesso
-		if (sucesso == true) {
-//			ViewGerenciamentoFornecedor.mensagemFornecedorCadastrado();
-		} else {
-//			ViewGerenciamentoFornecedor.mensagemFornecedorNaoCadastrado();
-		}
 		
 		return sucesso;	
 	}

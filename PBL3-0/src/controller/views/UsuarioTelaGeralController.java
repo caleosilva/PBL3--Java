@@ -138,7 +138,7 @@ public class UsuarioTelaGeralController implements Initializable {
     	
     	colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     	colunaLogin.setCellValueFactory(new PropertyValueFactory<>("login"));
-    	colunaSenha.setCellValueFactory(new PropertyValueFactory<>("senha"));
+    	colunaSenha.setCellValueFactory(new PropertyValueFactory<>("senhaInvisivel"));
     	colunaCargo.setCellValueFactory(new PropertyValueFactory<>("cargo"));
     	
     	for (Usuario u :Dados.getListaUsuario()) {

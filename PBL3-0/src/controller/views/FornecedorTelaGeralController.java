@@ -30,6 +30,7 @@ import model.Usuario;
 
 public class FornecedorTelaGeralController implements Initializable{
 	
+	private MudarTelaController mtc = new MudarTelaController();
 	private List<Fornecedor> informacoes = new ArrayList<>();
     private ObservableList<Fornecedor> observableInformacoes = null;
     private AlertasGerais alertas = new AlertasGerais();
@@ -62,7 +63,7 @@ public class FornecedorTelaGeralController implements Initializable{
 
     @FXML
     void botaoCadastrarFornecedor(ActionEvent event) {
-
+    	mtc.abrirNovaJanela("/view/FornecedorTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
     }
 
     @FXML

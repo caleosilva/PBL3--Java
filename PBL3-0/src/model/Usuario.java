@@ -15,6 +15,7 @@ public abstract class Usuario {
 	private String login;
 	
 	private String cargo;
+	private String senhaInvisivel = "******";
 	
 	// Construtor utilizado para inicializar o objeto já com as informações adicionadas.
 	public Usuario(String newId, String newLogin, String newSenha, String newCargo) {
@@ -60,6 +61,10 @@ public abstract class Usuario {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+
+	public String getSenhaInvisivel() {
+		return senhaInvisivel;
 	}
 	
 }

@@ -112,23 +112,6 @@
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/listar.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Listar Dados">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-               </children>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../images/pdf.png" />
                      </image>
                   </ImageView>

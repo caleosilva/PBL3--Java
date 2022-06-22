@@ -36,7 +36,6 @@ public class GerenciadorDeFornecedor{
 				return fornecedor;
 			}
 		}
-		
 		return null;
 		
 	}
@@ -49,22 +48,7 @@ public class GerenciadorDeFornecedor{
 			return false;
 		}
 		
-		if (dados.containsKey("cnpj") && dados.get("cnpj") != null) {
-			fornecedor.setCnpj(dados.get("cnpj"));
-//    		ViewGerenciamentoFornecedor.mensagemConfirmandoMudanca();
-    		return true;
-    		
-		} else if (dados.containsKey("nome" )  && dados.get("nome") != null) {
-			fornecedor.setNome(dados.get("nome"));
-//    		ViewGerenciamentoFornecedor.mensagemConfirmandoMudanca();
-    		return true;
-    		
-		} else if (dados.containsKey("endereco") && dados.get("endereco") != null ) {
-			fornecedor.setEndereco(dados.get("endereco"));
-//    		ViewGerenciamentoFornecedor.mensagemConfirmandoMudanca();
-    		return true;
-    		
-		}
+		//TODO
 		
 		return false;
 	}
@@ -78,11 +62,9 @@ public class GerenciadorDeFornecedor{
 		return excluido;
 	}
 	
-	
 	public boolean cadastrarFornecedor(HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;
-	
 		//Criando um id exclusivo:
 		String id;
 		int exclusivo = 0;
@@ -92,20 +74,17 @@ public class GerenciadorDeFornecedor{
 			if (f == null) exclusivo = 1;
 		} while (exclusivo == 0);
 		
+		// Convertendo os valores:
 		String nome = String.valueOf(dados.get("nome"));
 		String cnpj = String.valueOf(dados.get("cnpj"));
 		String endereco = String.valueOf(dados.get("endereco"));
-//		String todosProdutos = uteisGeral.verificarTextField(campoTodosProdutos);
-		
-		// Criar o novo objeto
-		Fornecedor novoFornecedor = new Fornecedor(id, cnpj, nome, endereco);
-		
 		List<String> x = (List<String>) dados.get("produtos");
+		
+		// Criando o novo objeto do tipo fornecedor:
+		Fornecedor novoFornecedor = new Fornecedor(id, cnpj, nome, endereco);
 		for (String produto: x) {
 			novoFornecedor.getListaNomeProdutos().add(produto);
 		}
-		
-		
 		//Adicionar na lista
 		sucesso = listaDeFornecedor.add(novoFornecedor);
 		

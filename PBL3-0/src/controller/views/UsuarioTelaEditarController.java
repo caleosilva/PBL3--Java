@@ -60,10 +60,6 @@ public class UsuarioTelaEditarController {
     	
     }
     
-    public void receberInformacao(Usuario user) {
-    	this.usuario = user;
-    }
-    
     public void adicionarInformacoes(String login, String senha, Usuario user) {
     	campoLogin.setText(login);
     	campoSenha.setText(senha);

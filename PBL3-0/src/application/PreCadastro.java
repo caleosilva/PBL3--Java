@@ -24,17 +24,17 @@ public class PreCadastro {
 		// Adicionando Usuários:
 		List<Usuario> lstU = Dados.getListaUsuario();
 		
-		Gerente g1 = new Gerente("1", "a", "a", "Gerente");
-		Funcionario f1 = new Funcionario("3", "jose", "123", "Funcionario");
+		Gerente g1 = new Gerente("123", "a", "a", "Gerente");
+		Funcionario f1 = new Funcionario("321", "jose", "123", "Funcionario");
 		
 		
 		lstU.add(g1);
 		lstU.add(f1);
 		
 		// Adicionando Fornecedores:
-		Fornecedor forn1 = new Fornecedor("11", "11", "Barbosa", "Salvador");
-		Fornecedor forn2 = new Fornecedor("22", "22", "Joyce", "Feira de Santana");
-		Fornecedor forn3 = new Fornecedor("33", "33", "Jussara", "Sergipe");
+		Fornecedor forn1 = new Fornecedor("1941", "1111", "Barbosa", "Salvador");
+		Fornecedor forn2 = new Fornecedor("2142", "2222", "Joyce", "Feira de Santana");
+		Fornecedor forn3 = new Fornecedor("9723", "3333", "Jussara", "Sergipe");
 		
 		List<Fornecedor> lstF = Dados.getListaFornecedor();
 		lstF.add(forn1);
@@ -45,18 +45,18 @@ public class PreCadastro {
 		
 		ProdutoGeral batata = new ProdutoGeral("batata");
 		
-		ProdutoEspecifico batata1 = new ProdutoEspecifico(5.60, "111", "10/07/2022", 60, 3, forn1);
+		ProdutoEspecifico batata1 = new ProdutoEspecifico(5.60, "145161", "10/07/2022", 60, 3, forn1);
 		batata.getListaDeProdutos().add(batata1);
 		forn1.getListaNomeProdutos().add(batata.getNome());
 		
-		ProdutoEspecifico batata2 = new ProdutoEspecifico(10.50, "222", "22/08/2022", 45, 3, forn2);
+		ProdutoEspecifico batata2 = new ProdutoEspecifico(10.50, "298242", "22/08/2022", 45, 3, forn2);
 		batata.getListaDeProdutos().add(batata2);
 		forn2.getListaNomeProdutos().add(batata.getNome());
 		
 		
 		ProdutoGeral arroz = new ProdutoGeral("Arroz");
 	
-		ProdutoEspecifico arroz1 = new ProdutoEspecifico(3.99, "333", "05/02/2023", 70, 1, forn3);
+		ProdutoEspecifico arroz1 = new ProdutoEspecifico(3.99, "973633", "05/02/2023", 70, 1, forn3);
 		arroz.getListaDeProdutos().add(arroz1);
 		forn3.getListaNomeProdutos().add(arroz.getNome());
 		

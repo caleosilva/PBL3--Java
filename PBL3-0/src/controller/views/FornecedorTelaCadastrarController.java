@@ -72,8 +72,6 @@ public class FornecedorTelaCadastrarController implements Initializable{
     	} catch(InputsIncorretos ii) {
     		alertasGerais.faltaDadosOuIncorretos();
     	}
-    	
-    	
     }
 
     @FXML

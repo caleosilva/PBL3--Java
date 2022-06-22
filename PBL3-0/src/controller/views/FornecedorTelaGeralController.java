@@ -68,7 +68,38 @@ public class FornecedorTelaGeralController implements Initializable{
 
     @FXML
     void botaoEditarFornecedor(ActionEvent event) {
-
+    	Fornecedor fornecedorEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
+    	
+    	if (fornecedorEspecifico != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/FornecedorTelaEditar.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+            	alertas.erroNaOperacao();
+            }
+            
+            FornecedorTelaEditarController controllerEditar =  loader.getController();
+            
+            System.out.println("lugar 1: "+ fornecedorEspecifico.getListaNomeProdutos());
+            
+            controllerEditar.adicionarInformacoes(fornecedorEspecifico.getNome(), fornecedorEspecifico.getCnpj(),
+            		fornecedorEspecifico.getEndereco(), fornecedorEspecifico.getListaNomeProdutos());
+            
+            // Abrindo nova tela:
+            Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initOwner(parentStage);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } else {
+        	alertas.itemNaoSelecionado();
+        }
     }
 
     @FXML

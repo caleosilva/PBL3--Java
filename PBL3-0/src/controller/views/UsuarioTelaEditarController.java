@@ -66,9 +66,6 @@ public class UsuarioTelaEditarController {
     			alertasUsuario.alertaSenhaAnteriorIncorreta();
     		} catch (SenhasNovasNaoIguais snni) {
     			alertasUsuario.alertaSenhasNovasNaoIguais();
-    		} catch(NullPointerException npe) {
-    			System.out.println("null point exception");
-    			//TODO: Pq isso aq é possível?
     		}
     	} else {
     		alertas.erroNaOperacao();

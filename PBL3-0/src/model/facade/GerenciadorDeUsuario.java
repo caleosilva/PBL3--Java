@@ -59,37 +59,24 @@ public class GerenciadorDeUsuario{
 	public boolean editarUsuario(Usuario usuario, HashMap<String, String> dadosHash) throws LoginExistente,
 	SenhaAnteriorIncorreta, SenhasNovasNaoIguais {
 		
-		System.out.println("Entrei no editar usuario");
-		
 		boolean sucesso = false;
 		// Se o login já existir no sistema:
-		if (!usuario.getLogin().equals(dadosHash.get("login")) && encontrarUsuarioPorLogin(dadosHash.get("login"))){
-			System.out.println("Login já existe no sistema\n");
+		if (!usuario.getLogin().equals(dadosHash.get("login")) && encontrarUsuarioPorLogin(dadosHash.get("login")) != null){
 			throw new LoginExistente("Login já existe no sistema");
 			
 		//Caso contrário, a edição é permitida:
 		} else {
 			
-			System.out.println("TO no else 1");
 			// Confirma a senha anterior
 			if(dadosHash.get("senhaAnterior").equals(usuario.getSenha())) {
-				
-				System.out.println("TO no if 1");
-				
-				if (dadosHash.get("novaSenha1").equals(dadosHash.get("novaSenha2"))) {
-					
-					System.out.println("Tudo certo, if 2\n");
-					
+				if (dadosHash.get("senhaNova1").equals(dadosHash.get("senhaNova2"))) {
 					usuario.setLogin(dadosHash.get("login"));
-					usuario.setSenha(dadosHash.get("novaSenha1"));
+					usuario.setSenha(dadosHash.get("senhaNova1"));
 					sucesso = true;
 				}else {
-					System.out.println("Senhas novas incoerentes!, else 2\n");
-
 					throw new SenhasNovasNaoIguais("Senhas novas incoerentes!");
 				}
 			} else {
-				System.out.println("Senha anterior incorreta!, else 2");
 				throw new SenhaAnteriorIncorreta("Senha anterior incorreta!");
 			}
 		}
@@ -111,16 +98,16 @@ public class GerenciadorDeUsuario{
 	 * @param listaDeUsuario Um ArraysList que contém todos os usuários cadastrados.
 	 * @param login Login que será utilizado para buscar o usuário.
 	 * 
-	 * @return 1 caso encontre, 0 caso não encontre.
+	 * @return .
 	 */
-	public boolean encontrarUsuarioPorLogin(String login) {
+	public Usuario encontrarUsuarioPorLogin(String login) {
 		
 		for (Usuario user : listaDeUsuario) {
 			if(user.getLogin().equals(login)) {
-				return true;
+				return user;
 	        }
 		}
-		return false;
+		return null;
 	}
 
 	
@@ -131,8 +118,8 @@ public class GerenciadorDeUsuario{
 		}
 		
 		// Verificando se o LOGIN já existe no sistema:
-		boolean loginUsado = encontrarUsuarioPorLogin(dadosCadastro.get("login"));
-		if (loginUsado) throw new LoginExistente("Login já presente no sistema!");
+		Usuario loginUsado = encontrarUsuarioPorLogin(dadosCadastro.get("login"));
+		if (loginUsado != null) throw new LoginExistente("Login já presente no sistema!");
 		
 		// Gerando um ID exclusivo.
 		int liberado = 0;

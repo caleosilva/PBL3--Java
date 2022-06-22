@@ -6,9 +6,12 @@ import alertas.AlertasGerais;
 import alertas.AlertasUsuario;
 import excecoes.InputsIncorretos;
 import excecoes.LoginExistente;
+import excecoes.SenhaAnteriorIncorreta;
+import excecoes.SenhasNovasNaoIguais;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Usuario;
@@ -23,11 +26,17 @@ public class UsuarioTelaEditarController {
 	private AlertasUsuario alertasUsuario = new AlertasUsuario();
 	private GerenciadorDeUsuario gdu = new GerenciadorDeUsuario();
 
-    @FXML
+	@FXML
     private TextField campoLogin;
 
+	@FXML
+    private PasswordField campoNovaSenha1;
+
     @FXML
-    private TextField campoSenha;
+    private PasswordField campoNovaSenha2;
+
+    @FXML
+    private PasswordField campoSenhaAnterior;
 
     @FXML
     void botaoCancelar(ActionEvent event) {
@@ -41,44 +50,54 @@ public class UsuarioTelaEditarController {
     		
     		try {
     			HashMap<String, String> novasInformacoes = juntarInformacoes();
-        		boolean sucesso = gdu.editarUsuario(usuario, novasInformacoes);
-        		
-        		if(sucesso) {
-        			alertas.informarSucessoOperacao();
-        			Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-        	    	stage.close();
-        		}
     			
+    			if (novasInformacoes != null) {
+    				boolean sucesso = gdu.editarUsuario(usuario, novasInformacoes);
+            		
+            		if(sucesso) {
+            			alertas.informarSucessoOperacao();
+            			Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            	    	stage.close();
+            		}
+    			}
     		} catch(LoginExistente le){
     			alertasUsuario.alertaLoginExistente();
+    		} catch(SenhaAnteriorIncorreta sai) {
+    			alertasUsuario.alertaSenhaAnteriorIncorreta();
+    		} catch (SenhasNovasNaoIguais snni) {
+    			alertasUsuario.alertaSenhasNovasNaoIguais();
+    		} catch(NullPointerException npe) {
+    			System.out.println("null point exception");
+    			//TODO: Pq isso aq é possível?
     		}
-    		
-    		
     	} else {
     		alertas.erroNaOperacao();
     	}
     	
     }
     
-    public void adicionarInformacoes(String login, String senha, Usuario user) {
-    	campoLogin.setText(login);
-    	campoSenha.setText(senha);
+    public void adicionarInformacoes(Usuario user) {
     	this.usuario = user;
+    	campoLogin.setText(user.getLogin());
     }
     
     public HashMap<String, String> juntarInformacoes() {
 		HashMap<String, String> informacoes = null;
 		try {
 			String login = uteisGeral.verificarTextField(campoLogin);
-			String senha = uteisGeral.verificarTextField(campoSenha);
+			String senhaAnterior = uteisGeral.verificarPassWordField(campoSenhaAnterior);
+			String senhaNova1 = uteisGeral.verificarPassWordField(campoNovaSenha1);
+			String senhaNova2 = uteisGeral.verificarPassWordField(campoNovaSenha2);
 			
 			informacoes = new HashMap<>();
 			
 			informacoes.put("login", login);
-			informacoes.put("senha", senha);
+			informacoes.put("senhaAnterior", senhaAnterior);
+			informacoes.put("senhaNova1", senhaNova1);
+			informacoes.put("senhaNova2", senhaNova2);
 		} catch(InputsIncorretos e) {
 			alertas.faltaDadosOuIncorretos();
-		}
+		} 
 		return informacoes;
 	}
 

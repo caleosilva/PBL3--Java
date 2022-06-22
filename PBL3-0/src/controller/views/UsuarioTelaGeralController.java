@@ -76,7 +76,7 @@ public class UsuarioTelaGeralController implements Initializable {
             }
             
             UsuarioTelaEditarController controllerEditar = loader.getController();
-            controllerEditar.adicionarInformacoes(usuarioEspecifico.getLogin(), usuarioEspecifico.getSenha(), usuarioEspecifico);
+            controllerEditar.adicionarInformacoes(usuarioEspecifico);
             
             // Abrindo nova tela:
             Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();

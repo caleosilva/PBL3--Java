@@ -8,6 +8,8 @@ import bancoDeDados.Dados;
 import excecoes.ErroNaOperacao;
 import excecoes.InformacoesInvalidas;
 import excecoes.LoginExistente;
+import excecoes.SenhaAnteriorIncorreta;
+import excecoes.SenhasNovasNaoIguais;
 import javafx.fxml.LoadException;
 import model.Funcionario;
 import model.Gerente;
@@ -54,19 +56,42 @@ public class GerenciadorDeUsuario{
 	}
 	
 	
-	public boolean editarUsuario(Usuario usuario, HashMap<String, String> informacao) throws LoginExistente {
+	public boolean editarUsuario(Usuario usuario, HashMap<String, String> dadosHash) throws LoginExistente,
+	SenhaAnteriorIncorreta, SenhasNovasNaoIguais {
+		
+		System.out.println("Entrei no editar usuario");
 		
 		boolean sucesso = false;
-		
 		// Se o login já existir no sistema:
-		if (encontrarUsuarioPorLogin(informacao.get("login"))){
+		if (!usuario.getLogin().equals(dadosHash.get("login")) && encontrarUsuarioPorLogin(dadosHash.get("login"))){
+			System.out.println("Login já existe no sistema\n");
 			throw new LoginExistente("Login já existe no sistema");
-		
+			
 		//Caso contrário, a edição é permitida:
 		} else {
-			usuario.setLogin(informacao.get("login"));
-			usuario.setSenha(informacao.get("senha"));
-			sucesso = true;
+			
+			System.out.println("TO no else 1");
+			// Confirma a senha anterior
+			if(dadosHash.get("senhaAnterior").equals(usuario.getSenha())) {
+				
+				System.out.println("TO no if 1");
+				
+				if (dadosHash.get("novaSenha1").equals(dadosHash.get("novaSenha2"))) {
+					
+					System.out.println("Tudo certo, if 2\n");
+					
+					usuario.setLogin(dadosHash.get("login"));
+					usuario.setSenha(dadosHash.get("novaSenha1"));
+					sucesso = true;
+				}else {
+					System.out.println("Senhas novas incoerentes!, else 2\n");
+
+					throw new SenhasNovasNaoIguais("Senhas novas incoerentes!");
+				}
+			} else {
+				System.out.println("Senha anterior incorreta!, else 2");
+				throw new SenhaAnteriorIncorreta("Senha anterior incorreta!");
+			}
 		}
 		return sucesso;
     }

@@ -4,6 +4,7 @@ import static java.lang.Integer.parseInt;
 
 import excecoes.InputsIncorretos;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class UteisGeral {
@@ -52,6 +53,14 @@ public class UteisGeral {
 	
 	public String verificarTextField(TextField informacao) throws InputsIncorretos {
 		if (informacao.getText().isBlank()) {
+			throw new InputsIncorretos("Informação inválida!");
+		}
+		return informacao.getText();
+	}
+	
+	public String verificarPassWordField(PasswordField informacao) throws InputsIncorretos {
+		if (informacao.getText().isEmpty()) {
+			System.out.println("Joguei a bomba");
 			throw new InputsIncorretos("Informação inválida!");
 		}
 		return informacao.getText();

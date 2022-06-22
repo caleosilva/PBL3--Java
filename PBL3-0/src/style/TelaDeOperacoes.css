@@ -13,6 +13,15 @@
 	-fx-text-fill: white;
 }
 
+.botaoPequeno {
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+	-fx-text-fill: black;
+	
+	-fx-border-color: #483D8B;
+	-fx-border-width: 2px 2px 2px 2px;
+}
+
 .mouseOn:hover {
     -fx-background-color:#836FFF;
     -fx-cursor: hand;

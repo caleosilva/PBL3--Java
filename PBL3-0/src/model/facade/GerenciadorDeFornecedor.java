@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import java.util.List;
 
+import alertas.AlertasGerais;
 import bancoDeDados.Dados;
 import model.Fornecedor;
 
@@ -41,16 +42,26 @@ public class GerenciadorDeFornecedor{
 	}
 	
 	
-	public boolean editarFornecedor(Fornecedor fornecedor, HashMap<String, String> dados) {
+	public boolean editarFornecedor(Fornecedor fornecedor, HashMap<String, Object> dados) {
 		
-		// Verificando se o HashMap é null
-		if(dados == null) {
+		boolean sucesso = false;
+		
+		// Verificando se os dados são null
+		if(dados == null && fornecedor != null) {
 			return false;
-		}
-		
-		//TODO
-		
-		return false;
+		} else {
+			String nome = String.valueOf(dados.get("nome"));
+			String endereco = String.valueOf(dados.get("endereco"));
+			String cnpj = String.valueOf(dados.get("cnpj"));
+			List<String> lista = (List<String>) dados.get("produtos");
+			
+			fornecedor.setCnpj(cnpj);
+			fornecedor.setNome(nome);
+			fornecedor.setEndereco(endereco);
+			fornecedor.setListaNomeProdutos(lista);
+			sucesso = true;
+		}		
+		return sucesso;
 	}
 		
 	

@@ -83,10 +83,8 @@ public class FornecedorTelaGeralController implements Initializable{
             
             FornecedorTelaEditarController controllerEditar =  loader.getController();
             
-            System.out.println("lugar 1: "+ fornecedorEspecifico.getListaNomeProdutos());
-            
             controllerEditar.adicionarInformacoes(fornecedorEspecifico.getNome(), fornecedorEspecifico.getCnpj(),
-            		fornecedorEspecifico.getEndereco(), fornecedorEspecifico.getListaNomeProdutos());
+            		fornecedorEspecifico.getEndereco(), fornecedorEspecifico.getListaNomeProdutos(),fornecedorEspecifico);
             
             // Abrindo nova tela:
             Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();

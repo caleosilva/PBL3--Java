@@ -63,6 +63,10 @@ public class Fornecedor {
 		return listaNomeProdutos;
 	}
 	
+	public void setListaNomeProdutos(List<String> listaNomeProdutos) {
+		this.listaNomeProdutos = listaNomeProdutos;
+	}
+	
 	
 	@Override
 	public String toString() {

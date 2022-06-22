@@ -1,0 +1,27 @@
+.root {
+    -fx-background-color: #DCDCDC;
+}
+
+.mouseOn:hover {
+    -fx-background-color:#836FFF;
+    -fx-cursor: hand;
+}
+
+.itemOpcao{
+	-fx-background-color:#6959CD;
+}
+
+.labelInformacaoPequena{
+	-fx-font-size: 18px;
+	-fx-text-fill: white;
+}
+
+.tituloIdentificacao{
+	-fx-font-weight:bold;
+	-fx-font-size: 30px;
+	-fx-text-fill: #6959CD;
+	
+	-fx-background-color: transparent;
+	-fx-border-color: #6959CD;
+	-fx-border-width: 0px 0px 2px 0px;
+}

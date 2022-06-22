@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 public class MenuFuncionarioController {
 	
 	private Scene scene = null;
-	
 	private MudarTelaController mtc = new MudarTelaController();
 
     @FXML
@@ -19,8 +18,23 @@ public class MenuFuncionarioController {
     private BorderPane painelPrincipal;
 
     @FXML
+    void abrirVendas(MouseEvent event) {
+
+    }
+
+    @FXML
     void deslogarSistema(MouseEvent event) {
     	mtc.mudarTelaCompleta("/view/TelaLogin.fxml", scene, painelPrincipal);
+    }
+
+    @FXML
+    void gerarPdf(MouseEvent event) {
+
+    }
+
+    @FXML
+    void listarDados(MouseEvent event) {
+    	mtc.mudarSubTela("/view/listagem/TelaListagemGeral.fxml", centroTela);
     }
 
 }

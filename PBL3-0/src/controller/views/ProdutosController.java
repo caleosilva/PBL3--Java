@@ -79,7 +79,7 @@ public class ProdutosController implements Initializable {
 
     @FXML
     void botaoCadastrarProduto(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/ProdutoTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	mtc.abrirNovaJanela("/view/ProdutoTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
     }
 
     @FXML

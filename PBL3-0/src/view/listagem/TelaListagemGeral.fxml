@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="700.0" stylesheets="@../../style/TelaListagem.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.listagem.TelaListagemGeralController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="232.0" layoutY="40.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="134.0" prefWidth="700.0" styleClass="painelTop">
+               <children>
+                  <Label styleClass="tituloIdentificacao" text="Listagem de informações">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#abrirListagemProdutos" prefHeight="50.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/produtos.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="labelInformacaoPequena" text="Produtos" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" right="50.0" top="30.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="mouseOn" />
+                        <String fx:value="itemOpcao" />
+                     </styleClass>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#abrirListagemCardapio" prefHeight="83.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/cardapio.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="labelInformacaoPequena" text="Cardápio" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="30.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="itemOpcao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#abrirListagemUsuarios" prefHeight="50.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/usuarios.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="labelInformacaoPequena" stylesheets="@../../style/TelaListagem.css" text="Usuários" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" right="50.0" top="30.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="itemOpcao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#abrirListagemFornecedores" prefHeight="83.0" prefWidth="200.0" stylesheets="@../../style/TelaListagem.css">
+                     <children>
+                        <ImageView fitHeight="39.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/fornecedor.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label styleClass="labelInformacaoPequena" text="Fornecedores" />
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="30.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="itemOpcao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.views.MenuGerenteController">
+<BorderPane fx:id="painelPrincipal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.views.MenuFuncionarioController">
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="200.0" styleClass="barraLateral" stylesheets="@../style/EstiloMenu.css" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#abrirVendas" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -37,7 +37,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#listarDados" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,7 +54,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#gerarPdf" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,14 +76,14 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Separator>
-            <HBox alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#deslogarSistema" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
                <children>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/deslogar.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" onMouseClicked="#deslogarSistema" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Deslogar">
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Deslogar">
                      <font>
                         <Font size="15.0" />
                      </font>

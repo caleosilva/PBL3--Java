@@ -57,7 +57,7 @@ public class UsuarioTelaGeralController implements Initializable {
 
     @FXML
     void botaoCadastrarUsuario(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/UsuarioTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	mtc.abrirNovaJanela("/view/UsuarioTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
     }
 
     @FXML

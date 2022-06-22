@@ -21,7 +21,7 @@ public class MudarTelaController {
 	    	AnchorPane.setRightAnchor(novaTela, 0.0);
 	    	centroTela.getChildren().add(novaTela);
 		} catch (IOException e) {
-			System.out.println("Erro em abrir - MudarTelaController\n");
+			System.out.println("Erro em abrir - MudarTelaController\n\n");
 			e.printStackTrace();
 		}
     }
@@ -36,11 +36,12 @@ public class MudarTelaController {
             	scene.setRoot(root);
             }
         } catch (IOException ex) {
-        	System.out.println("Erro em abrirTelaLogin - MudarTelaControler\n");
+        	System.out.println("Erro em abrirTelaLogin - MudarTelaControler\n\n");
+        	ex.printStackTrace();
         }
     }
 	
-	public void abrirNovaJanela(String url, Stage parentStage) {
+	public void abrirNovaJanela(String url, Stage parentStage, boolean resizable) {
 		Parent root = null;
 		
 		try {
@@ -50,14 +51,16 @@ public class MudarTelaController {
             stage.setScene(scene);
             stage.initOwner(parentStage);
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setResizable(false);
+            stage.setResizable(resizable);
             stage.showAndWait();
             
         } catch (IOException ex) {
-        	System.out.println("Erro em abrirNovajanela - MudarTelaControler\n");
+        	System.out.println("Erro em abrirNovajanela - MudarTelaControler\n\n");
+        	ex.printStackTrace();
         }
-		
 	}
+	
+	
 	
 
 }

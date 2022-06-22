@@ -63,7 +63,7 @@ public class FornecedorTelaGeralController implements Initializable{
 
     @FXML
     void botaoCadastrarFornecedor(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/FornecedorTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow());
+    	mtc.abrirNovaJanela("/view/FornecedorTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
     }
 
     @FXML

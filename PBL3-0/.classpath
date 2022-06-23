@@ -16,7 +16,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/PDFJava">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-Pdf">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

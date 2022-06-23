@@ -1,30 +1,23 @@
 package testandoFuncionalidades;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+
+import com.itextpdf.text.pdf.PdfPTable;
+
+import bancoDeDados.Dados;
+import model.facade.*;
 
 public class MainTest {
-	
-	static MainCopy m = new MainCopy();
-
 	public static void main(String[] args) {
+		GerenciadorDeRelatorio g = new GerenciadorDeRelatorio();
 		
-		List<String> a = new ArrayList<>();
+		Paragraph paragrafo1 = g.tituloRelatorio("RELATORIO DE VENDAS");
 		
-		a.add("batata");
-		a.add("arroz");
-		a.add("feijao");
+		PdfPTable tabela1 = g.tabelaVendasGerais(Dados.getListaVendas());
 		
-		String nomes = "";
+		g.montarPDF(paragrafo1, tabela1, "Relatorio de Vendas");
 		
-		for (String produto : a) {
-			nomes += produto + ", ";
-		}
-		nomes = nomes.substring(0, nomes.length()-2);
-		
-		System.out.println(nomes);
-		System.out.println("----");
-
 	}
 
 }

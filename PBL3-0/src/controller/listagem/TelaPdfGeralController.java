@@ -1,22 +1,47 @@
 package controller.listagem;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.input.MouseEvent;
 
 public class TelaPdfGeralController {
 
     @FXML
-    void abrirOpcaoPdfEstoque(MouseEvent event) {
+    void estoqueProduto(ActionEvent event) {
 
     }
 
     @FXML
-    void abrirOpcaoPdfFornecedor(MouseEvent event) {
+    void estoqueTotal(ActionEvent event) {
 
     }
 
     @FXML
-    void abrirOpcaoPdfVendas(MouseEvent event) {
+    void estoqueVencimento(ActionEvent event) {
+
+    }
+
+    @FXML
+    void fornecedoresGeral(ActionEvent event) {
+
+    }
+
+    @FXML
+    void fornecedoresProduto(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vendasPorPeriodo(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vendasPorTipoDePrato(ActionEvent event) {
+
+    }
+
+    @FXML
+    void vendasRealizadasNoGeral(ActionEvent event) {
 
     }
 

@@ -29,6 +29,16 @@
 	-fx-border-width: 0px 0px 2px 0px;
 }
 
+.tituloIdentificacaoGrande{
+	-fx-font-weight:bold;
+	-fx-font-size: 30px;
+	-fx-text-fill: #6959CD;
+	
+	-fx-background-color: transparent;
+	-fx-border-color: #6959CD;
+	-fx-border-width: 0px 0px 4px 0px;
+}
+
 .table-view {
     -fx-base: #FFFFFF;
     -fx-control-inner-background: #FFFFFF;

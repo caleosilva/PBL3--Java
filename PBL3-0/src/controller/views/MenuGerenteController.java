@@ -41,6 +41,11 @@ public class MenuGerenteController {
     void abrirTelaVendas(MouseEvent event) {
     	mtc.mudarSubTela("/view/VendasTelaGeral.fxml", centroTela);
     }
+    
+    @FXML
+    void abrirTelaPdf(MouseEvent event) {
+    	mtc.mudarSubTela("/view/listagem/TelaPdfGeral.fxml", centroTela);
+    }
 
     @FXML
     void deslogarSistema(MouseEvent event) {

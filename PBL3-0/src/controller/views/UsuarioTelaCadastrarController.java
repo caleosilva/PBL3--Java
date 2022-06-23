@@ -99,7 +99,6 @@ public class UsuarioTelaCadastrarController implements Initializable{
 		} catch (InputsIncorretos e) {
 			alertasGerais.faltaDadosOuIncorretos();
 		}
-    	
     	return dados;
     }
     

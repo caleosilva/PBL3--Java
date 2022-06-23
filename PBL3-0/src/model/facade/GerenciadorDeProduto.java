@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import alertas.AlertasGerais;
 import bancoDeDados.Dados;
-import javafx.scene.control.TableView;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
@@ -21,7 +19,6 @@ import model.ProdutoGeral;
  */
 public class GerenciadorDeProduto {
 	
-	private AlertasGerais alertas = new AlertasGerais();
 	private static List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
 		
 	public boolean excluirProdutos(ProdutoEspecifico produto){
@@ -108,7 +105,6 @@ public class GerenciadorDeProduto {
 	public HashMap<String, Object> encontrarProduto(String id) {
 		
 		try {
-			boolean achou = false;
 			HashMap<String, Object> dadosProduto = new HashMap<>();
 			
 			// Itera sobre a lista que possui ProdutoGeral
@@ -127,7 +123,6 @@ public class GerenciadorDeProduto {
 		        		dadosProduto.put("produtoGeral", proGeral);
 		        		dadosProduto.put("produtoEspecifico", proEspecifico);
 		        		
-		        		achou = true;
 		        		return dadosProduto;
 		        	}
 		        }
@@ -151,12 +146,22 @@ public class GerenciadorDeProduto {
 			ProdutoGeral pg = (ProdutoGeral) dadosProduto.get("produtoGeral");
 			
 			if(dadosProduto != null && novaInformacao != null) {
+				
+				// Removendo o produto da lista do seu antigo fornecedor
+				pe.getFornecedor().getListaNomeProdutos().remove(pg.getNome());
+				
+				// Adicionando o novo fornecedor no produto:
+				Fornecedor forn = (Fornecedor) novaInformacao.get("fornecedor");
+				pe.setFornecedor(forn);
+				
+				// Adicionando o produto na lista do novo fornecedor
+				forn.getListaNomeProdutos().add((String) novaInformacao.get("nome"));
+				
 				pg.setNome( (String) novaInformacao.get("nome"));
 				pe.setPreco((double) novaInformacao.get("preco"));
 				pe.setValidade((String) novaInformacao.get("validade"));
 				pe.setQuantidade((double) novaInformacao.get("quantidade"));
 				pe.setUnidadeDeMedida((int) novaInformacao.get("unidadeDeMedida"));
-				pe.setFornecedor((Fornecedor) novaInformacao.get("fornecedor"));
 				
 				confirmacao = true;
 			}

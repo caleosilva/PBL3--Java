@@ -97,5 +97,4 @@ public class UsuarioTelaEditarController {
 		} 
 		return informacoes;
 	}
-
 }

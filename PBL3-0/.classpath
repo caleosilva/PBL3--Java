@@ -11,15 +11,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-JavaFX">
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-Javafx">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-Pdf">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-OpenPDF"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Down-IText"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

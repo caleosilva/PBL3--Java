@@ -13,7 +13,7 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="232.0" layoutY="40.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="700.0" styleClass="painelTop">
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="700.0">
                <children>
                   <Label alignment="CENTER" prefHeight="50.0" prefWidth="650.0" styleClass="tituloIdentificacaoGrande" text="Gerar PDF's">
                      <font>

@@ -27,5 +27,10 @@ public class ProdutoGeral {
 	public List<ProdutoEspecifico> getListaDeProdutos() {
 		return listaDeProdutos;
 	}
+	
+	@Override
+	public String toString() {
+		return getNome();
+	}
 
 }

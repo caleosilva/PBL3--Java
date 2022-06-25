@@ -1,7 +1,6 @@
 package model.facade;
 
 import java.io.FileOutputStream;
-
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -30,9 +29,11 @@ public class GerenciadorDeRelatorio{
 	private static Font fonteCabecalho = new Font(Font.FontFamily.COURIER, 18, Font.BOLD);
 	private static Font negritoPequena = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
 	private static Font fonteVermelha = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
-		
-	//Fornecedor--------------------------------------------------------------------------
-	public static PdfPTable tabelaFornecedorPorProduto(HashMap<String, Object> produto) {
+	
+	// Tabelas:
+	
+	//Fornecedor:
+	public PdfPTable tabelaFornecedorPorProduto(HashMap<String, Object> produto) {
 		
 		try {
 			
@@ -41,7 +42,7 @@ public class GerenciadorDeRelatorio{
 				return null;
 			}
 			
-			// Com produtos especÌficos cadastrados:
+			// Com produtos espec√≠ficos cadastrados:
 			ProdutoGeral pg = (ProdutoGeral) produto.get("produtoGeral");
 			
 			if (pg.getListaDeProdutos().size() > 0) {
@@ -82,7 +83,7 @@ public class GerenciadorDeRelatorio{
 				
 				linhaSimplesCorCiano(celula, tabela, "CNPJ");
 				
-				linhaSimplesCorCiano(celula, tabela, "ENDERE«O");
+				linhaSimplesCorCiano(celula, tabela, "ENDERE√áO");
 				
 				// Dados dos fornecedores
 				
@@ -104,7 +105,7 @@ public class GerenciadorDeRelatorio{
 				
 				
 			} else {
-				System.out.println("N„o h· produtos no estoque para");
+				System.out.println("N√£o h√° produtos no estoque para");
 				System.out.println("gerar o PDF!");
 				return null;
 			}
@@ -117,7 +118,7 @@ public class GerenciadorDeRelatorio{
 		
 	}
 
-	public static PdfPTable tabelaFornecedorPorFornecedor(Fornecedor fornecedor) {
+	public PdfPTable tabelaFornecedorPorFornecedor(Fornecedor fornecedor) {
 				
 		try {
 						
@@ -149,14 +150,13 @@ public class GerenciadorDeRelatorio{
 				linhaSimplesCorCinza(celula, tabela, "NOME");
 				linhaSimplesCorCinza(celula, tabela, "ID");
 				linhaSimplesCorCinza(celula, tabela, "CNPJ");
-				linhaSimplesCorCinza(celula, tabela, "ENDERE«O");
+				linhaSimplesCorCinza(celula, tabela, "ENDERE√áO");
 				
 				// Dados do Fornecedor:
 				tabela.addCell(fornecedor.getNome());
 				tabela.addCell(fornecedor.getId());
 				tabela.addCell(fornecedor.getCnpj());
 				tabela.addCell(fornecedor.getEndereco());
-				
 				
 				// Pula uma linha:
 				pularLinhaTabela(celula, 4, tabela);
@@ -168,8 +168,6 @@ public class GerenciadorDeRelatorio{
 				
 				List<String> listaNomesFornecedor = fornecedor.getListaNomeProdutos();
 				
-				System.out.println(listaNomesFornecedor.size());
-				
 				for (int i = 0; i < listaNomesFornecedor.size(); i ++ ) {
 					
 					if (!produtosApresentados.contains(listaNomesFornecedor.get(i))) {
@@ -178,14 +176,10 @@ public class GerenciadorDeRelatorio{
 						produtosApresentados.add(fornecedor.getListaNomeProdutos().get(i));
 					}
 				}
-				
-				return tabela;
-				
-				
+				return tabela;				
 			} else {
 				return null; 
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -194,9 +188,8 @@ public class GerenciadorDeRelatorio{
 		
 	}
 	
-
-	// Estoque----------------------------------------------------------------------------
-	public static PdfPTable tabelaQuantidadePorProduto(List<ProdutoGeral> listaDeProdutos) {
+	// Estoque:
+	public PdfPTable tabelaQuantidadePorProduto(List<ProdutoGeral> listaDeProdutos) {
 		
 		try {
 			
@@ -223,12 +216,12 @@ public class GerenciadorDeRelatorio{
 				
 				pularLinhaTabela(header, 4, tabela);
 				
-				linhaCompletaCorCiano(header, tabela, 4, "DADOS DO PRODUTO - ESPECÕFICO");
+				linhaCompletaCorCiano(header, tabela, 4, "DADOS DO PRODUTO - ESPEC√çFICO");
 				
 				pularLinhaTabela(header, 4, tabela);
 				
 				linhaSimplesCorCiano(celula, tabela, "ID");
-				linhaSimplesCorCiano(celula, tabela, "PRE«O");			
+				linhaSimplesCorCiano(celula, tabela, "PRE√áO");			
 				linhaSimplesCorCiano(celula, tabela, "VALIDADE");			
 				linhaSimplesCorCiano(celula, tabela, "QUANTIDADE");
 				
@@ -251,7 +244,7 @@ public class GerenciadorDeRelatorio{
 					
 				} else {
 					
-					linhaCompletaAvisoSemInformacao(header, tabela, 4, "SEM INFORMA«’ES");
+					linhaCompletaAvisoSemInformacao(header, tabela, 4, "SEM INFORMA√á√ïES");
 					
 				}
 				
@@ -268,26 +261,17 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
-	public static PdfPTable tabelaQuantidadeTotalDoEstoque(List<ProdutoGeral> listaDeProdutos) {
+	public PdfPTable tabelaQuantidadeTotalDoEstoque(List<ProdutoGeral> listaDeProdutos) {
 		
 		try {
-			
-			
-			
 			// HashMap null:
 			if (listaDeProdutos == null || listaDeProdutos.size() == 0) {
 				return null;
 			}
 			
-			System.out.println("\n[1] -> Quilograma");
-			System.out.println("[2] -> Litro");
-			System.out.println("[3] -> Unidade\n");
-			
 			int totalKg = 0;
 			int totalLitro = 0;
 			int totalUnidade = 0;
-			
-			
 			
 			float larguraCol[] = {0.3f, 0.3f, 0.3f};
 			
@@ -321,7 +305,6 @@ public class GerenciadorDeRelatorio{
 					}
 				}
 			}
-				
 			tabela.addCell(Integer.toString(totalKg));
 			tabela.addCell(Integer.toString(totalLitro));
 			tabela.addCell(Integer.toString(totalUnidade));
@@ -331,14 +314,10 @@ public class GerenciadorDeRelatorio{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return null;
-	
 	}
-	
 
-	
-	// Vendas----------------------------------------------------------------------------
+	// Vendas:
 	public PdfPTable tabelaVendasGerais(List<Vendas> listaDeVendas) {
 		
 		try {
@@ -454,6 +433,7 @@ public class GerenciadorDeRelatorio{
 	}
 	
 	public PdfPTable tabelaPorPeriodo(List<Vendas> listaDeVendas, String data1, String data2) {
+	List<Vendas> listaDeVendasOrganizada = new ArrayList<>();
 		try {
 			if(listaDeVendas.size() == 0) {
 				return null;
@@ -468,7 +448,7 @@ public class GerenciadorDeRelatorio{
 			PdfPCell header = new PdfPCell();
 			
 			// Parte 1 da Tabela - HISTORICO DE VENDAS:
-			linhaCompletaCorCiano(header, tabela, 6, data1 + " atÈ " + data2);
+			linhaCompletaCorCiano(header, tabela, 6, data1 + " at√© " + data2);
 			// Pular uma linha:
 			pularLinhaTabela(header, 6, tabela);
 			
@@ -562,13 +542,9 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
-	
-	// MÈtodos gerais----------------------------------------------------------------------------------------
+	// M√©todos gerais:
 	public boolean montarPDF(Paragraph paragrafo, PdfPTable tabelaInformacoes, String nomeDoArquivo) {
-
-		
 		try {
-			
 			// Nome do Arquivo:
 			LocalDate date = LocalDate.now();
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -595,7 +571,7 @@ public class GerenciadorDeRelatorio{
 			documento.add(primeiroParagrago);
 			documento.add(tabelaInformacoes);
  
-			// Fecha o arquivo apÛs a escrita da mensagem
+			// Fecha o arquivo ap√≥s a escrita da mensagem
 			documento.close();
 			
 			return true;
@@ -603,12 +579,10 @@ public class GerenciadorDeRelatorio{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return false;
-		
 	}
 	
-	public  Paragraph tituloRelatorio(String mensagem) {
+	public Paragraph tituloRelatorio(String mensagem) {
 		try {
 			
 			LocalDate date = LocalDate.now();
@@ -619,7 +593,7 @@ public class GerenciadorDeRelatorio{
 			
 			paragrafo.add(new Phrase(mensagem + "\n\n", fonteCabecalho));		
 			
-			paragrafo.add(new Phrase("Data da geraÁ„o do relatÛrio: " + dataStr, negritoPequena));
+			paragrafo.add(new Phrase("Data da gera√ß√£o do relat√≥rio: " + dataStr, negritoPequena));
 			paragrafo.add(new Paragraph(" "));
 			paragrafo.add(new Paragraph(" "));
 			

@@ -45,3 +45,17 @@
 	-fx-border-color: #483D8B;
 	-fx-border-width: 0px 0px 4px 0px;
 }
+
+.tituloIdentificacaoPequenoWhite{
+	-fx-font-weight:bold;
+	-fx-font-size: 18px;
+	-fx-text-fill: white;
+	
+	-fx-background-color: transparent;
+	-fx-border-color: white;
+	-fx-border-width: 0px 0px 2px 0px;
+}
+
+.painelTop {
+    -fx-background-color: #483D8B;
+}

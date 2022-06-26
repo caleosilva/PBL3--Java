@@ -1,5 +1,7 @@
 package model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ProdutoEspecifico {
 	
@@ -112,6 +114,11 @@ public class ProdutoEspecifico {
 	
 	public String getFornecedorToString() {
 		return this.fornecedorToString = fornecedor.getNome();
+	}
+	
+	public LocalDate getDataLocalDate() {
+        LocalDate ld = LocalDate.parse(getValidade(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return ld;
 	}
 	
 }

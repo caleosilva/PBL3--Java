@@ -5,6 +5,11 @@ import java.util.ResourceBundle;
 
 import javax.naming.spi.InitialContextFactory;
 
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+
+import alertas.AlertasGerais;
+import alertas.AlertasPdf;
 import bancoDeDados.Dados;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,11 +20,16 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import model.Fornecedor;
 import model.ProdutoGeral;
+import model.facade.GerenciadorDeRelatorio;
 
 public class FornecedorPorProdutoController implements Initializable{
 	
 	private ObservableList<ProdutoGeral> dadosProdutosGeral;
+	private GerenciadorDeRelatorio gdr = new GerenciadorDeRelatorio();
+	private AlertasPdf alertasPdf = new AlertasPdf();
+	private AlertasGerais alertasGeral = new AlertasGerais();
 
 
     @FXML
@@ -33,8 +43,22 @@ public class FornecedorPorProdutoController implements Initializable{
 
     @FXML
     void botaoGerarRelatorio(ActionEvent event) {
-    	// Antes eu passava um id, porém agr é melhor passar a lista e a partir dela gerar
-    	// o relatório
+    	ProdutoGeral produto = choiceBoxProduto.getValue();
+    	
+    	if (produto != null) {
+    		Paragraph paragrafo = gdr.tituloRelatorio("Fornecedores de um produto!");
+    		PdfPTable tabela = gdr.tabelaFornecedorPorProduto(produto);
+    		boolean sucesso = gdr.montarPDF(paragrafo, tabela, "Relatorio-Fornecedor-Por-Produto" );
+    		
+    		if(sucesso) {
+    			alertasPdf.alertaPdfSucesso();
+    			Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+    	    	stage.close();
+    		}
+    		else alertasPdf.alertaPdfErro();
+    	} else {
+    		alertasGeral.faltaDadosOuIncorretos();
+    	}
     }
     
     public void carregarNomeProdutos() {

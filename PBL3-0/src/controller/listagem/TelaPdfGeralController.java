@@ -3,9 +3,11 @@ package controller.listagem;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 
+import alertas.AlertasGerais;
 import alertas.AlertasPdf;
 import bancoDeDados.Dados;
 import controller.views.MudarTelaController;
+import excecoes.SemDadosParaPdf;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -41,7 +43,22 @@ public class TelaPdfGeralController {
 
     @FXML
     void estoqueVencimento(ActionEvent event) {
-
+    	Paragraph paragrafo = gdr.tituloRelatorio("Estoque - Produtos próximo do vencimento");			
+		
+    	PdfPTable tabela;
+		try {
+			tabela = gdr.tabelaProdutosPertosDeVencer(Dados.getListaProdutosGeral());
+			
+			boolean sucesso = gdr.montarPDF(paragrafo, tabela, "Quantidade-Por-Produto");
+			
+			if(sucesso) alertasPdf.alertaPdfSucesso();
+			else alertasPdf.alertaPdfErro();
+			
+		} catch (SemDadosParaPdf e) {
+			alertasPdf.alertaPdfErro();
+		} catch (ClassCastException cce) {
+			alertasPdf.alertaPdfErro();
+		}
     }
 
     @FXML

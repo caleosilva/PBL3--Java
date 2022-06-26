@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,7 +18,10 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.lowagie.text.pdf.PdfTable;
 
+import bancoDeDados.Dados;
+import excecoes.SemDadosParaPdf;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
@@ -33,63 +37,55 @@ public class GerenciadorDeRelatorio{
 	// Tabelas:
 	
 	//Fornecedor:
-	public PdfPTable tabelaFornecedorPorProduto(HashMap<String, Object> produto) {
+	public PdfPTable tabelaFornecedorPorProduto(ProdutoGeral produtoGeral) {
 		
 		try {
 			
 			// HashMap null:
-			if (produto == null) {
+			if (produtoGeral == null) {
 				return null;
 			}
+			// Criando a tabela:
 			
-			// Com produtos específicos cadastrados:
-			ProdutoGeral pg = (ProdutoGeral) produto.get("produtoGeral");
+			// Definindo largura das colunas:
+			float larguraCol[] = {0.4f, 0.2f, 0.2f, 0.2f};
 			
-			if (pg.getListaDeProdutos().size() > 0) {
-				
-				
-				// Criando a tabela:
-				
-				// Definindo largura das colunas:
-				float larguraCol[] = {0.4f, 0.2f, 0.2f, 0.2f};
-				
-				
-				PdfPTable tabela = new PdfPTable(larguraCol);
+			PdfPTable tabela = new PdfPTable(larguraCol);
 
-				PdfPCell header = new PdfPCell();
-				
-				// Parte 1 da Tabela - Produto:
-				linhaCompletaCorCinza(header, tabela, 4, "NOME DO PRODUTO");
-				
-				//PdfPCell linha, PdfPTable tabela, int numeroColunas, String mensagem
-				linhaCompletaSemCor(header, tabela, 4, pg.getNome());
-				
-				// Pular uma linha:
-				pularLinhaTabela(header, 4, tabela);
-				pularLinhaTabela(header, 4, tabela);
-				
-				// Parte 2 da Tabela - Fornecedor:
-				linhaCompletaCorCiano(header, tabela, 4, "FORNECEDORES QUE O DISTRIBUEM");
-				
-				// Pular uma linha:
-				pularLinhaTabela(header, 4, tabela);
-				
-				// Identificadores:
-				PdfPCell celula = new PdfPCell();
-				
-				linhaSimplesCorCiano(celula, tabela, "NOME");
-				
-				linhaSimplesCorCiano(celula, tabela, "ID");
-				
-				linhaSimplesCorCiano(celula, tabela, "CNPJ");
-				
-				linhaSimplesCorCiano(celula, tabela, "ENDEREÇO");
-				
+			PdfPCell header = new PdfPCell();
+			
+			// Parte 1 da Tabela - Produto:
+			linhaCompletaCorCinza(header, tabela, 4, "NOME DO PRODUTO");
+			
+			//PdfPCell linha, PdfPTable tabela, int numeroColunas, String mensagem
+			linhaCompletaSemCor(header, tabela, 4, produtoGeral.getNome());
+			
+			// Pular uma linha:
+			pularLinhaTabela(header, 4, tabela);
+			pularLinhaTabela(header, 4, tabela);
+			
+			// Parte 2 da Tabela - Fornecedor:
+			linhaCompletaCorCiano(header, tabela, 4, "FORNECEDORES QUE O DISTRIBUEM");
+			
+			// Pular uma linha:
+			pularLinhaTabela(header, 4, tabela);
+			
+			// Identificadores:
+			PdfPCell celula = new PdfPCell();
+			
+			linhaSimplesCorCiano(celula, tabela, "NOME");
+			
+			linhaSimplesCorCiano(celula, tabela, "ID");
+			
+			linhaSimplesCorCiano(celula, tabela, "CNPJ");
+			
+			linhaSimplesCorCiano(celula, tabela, "ENDEREÇO");
+			
+			if (produtoGeral.getListaDeProdutos().size() > 0) {
 				// Dados dos fornecedores
-				
 				List<String> fornecedoresApresentados = new ArrayList<>();
 				
-				for(ProdutoEspecifico pe : pg.getListaDeProdutos()) {
+				for(ProdutoEspecifico pe : produtoGeral.getListaDeProdutos()) {
 					
 					if (!fornecedoresApresentados.contains(pe.getFornecedor().getId())) {
 						tabela.addCell(pe.getFornecedor().getNome());
@@ -100,16 +96,12 @@ public class GerenciadorDeRelatorio{
 						fornecedoresApresentados.add(pe.getFornecedor().getId());
 					}
 				}
-				
 				return tabela;
 				
-				
 			} else {
-				System.out.println("Não há produtos no estoque para");
-				System.out.println("gerar o PDF!");
-				return null;
+				linhaCompletaAvisoSemInformacao(celula, tabela, 4, "Sem dados no sistema!");
+				return tabela;
 			}
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -264,7 +256,7 @@ public class GerenciadorDeRelatorio{
 	public PdfPTable tabelaQuantidadeTotalDoEstoque(List<ProdutoGeral> listaDeProdutos) {
 		
 		try {
-			// HashMap null:
+			// Lista null:
 			if (listaDeProdutos == null || listaDeProdutos.size() == 0) {
 				return null;
 			}
@@ -316,7 +308,53 @@ public class GerenciadorDeRelatorio{
 		}
 		return null;
 	}
+		
+	public PdfPTable tabelaProdutosPertosDeVencer(List<ProdutoGeral> listaDeProdutos) throws SemDadosParaPdf{
+		
+		if (listaDeProdutos == null || listaDeProdutos.size() == 0) {
+			throw new SemDadosParaPdf("Sem dados para gerar o relatório!");
+		}
+		
+		float larguraCol[] = {0.2f, 0.4f, 0.2f, 0.2f};
+		
+		PdfPTable tabela = new PdfPTable(larguraCol);
+		
+		PdfPCell header = new PdfPCell();
+		
+		PdfPCell celula = new PdfPCell();
+		
+		linhaCompletaCorCinza(header, tabela, 4, "Produtos ordenados pela data de vencimento");
 
+		pularLinhaTabela(header, 4, tabela);
+		
+		linhaSimplesCorCiano(celula, tabela, "ID");
+		linhaSimplesCorCiano(celula, tabela, "NOME");			
+		linhaSimplesCorCiano(celula, tabela, "VALIDADE");			
+		linhaSimplesCorCiano(celula, tabela, "QUANTIDADE");
+		
+		
+		List<ProdutoEspecifico> dadosOrdenados = new ArrayList<>();
+		
+		for (ProdutoGeral pg : listaDeProdutos) {
+			for (ProdutoEspecifico pe : pg.getListaDeProdutos()) {
+				pe.setNome(pg.getNome());
+				dadosOrdenados.add(pe);
+			}
+		}
+		dadosOrdenados.sort(Comparator.comparing(ProdutoEspecifico::getDataLocalDate));
+		
+		for (ProdutoEspecifico pe : dadosOrdenados) {
+			tabela.addCell(pe.getId());
+			tabela.addCell(pe.getNome());
+			tabela.addCell(pe.getValidade());
+			
+			String quatidadeStr = String.valueOf(pe.getQuantidade());
+			tabela.addCell(quatidadeStr);
+		}
+		
+		return tabela;
+	}
+	
 	// Vendas:
 	public PdfPTable tabelaVendasGerais(List<Vendas> listaDeVendas) {
 		
@@ -674,6 +712,5 @@ public class GerenciadorDeRelatorio{
 		
 		tabela.addCell(linha);
 	}
-	
 	
 }

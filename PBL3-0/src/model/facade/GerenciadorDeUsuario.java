@@ -16,10 +16,10 @@ import model.Gerente;
 import model.Usuario;
 
 /**
- * Classe responsável por implementar os métodos responsáveis por cadastrar/editar/excluir objetos do tipo
+ * Classe responsï¿½vel por implementar os mï¿½todos responsï¿½veis por cadastrar/editar/excluir objetos do tipo
  * Usuario.
  *
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joï¿½o Pedro.
  */
 
 public class GerenciadorDeUsuario{
@@ -27,15 +27,15 @@ public class GerenciadorDeUsuario{
 	private static List<Usuario> listaDeUsuario = Dados.getListaUsuario();
 	
 	/**
-	 * Método reponsável por realizar a busca de um objeto do tipo Usuario em um ArrayList.
+	 * Mï¿½todo reponsï¿½vel por realizar a busca de um objeto do tipo Usuario em um ArrayList.
 	 * 
-	 * @param listaDeUsuario Um ArraysList que contém todos os usuários cadastrados.
-	 * @param id Id do usuário que será buscado.
-	 * @param exibirMsg Variável de controle que é usada para exibir uma mensagem (true) ou não (false).
+	 * @param listaDeUsuario Um ArraysList que contï¿½m todos os usuï¿½rios cadastrados.
+	 * @param id Id do usuï¿½rio que serï¿½ buscado.
+	 * @param exibirMsg Variï¿½vel de controle que ï¿½ usada para exibir uma mensagem (true) ou nï¿½o (false).
 	 * 
-	 * @return Retorna o endereço de memória do objeto, caso não seja encontrado retorna null.
+	 * @return Retorna o endereï¿½o de memï¿½ria do objeto, caso nï¿½o seja encontrado retorna null.
 	 */
-	public static Usuario encontrarUsuarioPorId(String id, boolean exibirMsg) {
+	public Usuario encontrarUsuarioPorId(String id, boolean exibirMsg) {
 
 		int achou = 0;
 		
@@ -60,11 +60,11 @@ public class GerenciadorDeUsuario{
 	SenhaAnteriorIncorreta, SenhasNovasNaoIguais {
 		
 		boolean sucesso = false;
-		// Se o login já existir no sistema:
+		// Se o login ja existir no sistema:
 		if (!usuario.getLogin().equals(dadosHash.get("login")) && encontrarUsuarioPorLogin(dadosHash.get("login")) != null){
-			throw new LoginExistente("Login já existe no sistema");
+			throw new LoginExistente("Login ja existente no sistema");
 			
-		//Caso contrário, a edição é permitida:
+		//Caso contrario, a edicao eh permitida:
 		} else {
 			
 			// Confirma a senha anterior
@@ -93,15 +93,14 @@ public class GerenciadorDeUsuario{
 	}
 	
 	/**
-	 * Método responsável po buscar um objeto do tipo "Usuario" através do seu Login.
+	 * Mï¿½todo responsï¿½vel po buscar um objeto do tipo "Usuario" atravï¿½s do seu Login.
 	 * 
-	 * @param listaDeUsuario Um ArraysList que contém todos os usuários cadastrados.
-	 * @param login Login que será utilizado para buscar o usuário.
+	 * @param listaDeUsuario Um ArraysList que contï¿½m todos os usuï¿½rios cadastrados.
+	 * @param login Login que serï¿½ utilizado para buscar o usuï¿½rio.
 	 * 
 	 * @return .
 	 */
 	public Usuario encontrarUsuarioPorLogin(String login) {
-		
 		for (Usuario user : listaDeUsuario) {
 			if(user.getLogin().equals(login)) {
 				return user;
@@ -112,22 +111,23 @@ public class GerenciadorDeUsuario{
 
 	
 	public boolean cadastrarUsuario(HashMap<String, String> dadosCadastro) throws LoginExistente, ErroNaOperacao, InformacoesInvalidas {
+
 		
 		if (dadosCadastro.get("login").equals("admin") && dadosCadastro.get("senha").equals("admin")) {
-			throw new InformacoesInvalidas("Login e senha inválidos");
+			throw new InformacoesInvalidas("Login e senha invï¿½lidos");
 		}
 		
-		// Verificando se o LOGIN já existe no sistema:
+		// Verificando se o LOGIN jï¿½ existe no sistema:
 		Usuario loginUsado = encontrarUsuarioPorLogin(dadosCadastro.get("login"));
-		if (loginUsado != null) throw new LoginExistente("Login já presente no sistema!");
+		if (loginUsado != null) throw new LoginExistente("Login jï¿½ presente no sistema!");
 		
 		// Gerando um ID exclusivo.
 		int liberado = 0;
 		String id = "0";
 		do {
 			id = GerenciadorDeId.gerarId(1);
-			Usuario user = GerenciadorDeUsuario.encontrarUsuarioPorId(id, false);
-			// Se não houver nenhum usuário com o ID gerado:
+			Usuario user = encontrarUsuarioPorId(id, false);
+			// Se nï¿½o houver nenhum usuï¿½rio com o ID gerado:
 			if (user == null) liberado = 1;
 		} while(liberado == 0);
 
@@ -140,7 +140,7 @@ public class GerenciadorDeUsuario{
 			listaDeUsuario.add(novoGerente);
 			return true;
 		
-		//Cadastrando um funcionário:
+		//Cadastrando um funcionï¿½rio:
 		} else if (dadosCadastro.get("cargo").equals("Funcionario")) {
 			// Criando o objeto:
 			Funcionario novoFuncionario = new Funcionario(id, dadosCadastro.get("login"), dadosCadastro.get("senha"), "Funcionario");

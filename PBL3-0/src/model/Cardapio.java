@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 /**
  * 
- * Classe que possui as caracteristicas referente a um item do Cardapio, além disso, ela que é instaciada para
+ * Classe que possui as caracteristicas referente a um item do Cardapio, alem disso, ela que ï¿½ instaciada para
  * um objeto do tipo Cardapio.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class Cardapio {

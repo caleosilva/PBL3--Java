@@ -27,6 +27,12 @@ import model.ProdutoEspecifico;
 import model.ProdutoGeral;
 import model.Vendas;
 
+/**
+ * Classe responsavel por gerar as partes (titulo e tabela) dos relatorios.
+ * 
+ * @author Caleo Silva e Joao Pedro.
+ *
+ */
 public class GerenciadorDeRelatorio{
 	
 	// Fontes utilizadas:
@@ -34,9 +40,17 @@ public class GerenciadorDeRelatorio{
 	private static Font negritoPequena = new Font(Font.FontFamily.HELVETICA, 10, Font.BOLD);
 	private static Font fonteVermelha = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.NORMAL, BaseColor.RED);
 	
-	// Tabelas:
+	// Tabelas---------------------------------------------------------------------------------:
 	
 	//Fornecedor:
+	
+	/**
+	 * Metodo responsavel por gerar a tabela contendo todos os fornecedores de um determinado
+	 * produto.
+	 * 
+	 * @param produtoGeral Objeto do tipo ProdutoGeral no qual sera retirado as informacoes.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaFornecedorPorProduto(ProdutoGeral produtoGeral) {
 		
 		try {
@@ -110,6 +124,12 @@ public class GerenciadorDeRelatorio{
 		
 	}
 
+	/**
+	 * Metodo responsavel por gerar a tabela contendo as informacoes de um fornecedor em especifico.
+	 * 
+	 * @param fornecedor Objeto do tipo Fornecedir no qual sera retirado as informacoes.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaFornecedorPorFornecedor(Fornecedor fornecedor) {
 				
 		try {
@@ -180,7 +200,14 @@ public class GerenciadorDeRelatorio{
 		
 	}
 	
-	// Estoque:
+	// Estoque---------------------------------------------------------------------------------:
+	
+	/**
+	 * Metodo responsavel por gerar a tabela com a quantidade de cada produto cadastrado
+	 * no sistema.
+	 * @param listaDeProdutos Lista que contem os produtos cadastrados.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaQuantidadePorProduto(List<ProdutoGeral> listaDeProdutos) {
 		
 		try {
@@ -253,6 +280,13 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
+	/**
+	 * Metodo responsavel por gerar a tabela com o total (quilos, litros e unidades) de produtos
+	 * cadastrados no sistema.
+	 * 
+	 * @param listaDeProdutos Lista que contem os produtos cadastrados.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaQuantidadeTotalDoEstoque(List<ProdutoGeral> listaDeProdutos) {
 		
 		try {
@@ -308,7 +342,15 @@ public class GerenciadorDeRelatorio{
 		}
 		return null;
 	}
-		
+	
+	/**
+	 * Metodo responsavel por gerar a tabela com os produtos ordenados do mais proximo do vencimento
+	 * para o mais distante.
+	 * 
+	 * @param listaDeProdutos Lista que contem os produtos cadastrados.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 * @throws SemDadosParaPdf Excecao lancada casoao haja dados para gerar a tabela.
+	 */
 	public PdfPTable tabelaProdutosPertosDeVencer(List<ProdutoGeral> listaDeProdutos) throws SemDadosParaPdf{
 		
 		if (listaDeProdutos == null || listaDeProdutos.size() == 0) {
@@ -355,7 +397,7 @@ public class GerenciadorDeRelatorio{
 		return tabela;
 	}
 	
-	// Vendas:
+	// Vendas---------------------------------------------------------------------------------:
 	public PdfPTable tabelaVendasGerais(List<Vendas> listaDeVendas) {
 		
 		try {

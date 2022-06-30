@@ -20,6 +20,14 @@ import javafx.stage.Stage;
 import model.Fornecedor;
 import model.facade.GerenciadorDeRelatorio;
 
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * 
+ * Classe responsavel por ser o controller do fxml "FornecedorPorFornecedor.fxml" e gerar
+ * o relatorio com as informacoes de um fornecedor em especifico.
+ *
+ */
 public class FornecedorPorFornecedorController implements Initializable {
 	
 	private ObservableList<Fornecedor> dadosFornecedor;

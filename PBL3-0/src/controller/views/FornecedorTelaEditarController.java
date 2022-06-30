@@ -61,7 +61,6 @@ public class FornecedorTelaEditarController implements Initializable{
     @FXML
     void botaoConfirmarEdicao(ActionEvent event) {
     	HashMap<String, Object> dados = juntarInformacoes();
-    	
     	try {
     		boolean sucesso = gdf.editarFornecedor(this.fornecedor, dados);
     		
@@ -70,7 +69,6 @@ public class FornecedorTelaEditarController implements Initializable{
     			Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
     	    	stage.close();
     		}
-    		
     	} catch (NullPointerException npe) {
     		alertasGerais.erroNaOperacao();
 		} catch(ClassCastException cce) {

@@ -11,16 +11,21 @@ import model.ProdutoEspecifico;
 import model.ProdutoGeral;
 
 /**
- * Classe respons�vel por implementar os m�todos respons�veis por cadastrar/editar/excluir objetos do tipo
+ * Classe responsavel por implementar os metodos responsaveis por cadastrar/editar/excluir objetos do tipo
  * Produtos.
  * 
- * @author Caleo Silva e Jo�o Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class GerenciadorDeProduto {
 	
 	private static List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
 	
+	/**
+	 * Classe responsavel por realizar a exclusao de um produto no sistema.
+	 * @param produto Objeto do tipo ProdutoEspecifico que sera excluido.
+	 * @return true caso seja realizada a exclusao ou false caso nao.
+	 */
 	public boolean excluirProdutos(ProdutoEspecifico produto){
 		try {
 			
@@ -43,6 +48,11 @@ public class GerenciadorDeProduto {
 		}
 	}
 	
+	/**
+	 * Metodo responsavel por realizar o cadastro de um produto no sistema.
+	 * @param listaDados HashMap contendo as informacoes do produto que sera cadastrado.
+	 * @return true caso seja realizado cadastro ou false caso nao.
+	 */
 	public boolean cadastrarProdutos(HashMap<String, Object> listaDados) {
 		
 		boolean sucessoOperacao = false;
@@ -113,6 +123,12 @@ public class GerenciadorDeProduto {
 		return sucessoOperacao;
 	}
 	
+	/**
+	 * Metodo responsavel por buscar um produto atraves de um id.
+	 * 
+	 * @param id informacao que sera utilizada para buscar o produto.
+	 * @return HashMap contento dois objeto: ProdutoGeral e ProdutoEspecifico.
+	 */
 	public HashMap<String, Object> encontrarProduto(String id) {
 		
 		try {
@@ -147,6 +163,13 @@ public class GerenciadorDeProduto {
 		return null;
 	}
 	
+	/**
+	 * Metodo responsavel por editar as informacoes de um produto.
+	 * 
+	 * @param dadosProduto dados do produto que sera editado.
+	 * @param novaInformacao novas informacoes do produto.
+	 * @return true caso seja editado com sucesso ou false caso nao.
+	 */
 	public boolean editarProdutos(HashMap<String, Object> dadosProduto, HashMap<String, Object> novaInformacao) {
 		
 		boolean confirmacao = false;

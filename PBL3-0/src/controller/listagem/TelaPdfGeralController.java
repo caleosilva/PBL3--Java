@@ -1,9 +1,9 @@
 package controller.listagem;
 
 import com.itextpdf.text.Paragraph;
+
 import com.itextpdf.text.pdf.PdfPTable;
 
-import alertas.AlertasGerais;
 import alertas.AlertasPdf;
 import bancoDeDados.Dados;
 import controller.views.MudarTelaController;
@@ -14,12 +14,24 @@ import javafx.scene.Node;
 import javafx.stage.Stage;
 import model.facade.GerenciadorDeRelatorio;
 
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * 
+ * Classe responsavel por ser o controller do fxml "TelaPdfGeral.fxml" e gerar os relatorios
+ * disponibilzados no sistema.
+ *
+ */
 public class TelaPdfGeralController {
 	
 	private GerenciadorDeRelatorio gdr = new GerenciadorDeRelatorio();
 	private AlertasPdf alertasPdf = new AlertasPdf();
 	private MudarTelaController mtc = new MudarTelaController();
-
+	
+	/**
+	 * Metodo responsavel por gerar o relatorio do estoque total.
+	 * @param event Evento gerado pelo usuario.
+	 */
     @FXML
     void estoqueProduto(ActionEvent event) {
     	Paragraph paragrafo = gdr.tituloRelatorio("Estoque - Quantidade por produto");			
@@ -29,7 +41,11 @@ public class TelaPdfGeralController {
 		if(sucesso) alertasPdf.alertaPdfSucesso();
 		else alertasPdf.alertaPdfErro();
     }
-
+    
+    /**
+	 * Metodo responsavel por gerar o relatorio com a quantidade total de produtos no estoque.
+	 * @param event Evento gerado pelo usuario.
+	 */
     @FXML
     void estoqueTotal(ActionEvent event) {
     	Paragraph paragrafo = gdr.tituloRelatorio("Estoque - Quantidade total");
@@ -40,7 +56,11 @@ public class TelaPdfGeralController {
 		else alertasPdf.alertaPdfErro();
 		
     }
-
+    
+    /**
+	 * Metodo responsavel por gerar o relatorio com os produto proximos ao vencimento.
+	 * @param event Evento gerado pelo usuario.
+	 */
     @FXML
     void estoqueVencimento(ActionEvent event) {
     	Paragraph paragrafo = gdr.tituloRelatorio("Estoque - Produtos próximo do vencimento");			
@@ -60,7 +80,11 @@ public class TelaPdfGeralController {
 			alertasPdf.alertaPdfErro();
 		}
     }
-
+    
+    /**
+   	 * Metodo responsavel por gerar o relatorio com os fornecedores cadastrados no sistema.
+   	 * @param event Evento gerado pelo usuario.
+   	 */
     @FXML
     void fornecedoresGeral(ActionEvent event) {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
@@ -68,6 +92,10 @@ public class TelaPdfGeralController {
 
     }
 
+    /**
+   	 * Metodo responsavel por gerar o relatorio com os fornecedores de um produto em especifico.
+   	 * @param event Evento gerado pelo usuario.
+   	 */
     @FXML
     void fornecedoresProduto(ActionEvent event) {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();

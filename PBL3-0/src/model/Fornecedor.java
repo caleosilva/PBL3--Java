@@ -6,10 +6,10 @@ import java.util.List;
 
 /**
  * 
- * Classe que possui as caracteristicas referente a um fornecedor, além disso, ela que é instaciada para
- * um objeto do tipo fornecedor.
+ * Classe que possui as caracteristicas referente a um fornecedor, alem disso, ela que  eh
+ * instaciada para um objeto do tipo fornecedor.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class Fornecedor {

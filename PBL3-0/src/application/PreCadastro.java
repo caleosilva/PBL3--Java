@@ -2,6 +2,7 @@ package application;
 
 import model.Cardapio;
 
+
 import model.Fornecedor;
 import model.Funcionario;
 import model.Gerente;
@@ -15,13 +16,22 @@ import java.util.List;
 
 import bancoDeDados.Dados;
 
-
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * Classe responsavel por adicionar alguns itens no sistema para que a manipulacao do mesmo seja
+ * facilitada.
+ *
+ */
 
 public class PreCadastro {
 	
-	
+	/**
+	 * Classe estatica que adicionara as informacoes desejadas no sistema.
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		// Adicionando Usuários:
+		// Adicionando Usuï¿½rios:
 		List<Usuario> lstU = Dados.getListaUsuario();
 		
 		Gerente g1 = new Gerente("123", "a", "a", "Gerente");
@@ -75,9 +85,9 @@ public class PreCadastro {
 		item1.put("arroz", 3.5);
 		item1.put("batata", 4.5);
 		item2.put("batata", 2.0);
-		Cardapio novoCardapio = new Cardapio("pizza", "1424", "totosa diliça", item1, "7,0", "comida");
+		Cardapio novoCardapio = new Cardapio("pizza", "1424", "totosa diliï¿½a", item1, "7,0", "comida");
 		Dados.getListaCardapio().add(novoCardapio);
-		Cardapio novoCardapio2 = new Cardapio("lasanha", "5436", "totosa diliça", item2, "5,5", "comida");
+		Cardapio novoCardapio2 = new Cardapio("lasanha", "5436", "totosa diliï¿½a", item2, "5,5", "comida");
 		Dados.getListaCardapio().add(novoCardapio2);
 		
 		HashMap<String, Double> itensVendas = new HashMap<String, Double>();;

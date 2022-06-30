@@ -9,10 +9,10 @@ import bancoDeDados.Dados;
 import model.Fornecedor;
 
 /**
- * Classe responsável por implementar os métodos responsáveis por cadastrar/editar/excluir objetos do tipo
+ * Classe responsï¿½vel por implementar os metodos responsaveis por cadastrar/editar/excluir objetos do tipo
  * Fornecedor.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class GerenciadorDeFornecedor{
@@ -20,12 +20,12 @@ public class GerenciadorDeFornecedor{
 	private List<Fornecedor> listaDeFornecedor = Dados.getListaFornecedor();
 	
 	/**
-	 * Método responsável por buscar um fornecedor através de um ID informado.
+	 * Metodo responsavel por buscar um fornecedor atraves de um ID informado.
 	 * 
-	 * @param listaDeFornecedor Um ArraysList que contém todos os Fornecedores cadastrados.
+	 * @param listaDeFornecedor Um ArraysList que contem todos os Fornecedores cadastrados.
 	 * @param id ID de um fornecedor.
 	 * 
-	 * @return Endereço de memória do fornecedor se for encontrado, caso contrário retorna null.
+	 * @return Endereco de memoria do fornecedor se for encontrado, caso contrario retorna null.
 	 */
 	public static Fornecedor buscarFornecedorPeloID(List<Fornecedor> listaDeFornecedor, String id) {
 		
@@ -41,12 +41,18 @@ public class GerenciadorDeFornecedor{
 		
 	}
 	
-	
+	/**
+	 * Metodo responsavel por editar as informacoes de um fornecedor.
+	 * 
+	 * @param fornecedor Objeto do tipo fornecedor que sera editado.
+	 * @param dados HashMap contendo as novas informacoes.
+	 * @return true caso seja editado ou false caso nao.
+	 */
 	public boolean editarFornecedor(Fornecedor fornecedor, HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;
 		
-		// Verificando se os dados são null
+		// Verificando se os dados sao null
 		if(dados == null && fornecedor != null) {
 			return false;
 		} else {
@@ -64,7 +70,11 @@ public class GerenciadorDeFornecedor{
 		return sucesso;
 	}
 		
-	
+	/**
+	 * Metodo responsavel por excluir um fornecedor.
+	 * @param fornecedor Objeto do tipo fornecedor que sera excluido.
+	 * @return true caso exclua ou false caso nao.
+	 */
 	public boolean excluirFornecedor(Fornecedor fornecedor) {
 		boolean excluido = false;
 		if(fornecedor != null) {
@@ -73,6 +83,11 @@ public class GerenciadorDeFornecedor{
 		return excluido;
 	}
 	
+	/**
+	 * Classe responsavel por cadastrar um novo produto no sistema.
+	 * @param dados HashMap contendo as informacoes do novo produto a ser cadastrado.
+	 * @return true caso seja cadastrado ou false caso nao.
+	 */
 	public boolean cadastrarFornecedor(HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;

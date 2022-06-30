@@ -1,10 +1,10 @@
 package model;
 
 /**
- * Classe abstrata que servirá como base para todas as demais classes específicas de um usuário. Ex: Gerente,
- * funcionário, etc.
+ * Classe abstrata que servira como base para todas as demais classes especeficas de um usuario.
+ * Ex: Gerente e funcionario.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public abstract class Usuario {
@@ -17,7 +17,7 @@ public abstract class Usuario {
 	private String cargo;
 	private String senhaInvisivel = "******";
 	
-	// Construtor utilizado para inicializar o objeto já com as informações adicionadas.
+	// Construtor utilizado para inicializar o objeto jï¿½ com as informaï¿½ï¿½es adicionadas.
 	public Usuario(String newId, String newLogin, String newSenha, String newCargo) {
 		this.id = newId;
 		this.login = newLogin;

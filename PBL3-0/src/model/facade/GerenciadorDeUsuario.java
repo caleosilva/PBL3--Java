@@ -19,7 +19,7 @@ import model.Usuario;
  * Classe respons�vel por implementar os m�todos respons�veis por cadastrar/editar/excluir objetos do tipo
  * Usuario.
  *
- * @author Caleo Silva e Jo�o Pedro.
+ * @author Caleo Silva e Joao Pedro.
  */
 
 public class GerenciadorDeUsuario{
@@ -29,11 +29,11 @@ public class GerenciadorDeUsuario{
 	/**
 	 * M�todo repons�vel por realizar a busca de um objeto do tipo Usuario em um ArrayList.
 	 * 
-	 * @param listaDeUsuario Um ArraysList que cont�m todos os usu�rios cadastrados.
-	 * @param id Id do usu�rio que ser� buscado.
-	 * @param exibirMsg Vari�vel de controle que � usada para exibir uma mensagem (true) ou n�o (false).
+	 * @param id Id do usuario que sera buscado.
+	 * @param exibirMsg Variavel de controle que eh usada para exibir uma mensagem (true) ou
+	 * nao (false).
 	 * 
-	 * @return Retorna o endere�o de mem�ria do objeto, caso n�o seja encontrado retorna null.
+	 * @return Retorna o endereco de memoria do objeto, caso nao seja encontrado retorna null.
 	 */
 	public Usuario encontrarUsuarioPorId(String id, boolean exibirMsg) {
 
@@ -55,7 +55,16 @@ public class GerenciadorDeUsuario{
 		return null;
 	}
 	
-	
+	/**
+	 * Metodo responsavel por editar as informacoes de um usuario.
+	 * 
+	 * @param usuario Objeto do tipo usuario que sera editado.
+	 * @param dadosHash HashMap contendo as novas informacoes.
+	 * @return true caso seja editado ou false caso nao.
+	 * @throws LoginExistente Excecao caso o login digitado ja exista.
+	 * @throws SenhaAnteriorIncorreta Excecao caso a senha digitada esteja incorreta.
+	 * @throws SenhasNovasNaoIguais Excecao caso as novas senhas nao estao iguais.
+	 */
 	public boolean editarUsuario(Usuario usuario, HashMap<String, String> dadosHash) throws LoginExistente,
 	SenhaAnteriorIncorreta, SenhasNovasNaoIguais {
 		
@@ -83,7 +92,11 @@ public class GerenciadorDeUsuario{
 		return sucesso;
     }
 	
-	
+	/**
+	 * Metodo responsavel por excluir um usuario.
+	 * @param usuario Objeto do tipo Usuario que sera excluido.
+	 * @return true caso seja excluido ou false caso nao.
+	 */
 	public boolean excluirUsuario(Usuario usuario) {
 		boolean excluido = false;
 		if(usuario != null) {
@@ -93,12 +106,12 @@ public class GerenciadorDeUsuario{
 	}
 	
 	/**
-	 * M�todo respons�vel po buscar um objeto do tipo "Usuario" atrav�s do seu Login.
+	 * Metodo responsavel po buscar um objeto do tipo "Usuario" atraves do seu Login.
 	 * 
-	 * @param listaDeUsuario Um ArraysList que cont�m todos os usu�rios cadastrados.
-	 * @param login Login que ser� utilizado para buscar o usu�rio.
+	 * @param listaDeUsuario Um ArraysList que contem todos os usuarios cadastrados.
+	 * @param login Login que sera utilizado para buscar o usuario.
 	 * 
-	 * @return .
+	 * @return Objeto do tipo Usuario caso o encontre, caso nao retorna null.
 	 */
 	public Usuario encontrarUsuarioPorLogin(String login) {
 		for (Usuario user : listaDeUsuario) {
@@ -109,7 +122,16 @@ public class GerenciadorDeUsuario{
 		return null;
 	}
 
-	
+	/**
+	 * Metodo responsavel por cadastrar um novo usuario no sistema.
+	 * 
+	 * @param dadosCadastro HashMap contendo as informacoes do novo usuario.
+	 * @return true caso o cadastro seja feito, caso nao retorna false.
+	 * 
+	 * @throws LoginExistente Excecao caso o login digitado ja exista.
+	 * @throws ErroNaOperacao Excecao caso ocorra um erro durante o cadastro.
+	 * @throws InformacoesInvalidas Excecao caso as informacoes passadas sejam invalidas.
+	 */
 	public boolean cadastrarUsuario(HashMap<String, String> dadosCadastro) throws LoginExistente, ErroNaOperacao, InformacoesInvalidas {
 
 		
@@ -152,6 +174,5 @@ public class GerenciadorDeUsuario{
 		} else {
 			throw new ErroNaOperacao("Erro desconhecido!");
 		}
-		
 	}
 }

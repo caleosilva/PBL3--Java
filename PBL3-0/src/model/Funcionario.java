@@ -2,9 +2,9 @@ package model;
 
 
 /**
- * Classe que possui as caracteristicas e funcionalidades para instânciar um objeto do tipo Funcionario. 
+ * Classe que possui as caracteristicas para instanciar um objeto do tipo Funcionario. 
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  */
 public class Funcionario extends Usuario{
 	

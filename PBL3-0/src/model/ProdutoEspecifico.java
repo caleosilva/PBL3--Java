@@ -3,6 +3,13 @@ package model;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Classe responsavel por possuir as informacoes relacionadas ao produto. Alem disso ela eh
+ * utilizada para instanciar o objeto do tipo "ProdutoEspecifico".
+ * 
+ * @author Caleo Silva e Joao Pedro
+ *
+ */
 public class ProdutoEspecifico {
 	
 	// Atributos:

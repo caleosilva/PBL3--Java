@@ -7,25 +7,26 @@ import java.util.List;
 import model.*;
 
 /**
- * Classe responsável por conter todas as listas (de maneira estática) que armazenam os dados do sistema.
+ * Classe responsavel por conter todas as listas (de maneira estatica) que armazenam os dados 
+ * do sistema.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class Dados {
 	
-	// Lista que armazena informações do Cardápio:
+	// Lista que armazena informacoes do Cardapio:
 	private static List <Cardapio> listaCardapio = new ArrayList<>(); 
 	
-	// Lista que armazena informações dos Fornecedores:
+	// Lista que armazena informacoes dos Fornecedores:
 	private static List <Fornecedor> listaFornecedor = new ArrayList<>();
 	
-	// Lista que armazena informações das Vendas:
+	// Lista que armazena informacoes das Vendas:
 	private static List <Vendas> listaVendas = new ArrayList<>();
 		
 	private static List <ProdutoGeral> listaProdutosGeral = new ArrayList<>();
 
-	// Lista que armazena informações dos Usuários:
+	// Lista que armazena informacoes dos Usuarios:
 	private static List <Usuario> listaUsuario = new ArrayList<>();
 
 	

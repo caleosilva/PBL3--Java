@@ -16,6 +16,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.Fornecedor;
 
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * 
+ * Classe responsavel por ser o controller do fxml "FornecedorListagem.fxml" e exibir na tela
+ * a listagem das informacoes relacionadas ao objeto do tipo "Fornecedor"
+ *
+ */
 public class FornecedorListagemController implements Initializable{
 	
 	private List<Fornecedor> informacoes = new ArrayList<>();
@@ -42,6 +50,9 @@ public class FornecedorListagemController implements Initializable{
     @FXML
     private TableView<Fornecedor> tabelaInformacoes;
     
+    /**
+     * Metodo responsavel por carregar as informacoes na tableview.
+     */
     public void carregarInformacoesTableView() {
 		
     	colunaCNPJ.setCellValueFactory(new PropertyValueFactory<>("cnpj"));
@@ -57,11 +68,13 @@ public class FornecedorListagemController implements Initializable{
 		observableInformacoes = FXCollections.observableArrayList(informacoes);
 		tabelaInformacoes.setItems(observableInformacoes);
 	}
-
+    
+    /**
+     * Metodo que sera ativado assim que a classe for iniciada.
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarInformacoesTableView();
-		
 	}
 
 }

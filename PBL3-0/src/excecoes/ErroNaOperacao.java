@@ -1,5 +1,11 @@
 package excecoes;
 
+/**
+ * Classe utilizada como uma excecao para informar um erro na operacao.
+ * 
+ * @author Caleo Silva e Joao Pedro
+ *
+ */
 public class ErroNaOperacao extends Exception {
 
 	/**

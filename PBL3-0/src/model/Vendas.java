@@ -4,10 +4,10 @@ import java.util.HashMap;
 
 /**
  * 
- * Classe que possui as caracteristicas referente a um venda, além disso, ela que é instaciada para
+ * Classe que possui as caracteristicas referente a um venda, alem disso, ela que eh instaciada para
  * um objeto do tipo vendas.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class Vendas {

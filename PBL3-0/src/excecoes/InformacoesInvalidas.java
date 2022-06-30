@@ -1,5 +1,11 @@
 package excecoes;
 
+/**
+ * Classe utilizada como uma excecao para quando determinada informacao for invalida.
+ * 
+ * @author Caleo Silva e Joao Pedro
+ *
+ */
 public class InformacoesInvalidas extends Exception{
 
 	/**

@@ -3,19 +3,19 @@ package model.facade;
 import java.util.Random;
 
 /**
- * Classe responsável por conter todos os métodos relacionados a criação/manipulação
+ * Classe responsï¿½vel por conter todos os mï¿½todos relacionados a criacao/manipulacao
  * dos ID's presentes no sistema.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joao Pedro.
  *
  */
 public class GerenciadorDeId{
 	
 	/**
-	 * Método responsável por gerar um ID aleátorio para cada entidade do sistema.
+	 * Mï¿½todo responsavel por gerar um ID aleatorio para cada entidade do sistema.
 	 * 
-	 * @param opcao Número referente a entidade que está solicitando um novo ID.
-	 * @return O ID que foi gerado ou null caso a opção for inválida.
+	 * @param opcao Numero referente a entidade que esta solicitando um novo ID.
+	 * @return O ID que foi gerado ou null caso a opcao for invalida.
 	 */
 	public static String gerarId(int opcao) {
 		
@@ -24,27 +24,27 @@ public class GerenciadorDeId{
 		
 		switch (opcao) { 
 		case 1:
-			// Usuario - ID de 3 dígitos.
+			// Usuario - ID de 3 dï¿½gitos.
 			novoId = gerador.nextInt(100, 999);
 			break;
 	
 		case 2:
-			// Fornecedor - ID de 4 dígitos.
+			// Fornecedor - ID de 4 dï¿½gitos.
 			novoId = gerador.nextInt(1000, 9999);
 			break;
 		
 		case 3:
-			// Cardapio - ID de 5 dígitos.
+			// Cardapio - ID de 5 dï¿½gitos.
 			novoId = gerador.nextInt(10000, 99999);
 			break;
 			
 		case 4:
-			// Produto - ID de 6 dígitos.
+			// Produto - ID de 6 dï¿½gitos.
 			novoId = gerador.nextInt(100000, 999999);
 			break;
 			
 		case 5:
-			// Vendas - ID de 7 dígitos.
+			// Vendas - ID de 7 dï¿½gitos.
 			novoId = gerador.nextInt(1000000, 9999999);
 			break;
 			

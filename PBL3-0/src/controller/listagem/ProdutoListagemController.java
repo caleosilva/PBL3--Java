@@ -17,6 +17,14 @@ import javafx.scene.layout.AnchorPane;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
 
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * 
+ * Classe responsavel por ser o controller do fxml "ProdutoListagem.fxml" e exibir na tela
+ * a listagem das informacoes relacionadas ao objeto do tipo "ProdutoEspecifico".
+ *
+ */
 public class ProdutoListagemController implements Initializable{
 	
 	private List<ProdutoEspecifico> informacoes = new ArrayList<>();
@@ -48,15 +56,20 @@ public class ProdutoListagemController implements Initializable{
 
     @FXML
     private TableView<ProdutoEspecifico> tabelaInformacoes;
-
+    
+    /**
+     * Metodo que sera executado quando a classe for executada.
+     */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		carregarInformacoesTableView();
 		
 	}
 	
+	/**
+     * Metodo responsavel por carregar as informacoes na tableview.
+     */
 	public void carregarInformacoesTableView() {
-		
 		colunaFornecedor.setCellValueFactory(new PropertyValueFactory<>("fornecedorToString"));
 		colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
 		colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -74,5 +87,4 @@ public class ProdutoListagemController implements Initializable{
 		observableInformacoes = FXCollections.observableArrayList(informacoes);
 		tabelaInformacoes.setItems(observableInformacoes);
 	}
-
 }

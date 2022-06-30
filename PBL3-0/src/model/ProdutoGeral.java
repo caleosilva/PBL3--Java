@@ -3,6 +3,13 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsavel por ser a "caixa" de um produto. Alem disso ela eh
+ * utilizada para instanciar o objeto do tipo "ProdutoEspecifico".
+ * 
+ * @author Caleo Silva e Joao Pedro
+ *
+ */
 public class ProdutoGeral {
 	
 	// Atributos:

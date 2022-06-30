@@ -11,25 +11,36 @@ import model.ProdutoEspecifico;
 import model.ProdutoGeral;
 
 /**
- * Classe responsável por implementar os métodos responsáveis por cadastrar/editar/excluir objetos do tipo
+ * Classe responsï¿½vel por implementar os mï¿½todos responsï¿½veis por cadastrar/editar/excluir objetos do tipo
  * Produtos.
  * 
- * @author Caleo Silva e João Pedro.
+ * @author Caleo Silva e Joï¿½o Pedro.
  *
  */
 public class GerenciadorDeProduto {
 	
 	private static List<ProdutoGeral> listaDeProdutos = Dados.getListaProdutosGeral();
-		
+	
 	public boolean excluirProdutos(ProdutoEspecifico produto){
-		for (ProdutoGeral pg : listaDeProdutos){
-			for (ProdutoEspecifico pe : pg.getListaDeProdutos()) {
-				if (pe.equals(produto)) {
-					return pg.getListaDeProdutos().remove(produto);
+		try {
+			
+			if(listaDeProdutos.size() == 0) {
+				return false;
+			}
+			
+			for (ProdutoGeral pg : listaDeProdutos){
+				for (ProdutoEspecifico pe : pg.getListaDeProdutos()) {
+					if (pe.equals(produto)) {
+						return pg.getListaDeProdutos().remove(produto);
+					}
 				}
 			}
+			return false;
+		} catch (IndexOutOfBoundsException e) {
+			return false;
+		} catch(NullPointerException e) {
+			return false;
 		}
-		return false;
 	}
 	
 	public boolean cadastrarProdutos(HashMap<String, Object> listaDados) {
@@ -45,7 +56,7 @@ public class GerenciadorDeProduto {
 			if (dados == null) exclusivo = true;
 		} while (!exclusivo);
 		
-		// Verifica se o nome dele já tá na lista de produto:
+		// Verifica se o nome dele jï¿½ tï¿½ na lista de produto:
 		boolean achou = false;
 		for (int i = 0; i <listaDeProdutos.size(); i++) {
 			ProdutoGeral pg = listaDeProdutos.get(i);
@@ -61,7 +72,7 @@ public class GerenciadorDeProduto {
 				sucessoOperacao = lista.add(pe);
 			}
 		}
-		// Se não tiver:			
+		// Se nï¿½o tiver:			
 		if (!achou) {								
 			ProdutoGeral pg = new ProdutoGeral((String) listaDados.get("nome"));
 			listaDeProdutos.add(pg);
@@ -74,12 +85,12 @@ public class GerenciadorDeProduto {
 			sucessoOperacao = lista.add(pe);
 		}
 		
-		// Adicionando o nome do produto na lista do fornecedor em específico:
+		// Adicionando o nome do produto na lista do fornecedor em especï¿½fico:
 		
 		Fornecedor f = (Fornecedor) listaDados.get("fornecedor");
 		List<String> listaProdutoPorFornecedor = f.getListaNomeProdutos();
 		
-		// Se a lista não estiver vazia:
+		// Se a lista nï¿½o estiver vazia:
 		if (listaProdutoPorFornecedor.size() > 0) {
 			
 			boolean jaCadastrado = false;
@@ -117,7 +128,7 @@ public class GerenciadorDeProduto {
 		        	
 		        	ProdutoEspecifico proEspecifico = proGeral.getListaDeProdutos().get(j);
 		        	
-		        	// Verifica se o Id do ProdutoEspecifico é encontrado
+		        	// Verifica se o Id do ProdutoEspecifico ï¿½ encontrado
 		        	if (proEspecifico.getId().equals(id)) {
 		        		
 		        		dadosProduto.put("produtoGeral", proGeral);
@@ -139,7 +150,7 @@ public class GerenciadorDeProduto {
 	public boolean editarProdutos(HashMap<String, Object> dadosProduto, HashMap<String, Object> novaInformacao) {
 		
 		boolean confirmacao = false;
-		
+
 		try {
 			
 			ProdutoEspecifico pe = (ProdutoEspecifico) dadosProduto.get("produtoEspecifico");
@@ -167,10 +178,12 @@ public class GerenciadorDeProduto {
 			}
 			
 		} catch(NoSuchElementException nsee) {
-			//ViewMetodosGerais.mensagemErroGeral();
+			return false;
 	    } catch(NullPointerException npe) {
-	    	//ViewMetodosGerais.mensagemErroGeral();
-	    }
+	    	return false;
+    	} catch(ClassCastException cce) {
+    		return false;
+    	}
 		
 		return confirmacao;
 	}

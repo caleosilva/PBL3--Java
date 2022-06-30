@@ -13,6 +13,8 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage){
 		
+		System.out.println();
+		
 		PreCadastro.main(null);
 		String url = "/view/TelaLogin.fxml";
 		

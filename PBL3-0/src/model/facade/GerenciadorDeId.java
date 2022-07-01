@@ -55,8 +55,4 @@ public class GerenciadorDeId{
 		//Tranforma o id do tipo "int" para "String".
 		return String.valueOf(novoId);
 	}
-	
-	
-	
-	
 }

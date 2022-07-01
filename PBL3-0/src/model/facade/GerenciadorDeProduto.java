@@ -188,15 +188,23 @@ public class GerenciadorDeProduto {
 				Fornecedor forn = (Fornecedor) novaInformacao.get("fornecedor");
 				pe.setFornecedor(forn);
 				
+				String nome = (String) novaInformacao.get("nome");
+				double preco = (double)novaInformacao.get("preco");
+				String validade = (String) novaInformacao.get("validade");
+				double quantidade = (double) novaInformacao.get("quantidade");
+				int unidadeDeMedida =(int) novaInformacao.get("unidadeDeMedida");
+				
 				// Adicionando o produto na lista do novo fornecedor
-				forn.getListaNomeProdutos().add((String) novaInformacao.get("nome"));
+				forn.getListaNomeProdutos().add(nome);
 				
-				pg.setNome( (String) novaInformacao.get("nome"));
-				pe.setPreco((double) novaInformacao.get("preco"));
-				pe.setValidade((String) novaInformacao.get("validade"));
-				pe.setQuantidade((double) novaInformacao.get("quantidade"));
-				pe.setUnidadeDeMedida((int) novaInformacao.get("unidadeDeMedida"));
-				
+				// Adicionando as demais informacoes no produto
+				pg.setNome(nome);
+				pe.setNome(nome);
+				pe.setPreco(preco);
+				pe.setValidade(validade);
+				pe.setQuantidade(quantidade);
+				pe.setUnidadeDeMedida(unidadeDeMedida);
+								
 				confirmacao = true;
 			}
 			
@@ -207,7 +215,6 @@ public class GerenciadorDeProduto {
     	} catch(ClassCastException cce) {
     		return false;
     	}
-		
 		return confirmacao;
 	}
 	

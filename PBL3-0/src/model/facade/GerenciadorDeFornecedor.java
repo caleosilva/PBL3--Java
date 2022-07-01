@@ -17,7 +17,7 @@ import model.Fornecedor;
  */
 public class GerenciadorDeFornecedor{
 	
-	private List<Fornecedor> listaDeFornecedor = Dados.getListaFornecedor();
+	private static List<Fornecedor> listaDeFornecedor = Dados.getListaFornecedor();
 	
 	/**
 	 * Metodo responsavel por buscar um fornecedor atraves de um ID informado.
@@ -27,7 +27,7 @@ public class GerenciadorDeFornecedor{
 	 * 
 	 * @return Endereco de memoria do fornecedor se for encontrado, caso contrario retorna null.
 	 */
-	public static Fornecedor buscarFornecedorPeloID(List<Fornecedor> listaDeFornecedor, String id) {
+	public static Fornecedor buscarFornecedorPeloID(String id) {
 		
 		for (int i = 0; i < listaDeFornecedor.size(); i++) {
 			
@@ -96,7 +96,7 @@ public class GerenciadorDeFornecedor{
 		int exclusivo = 0;
 		do {
 			id = GerenciadorDeId.gerarId(2);
-			Fornecedor f = GerenciadorDeFornecedor.buscarFornecedorPeloID(listaDeFornecedor, id);
+			Fornecedor f = GerenciadorDeFornecedor.buscarFornecedorPeloID(id);
 			if (f == null) exclusivo = 1;
 		} while (exclusivo == 0);
 		

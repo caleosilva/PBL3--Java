@@ -161,17 +161,6 @@ class TestaProduto {
 		assertEquals(2, listaDeFornecedor.get(1).getListaNomeProdutos().size(), "Confirmando informa��o do novo produto no fornecedor");
 	}
 	
-	// Excluindo:
-		
-//	@Test
-//	void testExcluirProdutoDaListaVazia() {
-//		
-//		ProdutoEspecifico produtoEspecifico = listaDeProdutos.get(0).getListaDeProdutos().get(0);
-//		
-//		boolean excluiu = gdp.excluirProdutos(produtoEspecifico);
-//		assertFalse(excluiu, "Tentando excluir um produto de uma lista vazia");
-//	}
-	
 	@Test
 	void testExcluirProdutoValido() {
 		
@@ -180,14 +169,6 @@ class TestaProduto {
 		boolean excluiu = gdp.excluirProdutos(produtoEspecifico);
 		assertTrue(excluiu, "Tentando excluir um produto");
 	}
-	
-	
-//	@Test
-//	void testExcluirUmProdutoQueNaoEstaNaLista() {
-//		
-//		boolean excluiu = gerenteMaster.excluirProdutos(listaDeProdutos, "id4");
-//		assertFalse(excluiu, "Tentando excluir um produto que n�o esta na lista");
-//	}
 	
 	@Test
 	void testExcluirTodosOsProdutosDaLista() {
@@ -204,28 +185,23 @@ class TestaProduto {
 		
 		assertEquals(0, totalProdutos, "Tentando todos os produtos da lista");
 	}
-	
-	// Editando:
 
 	@Test
 	void testEditandoNomeDeUmProduto() {
-		
 		HashMap<String, Object> produtoAEditar = gdp.encontrarProduto("111");
 		HashMap<String, Object> novosDados = new HashMap<>();
-		
-		novosDados.put("nome", "novoNome");
-		
-		// Dados para completar.
-		novosDados.put("fornecedor", listaDeFornecedor.get(0));
-		novosDados.put("preco", "5.60");
-		novosDados.put("validade", "10/07/2022");
-		novosDados.put("quantidade", "60");
-		novosDados.put("unidadeDeMedida", "3");
-		
-		boolean x = gdp.editarProdutos(produtoAEditar, novosDados);
-		System.out.println(x);
-		
+				
+		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
 		ProdutoGeral pg = (ProdutoGeral) produtoAEditar.get("produtoGeral");
+
+		novosDados.put("nome", "novoNome");
+		novosDados.put("preco", pe.getPreco());
+		novosDados.put("quantidade", pe.getQuantidade());
+		novosDados.put("unidadeDeMedida", pe.getUnidadeDeMedida());
+		novosDados.put("fornecedor", pe.getFornecedor());
+		novosDados.put("validade", pe.getValidade());
+		
+		gdp.editarProdutos(produtoAEditar, novosDados);
 
 		assertEquals("novoNome", pg.getNome(), "Alterando o Nome.");
 	}
@@ -234,42 +210,40 @@ class TestaProduto {
 	void testEditandoPrecoDeUmProduto() {
 		
 		HashMap<String, Object> produtoAEditar = gdp.encontrarProduto("222");
-		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
-		
 		HashMap<String, Object> novosDados = new HashMap<>();
-		novosDados.put("preco", 10.76);
-		
-		// Dados para completar.
-		novosDados.put("nome", "novoNome");
-		novosDados.put("fornecedor", listaDeFornecedor.get(0));
-		novosDados.put("validade", "10/07/2022");
-		novosDados.put("quantidade", "60");
-		novosDados.put("unidadeDeMedida", "3");
+		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
+		ProdutoGeral pg = (ProdutoGeral) produtoAEditar.get("produtoGeral");
+
+		novosDados.put("nome", pg.getNome());
+		novosDados.put("preco", 20.2);
+		novosDados.put("quantidade", pe.getQuantidade());
+		novosDados.put("unidadeDeMedida", pe.getUnidadeDeMedida());
+		novosDados.put("fornecedor", pe.getFornecedor());
+		novosDados.put("validade", pe.getValidade());
 		
 		gdp.editarProdutos(produtoAEditar, novosDados);
-		
-		assertEquals(10.76 , pe.getPreco(), "Alterando o preco.");
+
+		assertEquals(20.2, pe.getPreco(), "Alterando o preco.");
 	}
 	
 	@Test
 	void testEditandoFornecedorDeUmProduto() {
 		
 		HashMap<String, Object> produtoAEditar = gdp.encontrarProduto("222");
-		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
-		
 		HashMap<String, Object> novosDados = new HashMap<>();
+		
+		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
+		ProdutoGeral pg = (ProdutoGeral) produtoAEditar.get("produtoGeral");
+
+		novosDados.put("nome", pg.getNome());
+		novosDados.put("preco", pe.getPreco());
+		novosDados.put("quantidade", pe.getQuantidade());
+		novosDados.put("unidadeDeMedida", pe.getUnidadeDeMedida());
 		novosDados.put("fornecedor", listaDeFornecedor.get(2));
-		
-		// Dados para completar.
-		novosDados.put("preco", "5.60");
-		novosDados.put("nome", "novoNome");
-		novosDados.put("validade", "10/07/2022");
-		novosDados.put("quantidade", "60");
-		novosDados.put("unidadeDeMedida", "3");
-		
+		novosDados.put("validade", pe.getValidade());
 		
 		gdp.editarProdutos(produtoAEditar, novosDados);
-		
+
 		assertEquals(listaDeFornecedor.get(2) , pe.getFornecedor(), "Alterando o fornecedor.");
 	}
 
@@ -278,49 +252,43 @@ class TestaProduto {
 	void testEditandoValidadeDeUmProduto() {
 		
 		HashMap<String, Object> produtoAEditar = gdp.encontrarProduto("333");
-		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
-		
-		
 		HashMap<String, Object> novosDados = new HashMap<>();
-		novosDados.put("validade", "10/05/2025");
+		
+		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
+		ProdutoGeral pg = (ProdutoGeral) produtoAEditar.get("produtoGeral");
 
-		// Dados para completar.
-		novosDados.put("fornecedor", listaDeFornecedor.get(2));
-		novosDados.put("preco", "5.60");
-		novosDados.put("nome", "novoNome");
-		novosDados.put("quantidade", "60");
-		novosDados.put("unidadeDeMedida", "3");
+		novosDados.put("nome", pg.getNome());
+		novosDados.put("preco", pe.getPreco());
+		novosDados.put("quantidade", pe.getQuantidade());
+		novosDados.put("unidadeDeMedida", pe.getUnidadeDeMedida());
+		novosDados.put("fornecedor", pe.getFornecedor());
+		novosDados.put("validade", "01/01/2021");
 		
 		gdp.editarProdutos(produtoAEditar, novosDados);
-		
-		assertEquals("10/05/2025" , pe.getValidade(), "Alterando a validade.");
+		assertEquals("01/01/2021" , pe.getValidade(), "Alterando a validade.");
 	}
 	
 	@Test
 	void testEditandoQuantidadeDeUmProduto() {
 		
 		HashMap<String, Object> produtoAEditar = gdp.encontrarProduto("333");
-		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
-		
 		HashMap<String, Object> novosDados = new HashMap<>();
-		novosDados.put("fornecedor", listaDeFornecedor.get(2));
+		ProdutoEspecifico pe = (ProdutoEspecifico) produtoAEditar.get("produtoEspecifico");
+		ProdutoGeral pg = (ProdutoGeral) produtoAEditar.get("produtoGeral");
+
+		novosDados.put("nome", pg.getNome());
+		novosDados.put("preco", pe.getPreco());
+		novosDados.put("quantidade", 60.3);
+		novosDados.put("unidadeDeMedida", pe.getUnidadeDeMedida());
+		novosDados.put("fornecedor", pe.getFornecedor());
+		novosDados.put("validade", pe.getValidade());
 		
-		// Dados para completar.
-		novosDados.put("preco", "5.60");
-		novosDados.put("nome", "novoNome");
-		novosDados.put("validade", "10/07/2022");
-		novosDados.put("quantidade", "10");
-		novosDados.put("unidadeDeMedida", "3");
-		
-		boolean sucesso = gdp.editarProdutos(produtoAEditar, novosDados);
-		
-		System.out.println("No teste: " + sucesso);
-		double quantidade = 10;
-		assertEquals(quantidade , pe.getQuantidade(), "Alterando a quantidade.");
+		gdp.editarProdutos(produtoAEditar, novosDados);		
+
+		assertEquals(60.3 , pe.getQuantidade(), "Alterando a quantidade.");
 	}
 	
 	// Buscando produto:
-	
 	@Test
 	void buscarProdutoPeloIdExistente() {
 		

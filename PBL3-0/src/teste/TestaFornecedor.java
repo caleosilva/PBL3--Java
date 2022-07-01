@@ -179,14 +179,14 @@ class TestaFornecedor {
 	// Buscar:
 	@Test
 	void buscarFornecedorPeloIdExistente() {
-		Fornecedor forn = GerenciadorDeFornecedor.buscarFornecedorPeloID(listaDeFornecedor, "id2");
+		Fornecedor forn = GerenciadorDeFornecedor.buscarFornecedorPeloID("id2");
 		String id = "id2";
 		assertEquals(id, forn.getId(), "Buscando Fornecedor atrav�s de um ID existente.");
 	}
 	
 	@Test
 	void buscarFornecedorPeloIdNaoExistente() {
-		Fornecedor forn = GerenciadorDeFornecedor.buscarFornecedorPeloID(listaDeFornecedor, "idNaoExistente");
+		Fornecedor forn = GerenciadorDeFornecedor.buscarFornecedorPeloID("idNaoExistente");
 		assertNull(forn, "Buscando Fornecedor atrav�s de um ID N�O existente");
 	}
 		

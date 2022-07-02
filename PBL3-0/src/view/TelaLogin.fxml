@@ -18,29 +18,41 @@
    <left>
       <AnchorPane prefHeight="506.0" prefWidth="200.0" styleClass="painel" stylesheets="@../style/TelaLogin.css" BorderPane.alignment="CENTER">
          <children>
-            <HBox alignment="CENTER" layoutY="166.0" prefHeight="98.0" prefWidth="194.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+            <VBox prefHeight="506.0" prefWidth="200.0">
                <children>
-                  <Label prefHeight="0.0" prefWidth="119.0" text="Login" textFill="WHITE">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="15.0" left="5.0" top="15.0" />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="137.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/login.png" />
+                        <Image url="@../images/logo01.png" />
                      </image>
-                     <HBox.margin>
-                        <Insets bottom="30.0" left="20.0" right="10.0" top="30.0" />
-                     </HBox.margin>
+                     <VBox.margin>
+                        <Insets left="35.0" top="70.0" />
+                     </VBox.margin>
                   </ImageView>
+                  <HBox alignment="CENTER" prefHeight="98.0" prefWidth="194.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <children>
+                        <Label prefHeight="0.0" prefWidth="119.0" text="Login" textFill="WHITE">
+                           <font>
+                              <Font size="40.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="15.0" left="5.0" top="15.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/login.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets bottom="30.0" left="20.0" right="10.0" top="30.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
       </AnchorPane>
    </left>

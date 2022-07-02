@@ -69,6 +69,9 @@ public class VendasTelaGeralController implements Initializable {
 
     @FXML
     private TableColumn<Vendas, String> colunamodoPagamento;
+    
+    @FXML
+    private TableColumn<Vendas, String> colunaCliente;
 
     @FXML
     private AnchorPane painelPrincipal;
@@ -82,19 +85,77 @@ public class VendasTelaGeralController implements Initializable {
     }
 
     @FXML
-    void botaoCadastrarProduto(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/ProdutoTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
+    void botaoCadastrarVendas(ActionEvent event) {
+    	mtc.abrirNovaJanela("/view/VendasTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
     }
 
     @FXML
-    void botaoEditarProduto(ActionEvent event) {
+    void botaoEditarVendas(ActionEvent event) {
   
+    	Vendas vendaEspecifica = tabelaInformacoes.getSelectionModel().getSelectedItem();
     	
+    	if (vendaEspecifica != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/VendasTelaEditar.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+            	alertas.erroNaOperacao();
+            }
+            
+            VendasTelaEditarController controllerEditar =  loader.getController();
+            LocalDate data = LocalDate.parse(vendaEspecifica.getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            controllerEditar.adicionarInformacoes(data, vendaEspecifica.getHorario(),
+            		vendaEspecifica.getModoPagamento(), vendaEspecifica.getPrecoTotal(), vendaEspecifica.getItens(), vendaEspecifica);
+            
+            // Abrindo nova tela:
+            Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initOwner(parentStage);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } else {
+        	alertas.itemNaoSelecionado();
+        }
     	    	
     }
 
     @FXML
-    void botaoExcluirProduto(ActionEvent event) {
+    void botaoExcluirVendas(ActionEvent event) {
+    	
+    	Vendas vendaEspecifica = tabelaInformacoes.getSelectionModel().getSelectedItem();
+    	
+    	if (vendaEspecifica != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/VendasTelaExcluir.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+            	alertas.erroNaOperacao();
+            }
+            
+            VendasTelaExcluirController controllerExcluir =  loader.getController();
+            controllerExcluir.receberInformacao(vendaEspecifica);
+   
+	    	// Abrindo nova tela:
+	        Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+	        Parent parent = loader.getRoot();
+	        Stage stage = new Stage();
+	        stage.setScene(new Scene(parent));
+	        stage.initOwner(parentStage);
+	        stage.setResizable(false);
+	        stage.initModality(Modality.APPLICATION_MODAL);
+	        stage.show();
+    	} else {
+    	alertas.itemNaoSelecionado();
+    	}
     	
     }
 
@@ -121,6 +182,7 @@ public class VendasTelaGeralController implements Initializable {
     	colunaItens.setCellValueFactory(new PropertyValueFactory<>("itens"));
     	colunaprecoTotal.setCellValueFactory(new PropertyValueFactory<>("precoTotal"));
     	colunamodoPagamento.setCellValueFactory(new PropertyValueFactory<>("modoPagamento"));
+    	colunaCliente.setCellValueFactory(new PropertyValueFactory<>("clienteVinculado"));
     	
     	for (Vendas u :Dados.getListaVendas()) {
     		informacoes.add(u);

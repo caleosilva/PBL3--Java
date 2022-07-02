@@ -2,8 +2,11 @@ package uteis;
 
 import static java.lang.Integer.parseInt;
 
+import java.time.format.DateTimeFormatter;
+
 import excecoes.InputsIncorretos;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
@@ -107,5 +110,13 @@ public class UteisGeral {
 		return informacao.getText();
 	}
 	
+	public String validarData(DatePicker informacao) throws InputsIncorretos{
+		if(informacao.getValue() == null) {
+			throw new InputsIncorretos("Data incorreta!");
+		}
+		DateTimeFormatter fomatoDataBr = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String validade = informacao.getValue().format(fomatoDataBr);
+		return validade;
+	}
 	
 }

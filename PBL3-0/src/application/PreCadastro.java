@@ -85,23 +85,23 @@ public class PreCadastro {
 		item1.put("arroz", 3.5);
 		item1.put("batata", 4.5);
 		item2.put("batata", 2.0);
-		Cardapio novoCardapio = new Cardapio("pizza", "1424", "totosa dili�a", item1, "7,0", "comida");
+		Cardapio novoCardapio = new Cardapio("pizza", "1424", "Muito boa e apetitosa", item1, "7,0", "comida");
 		Dados.getListaCardapio().add(novoCardapio);
-		Cardapio novoCardapio2 = new Cardapio("lasanha", "5436", "totosa dili�a", item2, "5,5", "comida");
+		Cardapio novoCardapio2 = new Cardapio("lasanha", "5436", "gostosa demais", item2, "5,5", "comida");
 		Dados.getListaCardapio().add(novoCardapio2);
 		
 		HashMap<String, Double> itensVendas = new HashMap<String, Double>();;
 		itensVendas.put("pizza", 5.0);
 		itensVendas.put("suco", 2.4);
 		itensVendas.put("lasanha", 5.0);
-		Vendas v1 = new Vendas("65346", "27/12/2022", "15:20", itensVendas, "25.50", "Pix");
+		Vendas v1 = new Vendas("65346", "27/12/2022", "15:20", itensVendas, "25.50", "Pix", "Liz");
 		
 		HashMap<String, Double> itensVendas2 = new HashMap<String, Double>();;
 		itensVendas2.put("coca-cola", 3.0);
 		itensVendas2.put("coxinha", 5.0);
 		itensVendas2.put("pastel", 2.0);
 		
-		Vendas v2 = new Vendas("54555", "11/02/2023", "15:20", itensVendas2, "17.75", "Dinheiro");
+		Vendas v2 = new Vendas("54555", "11/02/2023", "15:20", itensVendas2, "17.75", "Dinheiro", "Judite");
 		
 		Dados.getListaVendas().add(v1);
 		Dados.getListaVendas().add(v2);

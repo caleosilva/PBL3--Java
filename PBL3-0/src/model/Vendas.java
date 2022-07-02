@@ -1,13 +1,14 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
  * 
- * Classe que possui as caracteristicas referente a um venda, alem disso, ela que eh instaciada para
+ * Classe que possui as caracteristicas referente a um venda, além disso, ela que é instaciada para
  * um objeto do tipo vendas.
  * 
- * @author Caleo Silva e Joao Pedro.
+ * @author Caleo Silva e João Pedro.
  *
  */
 public class Vendas {
@@ -18,15 +19,17 @@ public class Vendas {
 	private HashMap<String, Double> itens; 
 	private String precoTotal;
 	private String modoPagamento;
+	private String clienteVinculado;
 	
 	// Construtor para inicializar cada atributo com o valor correto.
-	public Vendas(String id, String data, String horario, HashMap<String, Double> itens, String precoTotal, String modoPagamento) {
+	public Vendas(String id, String dataFormatada, String horario, HashMap<String, Double> itens, String precoTotal, String modoPagamento, String clienteVinculado) {
 		this.id = id;
-		this.data = data;
+		this.data = dataFormatada;
 		this.horario = horario;
 		this.setItens(itens);
 		this.precoTotal = precoTotal;
 		this.modoPagamento = modoPagamento;
+		this.setClienteVinculado(clienteVinculado);
 	}
 	
 	public String getId() {
@@ -66,6 +69,14 @@ public class Vendas {
 
 	public void setItens(HashMap<String, Double> itens) {
 		this.itens = itens;
+	}
+
+	public String getClienteVinculado() {
+		return clienteVinculado;
+	}
+
+	public void setClienteVinculado(String clienteVinculado) {
+		this.clienteVinculado = clienteVinculado;
 	}
 	
 	

@@ -29,7 +29,9 @@ public class Dados {
 	// Lista que armazena informacoes dos Usuarios:
 	private static List <Usuario> listaUsuario = new ArrayList<>();
 
-	
+	// Lista que armazena informacoes dos Clientes:
+		private static List <Cliente> listaCliente = new ArrayList<>();
+		
 	// Getters:
 	
 	public static List<Cardapio> getListaCardapio() {
@@ -51,4 +53,10 @@ public class Dados {
 	public static List<Usuario> getListaUsuario() {
 		return listaUsuario;
 	}
+	
+	public static List<Cliente> getListaCliente() {
+		return listaCliente;
+	}
+	
+	
 }

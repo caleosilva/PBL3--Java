@@ -82,19 +82,75 @@ public class CardapioTelaGeralController implements Initializable {
 
     @FXML
     void botaoCadastrarProduto(ActionEvent event) {
-    	mtc.abrirNovaJanela("/view/ProdutoTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
+    	mtc.abrirNovaJanela("/view/CardapioTelaCadastrar.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), false);
     }
 
     @FXML
     void botaoEditarProduto(ActionEvent event) {
-  
+    	Cardapio cardapioEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
+    	
+    	if (cardapioEspecifico != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/CardapioTelaEditar.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+            	alertas.erroNaOperacao();
+            }
+            
+            CardapioTelaEditarController controllerEditar =  loader.getController();
+            
+            controllerEditar.adicionarInformacoes(cardapioEspecifico.getNome(), cardapioEspecifico.getDescricao(),
+            	cardapioEspecifico.getPreco(), cardapioEspecifico.getCategoria(), cardapioEspecifico.getItensCardapio(), cardapioEspecifico);
+            
+            // Abrindo nova tela:
+            Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+            Parent parent = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.initOwner(parentStage);
+            stage.setResizable(false);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+        } else {
+        	alertas.itemNaoSelecionado();
+        }
     	
     	    	
     }
 
     @FXML
     void botaoExcluirProduto(ActionEvent event) {
+    	Cardapio cardapioEspecifico = tabelaInformacoes.getSelectionModel().getSelectedItem();
     	
+    	if (cardapioEspecifico != null) {
+    		
+    		FXMLLoader loader = new FXMLLoader ();
+            loader.setLocation(getClass().getResource("/view/CardapioTelaExcluir.fxml"));
+            
+            try {
+                loader.load();
+            } catch (IOException ex) {
+            	alertas.erroNaOperacao();
+            }
+            
+            CardapioTelaExcluirController controllerExcluir =  loader.getController();
+            controllerExcluir.receberInformacao(cardapioEspecifico);
+   
+	    	// Abrindo nova tela:
+	        Stage parentStage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+	        Parent parent = loader.getRoot();
+	        Stage stage = new Stage();
+	        stage.setScene(new Scene(parent));
+	        stage.initOwner(parentStage);
+	        stage.setResizable(false);
+	        stage.initModality(Modality.APPLICATION_MODAL);
+	        stage.show();
+    	} else {
+    	alertas.itemNaoSelecionado();
+    	}
     }
 
 	@Override
@@ -117,7 +173,7 @@ public class CardapioTelaGeralController implements Initializable {
     	colunaId.setCellValueFactory(new PropertyValueFactory<>("id"));
     	colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
     	colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("descricao"));
-    	colunaItens.setCellValueFactory(new PropertyValueFactory<>("itens"));
+    	colunaItens.setCellValueFactory(new PropertyValueFactory<>("itensCardapio"));
     	colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
     	colunaCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria"));;
     	
@@ -128,5 +184,7 @@ public class CardapioTelaGeralController implements Initializable {
     	observableInformacoes = FXCollections.observableArrayList(informacoes);
 		tabelaInformacoes.setItems(observableInformacoes);
 	}
+    
+    
 
 }

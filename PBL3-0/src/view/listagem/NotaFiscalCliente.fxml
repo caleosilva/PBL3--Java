@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="500.0" stylesheets="@../../style/PdfScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.listagem.NotaFiscalClienteController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="88.0" prefWidth="500.0" styleClass="painelTop" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" prefWidth="420.0" styleClass="tituloIdentificacaoPequenoWhite" text="Nota fiscal da venda" />
+         </children>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="145.0" prefWidth="500.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="128.0" prefWidth="500.0">
+                     <children>
+                        <Label styleClass="labelInformativa" text="Deseja emitir a nota fiscal?">
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#botaoSIM" prefHeight="50.0" prefWidth="150.0" text="SIM">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="botao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#botaoNao" prefHeight="50.0" prefWidth="150.0" text="NÃO">
+                     <styleClass>
+                        <String fx:value="botao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

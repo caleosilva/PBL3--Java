@@ -6,10 +6,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+
 import bancoDeDados.Dados;
 import model.Cardapio;
 import model.ProdutoGeral;
 import model.Vendas;
+import model.facade.GerenciadorDeRelatorio;
 
 /**
  * Classe responsável por implementar os métodos responsáveis por cadastrar/editar/excluir objetos do tipo
@@ -19,7 +23,7 @@ import model.Vendas;
  *
  */
 public class GerenciadorDeVendas {
-	
+	private GerenciadorDeRelatorio gdr = new GerenciadorDeRelatorio();
 	private List<Vendas> listaDeVendas = Dados.getListaVendas();
 	/**
 	 * @param vendas Objeto referente ao item a ser editado.
@@ -107,6 +111,8 @@ public class GerenciadorDeVendas {
 		
 		Vendas novaVenda = new Vendas(id, dataFormatada, novaHora, pratos, preco, modoPagamento, cliente);
 		boolean adicionou = listaDeVendas.add(novaVenda);
+		Dados.getVendaAtual().add(novaVenda);
+		
 		return adicionou;
 	}
 	

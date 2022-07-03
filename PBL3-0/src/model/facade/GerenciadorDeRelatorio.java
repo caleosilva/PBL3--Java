@@ -22,6 +22,7 @@ import com.lowagie.text.pdf.PdfTable;
 
 import bancoDeDados.Dados;
 import excecoes.SemDadosParaPdf;
+import model.Cardapio;
 import model.Fornecedor;
 import model.ProdutoEspecifico;
 import model.ProdutoGeral;
@@ -398,6 +399,14 @@ public class GerenciadorDeRelatorio{
 	}
 	
 	// Vendas---------------------------------------------------------------------------------:
+	
+	
+	/**
+	 * Metodo responsavel por gerar a tabela com todas as vendas
+	 *
+	 * @param listaDeVendas Lista que contem as vendas registradas.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaVendasGerais(List<Vendas> listaDeVendas) {
 		
 		try {
@@ -455,6 +464,13 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
+	/**
+	 * Metodo responsavel por gerar a tabela com as vendas de um prato especifico.
+	 *
+	 * @param listaDeVendas Lista que contem as vendas registradas.
+	 * @param produto nome do produto especifico.
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaPorPrato(List<Vendas> listaDeVendas, String produto) {
 		
 		try {
@@ -512,6 +528,15 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
+	/**
+	 * Metodo responsavel por gerar a tabela com as vendas de um determinado periodo.
+	 *
+	 * @param listaDeVendas Lista que contem as vendas registradas.
+	 * @param data1 data inserida pelo usuario.
+	 * @param data2 data inserida pelo usuario.
+	 * 
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
 	public PdfPTable tabelaPorPeriodo(List<Vendas> listaDeVendas, LocalDate data1, LocalDate data2) {
 		List<Vendas> listaDeVendasOrganizada = new ArrayList<>();
 		List<Vendas> listaDoPeriodo = new ArrayList<>();
@@ -533,7 +558,7 @@ public class GerenciadorDeRelatorio{
 			PdfPCell header = new PdfPCell();
 			
 			// Parte 1 da Tabela - HISTORICO DE VENDAS:
-			linhaCompletaCorCiano(header, tabela, 6, data1 + " atÃ© " + data2);
+			linhaCompletaCorCiano(header, tabela, 6, data1 + " até " + data2);
 			// Pular uma linha:
 			pularLinhaTabela(header, 6, tabela);
 			
@@ -591,6 +616,65 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
+	/**
+	 * Metodo responsavel por gerar a tabela com as vendas de um prato especifico.
+	 *
+	 * @param venda Objeto venda que contem as informacoes para gerar a nota fiscal.
+	 * 
+	 * @return Objeto do tipo PdfPTabel com as informacoes.
+	 */
+	public PdfPTable tabelaNotaFiscal(Vendas venda) {
+		
+		try {
+			if(venda == null) {
+				return null;
+			}
+			
+			float larguraCol[] = {0.33f, 0.34f, 0.33f};
+			
+			PdfPTable tabela = new PdfPTable(larguraCol);
+
+			PdfPCell header = new PdfPCell();
+			
+			// Parte 1 da Tabela - HISTORICO DE VENDAS:
+			linhaCompletaCorCiano(header, tabela, 3, venda.getClienteVinculado());
+			// Pular uma linha:
+			pularLinhaTabela(header, 6, tabela);
+			
+			// Identificadores:
+			PdfPCell celula = new PdfPCell();
+			
+
+			linhaSimplesCorCinza(celula, tabela, "Prato");
+			linhaSimplesCorCinza(celula, tabela, "Quantidade");
+			linhaSimplesCorCinza(celula, tabela, "Valor unitario");
+			
+			for (String vendaAtual : venda.getItens().keySet()) {
+					boolean confirmar = false;
+					tabela.addCell(vendaAtual);
+					tabela.addCell(String.valueOf(venda.getItens().get(vendaAtual)));
+					for (Cardapio preco : Dados.getListaCardapio()) {
+						if (preco.getNome().toLowerCase().equals(vendaAtual.toLowerCase())) {
+							tabela.addCell("R$" + preco.getPreco());
+							confirmar = true;
+						}
+					}
+					if (!confirmar) {
+						tabela.addCell("******");
+					}
+			}
+			linhaCompletaCorCinza(header, tabela, 0,"Forma de pagamento: " + venda.getModoPagamento());
+			linhaCompletaCorCiano(header, tabela, 3, "Valor Total: R$" + venda.getPrecoTotal());
+			return tabela;
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
+	
 	// MÃ©todos gerais:
 	public boolean montarPDF(Paragraph paragrafo, PdfPTable tabelaInformacoes, String nomeDoArquivo) {
 		try {
@@ -642,7 +726,7 @@ public class GerenciadorDeRelatorio{
 			
 			paragrafo.add(new Phrase(mensagem + "\n\n", fonteCabecalho));		
 			
-			paragrafo.add(new Phrase("Data da geraÃ§Ã£o do relatÃ³rio: " + dataStr, negritoPequena));
+			paragrafo.add(new Phrase("Data da geraçãoo do relatório: " + dataStr, negritoPequena));
 			paragrafo.add(new Paragraph(" "));
 			paragrafo.add(new Paragraph(" "));
 			

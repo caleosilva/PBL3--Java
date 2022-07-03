@@ -38,6 +38,7 @@ public class VendasTelaCadastrarController implements Initializable {
 	private GerenciadorDeVendas gdv = new GerenciadorDeVendas();
 	private UteisGeral uteisGeral = new UteisGeral();
 	private AlertasGerais alertasGerais = new AlertasGerais();
+	private MudarTelaController mtc = new MudarTelaController();
 	
 	private List<String> listaPratosCardapio;
 	private List<String> listaNomesClientes;
@@ -88,7 +89,6 @@ public class VendasTelaCadastrarController implements Initializable {
     		System.out.println("COLOCAR ALERTA DE VENDA NÃO EXECUTADA POR FALTA DE PRODUTOS NO ESTOQUE");
     	}
     	else {
-    		System.out.println("aquiiiiiiiii");
 	    	HashMap<String, Object> dados = juntarInformacoes();
 	    	try {
 	    		if (dados != null) {
@@ -96,6 +96,7 @@ public class VendasTelaCadastrarController implements Initializable {
 	    			if (sucesso) {
 	    				alertasGerais.informarSucessoOperacao();
 	                	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+	                	mtc.abrirNovaJanela("/view/listagem/NotaFiscalCliente.fxml", stage, false);
 	                	stage.close();
 	    			} else {
 	    				alertasGerais.erroNaOperacao();

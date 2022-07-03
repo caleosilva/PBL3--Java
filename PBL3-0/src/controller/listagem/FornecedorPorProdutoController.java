@@ -77,7 +77,7 @@ public class FornecedorPorProdutoController implements Initializable{
     	} else {
     		alertasGeral.faltaDadosOuIncorretos();
     	}
-    }
+    } 
     
     /**
      * Metodo responsavel por carregar os nomes dos produtos dentro da choiceBox.

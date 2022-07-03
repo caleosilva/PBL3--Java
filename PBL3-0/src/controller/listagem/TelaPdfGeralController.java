@@ -135,6 +135,6 @@ public class TelaPdfGeralController {
 		
 		if(sucesso) alertasPdf.alertaPdfSucesso();
 		else alertasPdf.alertaPdfErro();
-    }
+    } 
 
 }

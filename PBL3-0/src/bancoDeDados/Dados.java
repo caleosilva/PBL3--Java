@@ -23,6 +23,8 @@ public class Dados {
 	
 	// Lista que armazena informacoes das Vendas:
 	private static List <Vendas> listaVendas = new ArrayList<>();
+	
+	private static List <Vendas> vendaAtual = new ArrayList<>();
 		
 	private static List <ProdutoGeral> listaProdutosGeral = new ArrayList<>();
 
@@ -56,6 +58,10 @@ public class Dados {
 	
 	public static List<Cliente> getListaCliente() {
 		return listaCliente;
+	}
+
+	public static List <Vendas> getVendaAtual() {
+		return vendaAtual;
 	}
 	
 	

@@ -33,6 +33,7 @@ public class CardapioTelaEditarController implements Initializable{
 	private GerenciadorDeCardapio gdc = new GerenciadorDeCardapio();
 	private UteisGeral uteisGeral = new UteisGeral();
 	private AlertasGerais alertasGerais = new AlertasGerais();
+	private MudarTelaController mtc = new MudarTelaController();
 	
 	private List<String> listaCopia;
 	private Cardapio cardapio = null;
@@ -210,4 +211,9 @@ public class CardapioTelaEditarController implements Initializable{
     	return dados;
 	}
 
+	@FXML
+    void botaoVisualizarProdutos(ActionEvent event) {
+    	mtc.abrirNovaJanela("/view/listagem/ProdutoListagem.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), true);
+    }
+	
 }

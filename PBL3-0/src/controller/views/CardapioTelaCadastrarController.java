@@ -28,6 +28,7 @@ public class CardapioTelaCadastrarController implements Initializable {
 	private HashMap<String, Double> listaItensCardapio = new HashMap<String, Double>();
 	//private List<Double> ListaPrecoCardapio = new ArrayList<>();
 	private GerenciadorDeCardapio gdc = new GerenciadorDeCardapio();
+	private MudarTelaController mtc = new MudarTelaController();
 
     @FXML
     private TextField campoCategoria;
@@ -150,5 +151,10 @@ public class CardapioTelaCadastrarController implements Initializable {
 		}
     	return dados;
 	}
+	
+    @FXML
+    void botaoVisualizarProdutos(ActionEvent event) {
+    	mtc.abrirNovaJanela("/view/listagem/ProdutoListagem.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), true);
+    }
 
 }

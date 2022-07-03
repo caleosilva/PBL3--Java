@@ -121,9 +121,24 @@
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="620.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="48.0" prefWidth="718.0" styleClass="labelInformativa" text="Total de Itens" textAlignment="RIGHT" />
-                        <TextField fx:id="campoTodosItens" alignment="CENTER" editable="false" prefHeight="46.0" prefWidth="452.0" styleClass="receberInformacao" />
+                        <TextField fx:id="campoTodosItens" alignment="CENTER" editable="false" prefHeight="46.0" prefWidth="452.0" styleClass="receberInformacao">
+                           <VBox.margin>
+                              <Insets right="5.0" />
+                           </VBox.margin></TextField>
                      </children>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
                   </VBox>
+                  <Button mnemonicParsing="false" onAction="#botaoVisualizarProdutos" prefHeight="35.0" prefWidth="104.0" text="Produtos">
+                     <styleClass>
+                        <String fx:value="botao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                     <HBox.margin>
+                        <Insets right="5.0" top="45.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">

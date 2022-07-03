@@ -149,9 +149,8 @@ public class VendasTelaCadastrarController implements Initializable {
     		
 			campoTodosOsItens.setText(todosOsPratos);
 			
-			//listaCopia.remove(produto);
 			carregarPratosVendasChoiceBox();
-			//carregarNomeCardapioListagem();
+			
 		} catch(InputsIncorretos ii) {
 			alertasGerais.faltaDadosOuIncorretos();}
     }
@@ -214,4 +213,6 @@ public class VendasTelaCadastrarController implements Initializable {
 		}
     	return dados;
 	}
+	
+	
 }

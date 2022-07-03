@@ -63,8 +63,14 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="300.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="Atualizar descrição" textAlignment="RIGHT" />
-                        <TextField fx:id="campoDescricao" alignment="CENTER" prefHeight="50.0" promptText="Digite a nova descrição" styleClass="receberInformacao" />
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="Atualizar descrição" textAlignment="RIGHT">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></Label>
+                        <TextField fx:id="campoDescricao" alignment="CENTER" prefHeight="50.0" promptText="Digite a nova descrição" styleClass="receberInformacao">
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                           </VBox.margin></TextField>
                      </children>
                      <HBox.margin>
                         <Insets left="5.0" right="10.0" />
@@ -73,14 +79,26 @@
                         <Insets right="10.0" />
                      </padding>
                   </VBox>
-                  <TextField fx:id="campoItens" alignment="CENTER" prefHeight="45.0" prefWidth="145.0" promptText="Novo produto" styleClass="receberInformacao">
+                  <VBox prefHeight="90.0" prefWidth="162.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#botaoVisualizarProdutos" prefHeight="35.0" prefWidth="95.0" text="Produtos">
+                           <styleClass>
+                              <String fx:value="botao" />
+                              <String fx:value="mouseOn" />
+                           </styleClass>
+                           <VBox.margin>
+                              <Insets bottom="2.0" left="25.0" />
+                           </VBox.margin>
+                        </Button>
+                        <TextField fx:id="campoItens" alignment="CENTER" prefHeight="45.0" prefWidth="145.0" promptText="Novo produto" styleClass="receberInformacao" />
+                     </children>
                      <HBox.margin>
-                        <Insets right="5.0" top="45.0" />
+                        <Insets right="5.0" top="10.0" />
                      </HBox.margin>
-                  </TextField>
+                  </VBox>
                   <TextField fx:id="campoQuantidade" alignment="CENTER" prefHeight="45.0" prefWidth="145.0" promptText="Quantidade" styleClass="receberInformacao">
                      <HBox.margin>
-                        <Insets top="45.0" />
+                        <Insets top="47.0" />
                      </HBox.margin>
                   </TextField>
                   <Button mnemonicParsing="false" onAction="#botaoAddProduto" prefHeight="35.0" prefWidth="90.0" text="ADD">
@@ -89,7 +107,7 @@
                         <String fx:value="mouseOn" />
                      </styleClass>
                      <HBox.margin>
-                        <Insets left="5.0" right="14.0" top="40.0" />
+                        <Insets left="5.0" right="14.0" top="42.0" />
                      </HBox.margin>
                   </Button>
                </children>

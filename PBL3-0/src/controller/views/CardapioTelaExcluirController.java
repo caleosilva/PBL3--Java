@@ -36,5 +36,7 @@ public class CardapioTelaExcluirController {
 	public void receberInformacao(Cardapio cardapio) {
 		this.cardapio = cardapio;
 	}
+	
+    
 }
 

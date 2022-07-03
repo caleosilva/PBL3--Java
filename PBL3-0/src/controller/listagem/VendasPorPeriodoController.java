@@ -12,10 +12,20 @@ import bancoDeDados.Dados;
 import excecoes.InputsIncorretos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.DatePicker;
+import javafx.stage.Stage;
 import model.facade.GerenciadorDeRelatorio;
 import uteis.UteisGeral;
 
+/**
+ * 
+ * @author Caleo Silva e Joao Pedro
+ * 
+ * Classe responsavel por ser o controller do fxml "VendasPorPeriodo.fxml" e gerar
+ * o relatorio com as informacoes de um Prato selecionado.
+ *
+ */
 public class VendasPorPeriodoController {
 	
 	private GerenciadorDeRelatorio gdr = new GerenciadorDeRelatorio();
@@ -31,9 +41,15 @@ public class VendasPorPeriodoController {
 
     @FXML
     void botaoCancelar(ActionEvent event) {
-
+    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+    	stage.close();
     }
 
+    /**
+     * Metodo responsavel por gerar o relatorio em questao.
+     * 
+     * @param event
+     */
     @FXML
     void botaoGerarRelatorio(ActionEvent event) {
     	try {

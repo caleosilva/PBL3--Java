@@ -101,19 +101,31 @@ public class TelaPdfGeralController {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
     	mtc.abrirNovaJanela("/view/listagem/FornecedorPorProduto.fxml", stage, false);
     }
-
+    
+    /**
+   	 * Metodo responsavel por gerar o relatorio com as vendas em um periodo especifico.
+   	 * @param event Evento gerado pelo usuario.
+   	 */
     @FXML
     void vendasPorPeriodo(ActionEvent event) {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
     	mtc.abrirNovaJanela("/view/listagem/VendasPorPeriodo.fxml", stage, false);
     }
-
+    
+    /**
+   	 * Metodo responsavel por gerar o relatorio com as vendas de um tipo de prato especifico.
+   	 * @param event Evento gerado pelo usuario.
+   	 */
     @FXML
     void vendasPorTipoDePrato(ActionEvent event) {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
     	mtc.abrirNovaJanela("/view/listagem/VendasPorTipoDePrato.fxml", stage, false);
     }
 
+    /**
+   	 * Metodo responsavel por gerar o relatorio com todas as vendas.
+   	 * @param event Evento gerado pelo usuario.
+   	 */
     @FXML
     void vendasRealizadasNoGeral(ActionEvent event) {
     	

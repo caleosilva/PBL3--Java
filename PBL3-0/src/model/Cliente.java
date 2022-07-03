@@ -1,6 +1,13 @@
 package model;
 
-
+/**
+ * 
+ * Classe que possui as caracteristicas referente a um Cliente, além disso, ela que é instaciada para
+ * um objeto do tipo Cliente.
+ * 
+ * @author Caleo Silva e João Pedro.
+ *
+ */
 public class Cliente {
 	
 	// Atributos:

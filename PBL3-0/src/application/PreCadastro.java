@@ -1,8 +1,7 @@
 package application;
 
 import model.Cardapio;
-
-
+import model.Cliente;
 import model.Fornecedor;
 import model.Funcionario;
 import model.Gerente;
@@ -105,5 +104,12 @@ public class PreCadastro {
 		
 		Dados.getListaVendas().add(v1);
 		Dados.getListaVendas().add(v2);
+		
+		//adicionando clientes
+		
+		Cliente c1 = new Cliente( "54325", "Liz", "43673775654", "Liz@funkoPop.com", "40028922");
+		Cliente c2 = new Cliente( "43245", "Judite", "54928525545", "Judite@corujafofa.com", "43245853");
+		Dados.getListaCliente().add(c1);
+		Dados.getListaCliente().add(c2);
 	}
 }

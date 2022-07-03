@@ -235,7 +235,7 @@ public class GerenciadorDeRelatorio{
 				
 				pularLinhaTabela(header, 4, tabela);
 				
-				linhaCompletaCorCiano(header, tabela, 4, "DADOS DO PRODUTO - ESPECÍFICO");
+				linhaCompletaCorCiano(header, tabela, 4, "DADOS DO PRODUTO - ESPECiFICO");
 				
 				pularLinhaTabela(header, 4, tabela);
 				
@@ -512,15 +512,20 @@ public class GerenciadorDeRelatorio{
 		return null;
 	}
 	
-	public PdfPTable tabelaPorPeriodo(List<Vendas> listaDeVendas, String data1, String data2) {
-	List<Vendas> listaDeVendasOrganizada = new ArrayList<>();
+	public PdfPTable tabelaPorPeriodo(List<Vendas> listaDeVendas, LocalDate data1, LocalDate data2) {
+		List<Vendas> listaDeVendasOrganizada = new ArrayList<>();
+		List<Vendas> listaDoPeriodo = new ArrayList<>();
+		LocalDate data3;
+		if (data1.compareTo(data2) > 0) {
+			data3 = data1;
+			data1 = data2;
+			data2 = data3;
+		}
 		try {
 			if(listaDeVendas.size() == 0) {
 				return null;
 			}
-		
-			
-			
+
 			float larguraCol[] = {0.1f, 0.15f, 0.15f, 0.23f, 0.17f, 0.2f};
 			
 			PdfPTable tabela = new PdfPTable(larguraCol);
@@ -543,75 +548,39 @@ public class GerenciadorDeRelatorio{
 			linhaSimplesCorCinza(celula, tabela, "VALOR TOTAL");
 			linhaSimplesCorCinza(celula, tabela, "FORMA DE PAGAMENTO");
 			
-			String[] separaData = data1.split("/");
-			String[] separaData2 = data2.split("/");
 			
-			LocalDate dt1 = LocalDate.of(Integer.parseInt(separaData[2]),Integer.parseInt(separaData[1]), Integer.parseInt(separaData[0]));
-			
-			LocalDate dt2 = LocalDate.of(Integer.parseInt(separaData2[2]),Integer.parseInt(separaData2[1]), Integer.parseInt(separaData[0]));
-			boolean a = false;
-			Period periodo  = Period.between(dt1, dt2);
-
-			int valorData = periodo.getDays();
-				if (valorData < 0) {
-					valorData= valorData * (-1);
-					a = true;
+				for (Vendas vendas : listaDeVendas) {
+					listaDeVendasOrganizada.add(vendas);
 				}
+				//for (Vendas vendas : listaDeVendasOrganizada)
+				listaDeVendasOrganizada.sort(Comparator.comparing(Vendas::getDataLocalDate));
 				
-				for (Vendas vendaAtual : listaDeVendas) {
-					String dataAtual = vendaAtual.getData();
-					String[] separaData3 = dataAtual.split("/");
-					LocalDate dt3 = LocalDate.of(Integer.parseInt(separaData3[2]),Integer.parseInt(separaData3[1]), Integer.parseInt(separaData3[0]));
-					
-					
-		
-					if (!a) {
-						Period periodo2  = Period.between(dt1, dt3);
-		
-						if (periodo.getDays() < valorData) {
-							
-							tabela.addCell(vendaAtual.getId());
-							tabela.addCell(vendaAtual.getData());
-							tabela.addCell(vendaAtual.getHorario());
-							
-							String itens = null;
-							itens = "";
-							for(String itemAtual : vendaAtual.getItens().keySet()) {
-								itens+= itemAtual + " : " + Double.toString(vendaAtual.getItens().get(itemAtual)) + "\n";
-					
-							}
-							
-							tabela.addCell(itens);
-							itens = "";
-							tabela.addCell(vendaAtual.getPrecoTotal());
-							tabela.addCell(vendaAtual.getModoPagamento());
-						}
+				for (Vendas vendas : listaDeVendasOrganizada) {
+					if (vendas.getDataLocalDate().compareTo(data1) == 0) {
+						listaDoPeriodo.add(vendas);
 					}
-					else {
-						Period periodo2  = Period.between(dt2, dt3);
-						
-						if (periodo.getDays() < valorData) {
-							
-							tabela.addCell(vendaAtual.getId());
-							tabela.addCell(vendaAtual.getData());
-							tabela.addCell(vendaAtual.getHorario());
-							
-							String itens = null;
-							itens = "";
-							for(String itemAtual : vendaAtual.getItens().keySet()) {
-								itens+= itemAtual + " : " + Double.toString(vendaAtual.getItens().get(itemAtual)) + "\n";
-					
-							}
-							
-							tabela.addCell(itens);
-							itens = "";
-							tabela.addCell(vendaAtual.getPrecoTotal());
-							tabela.addCell(vendaAtual.getModoPagamento());
-						}
-							
-						}
+					else if ( vendas.getDataLocalDate().compareTo(data1) > 0) {
+						if (vendas.getDataLocalDate().compareTo(data2) < 0)
+							listaDoPeriodo.add(vendas);
 					}
+				}
+				for (Vendas vendaAtual : listaDoPeriodo) {
+					tabela.addCell(vendaAtual.getId());
+					tabela.addCell(vendaAtual.getData());
+					tabela.addCell(vendaAtual.getHorario());
+					
+					String itens = null;
+					itens = "";
+					for(String itemAtual : vendaAtual.getItens().keySet()) {
+						itens+= itemAtual + " : " + Double.toString(vendaAtual.getItens().get(itemAtual)) + "\n";
 			
+					}
+					
+					tabela.addCell(itens);
+					itens = "";
+					tabela.addCell(vendaAtual.getPrecoTotal());
+					tabela.addCell(vendaAtual.getModoPagamento());
+				}
 			
 			return tabela;
 			

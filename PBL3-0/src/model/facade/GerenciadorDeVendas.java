@@ -21,6 +21,12 @@ import model.Vendas;
 public class GerenciadorDeVendas {
 	
 	private List<Vendas> listaDeVendas = Dados.getListaVendas();
+	/**
+	 * @param vendas Objeto referente ao item a ser editado.
+	 * @param dados Informacoes para serem atualizadas no item da venda.
+	 *
+	 * @return true se a edição ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean editarVendas(Vendas vendas, HashMap<String, Object> dados) {
 		boolean sucesso = false;
 		
@@ -48,7 +54,13 @@ public class GerenciadorDeVendas {
 		
 	}
 	
-	
+	/**
+	 * Método responsável por excluir um objeto do tipo Vendas existente no sistema.
+	 * 
+	 * @param vendas Objeto referente ao item a ser editado.
+	 * 
+	 * @return true se a exclusão ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean excluirVendas(Vendas venda) {
 		boolean excluido = false;
 		if(venda != null) {
@@ -57,7 +69,13 @@ public class GerenciadorDeVendas {
 		return excluido;
 	}
 	
-	
+	/**
+	 * Método responsável por cadastrar uma novo venda no sistema.
+	 * 
+	 * @param dados Informacoes para serem registradas no novo item da venda.
+	 * 
+	 * @return true se o cadastro ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean cadastrarVendas(HashMap<String, Object> dados) {
 		//Pegando data
 		LocalDate dataAtual = LocalDate.now();//For reference
@@ -150,7 +168,7 @@ public class GerenciadorDeVendas {
 	/**
 	 * Método responsável por somar todos os produtos necessarios para que o prato seja vendido.
 	 * 
-	 * @param listaDeVendas Um ArraysList que contém todos as vendas registradas.
+	 * @param itensVendas Um HashMap que contém os novos pratos inseridos pelo usuario.
 	 * @param listaDeCardapio Um ArraysList que contém todos os pratos do Cardapio registrados..
 	 * 
 	 * @return Endereço de memória do item do cardapio se for encontrado, caso contrário retorna null.

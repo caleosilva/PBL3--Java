@@ -19,6 +19,16 @@ import model.Vendas;
  */
 public class GerenciadorDeCardapio{
 	private List<Cardapio> listaDeCardapio = Dados.getListaCardapio();
+	
+	
+	/**
+	 * Método responsável por editar as informacoes de um item do cardapio já registrado no sistema.
+	 * 
+	 * @param cardapio Objeto referente ao item a ser editado.
+	 * @param dados Informacoes para serem atualizadas no item do cardapio.
+	 * 
+	 * @return true se a edicao ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean editarCardapio(Cardapio cardapio, HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;
@@ -44,6 +54,13 @@ public class GerenciadorDeCardapio{
 		
 	}
 
+	/**
+	 * Método responsável por cadastrar um novo item do cardapio no sistema.
+	 * 
+	 * @param dados Informacoes para serem registradas no novo item do cardapio.
+	 * 
+	 * @return true se o cadastro ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean cadastrarCardapio(HashMap<String, Object> dados) {
 		
 		boolean sucesso = false;
@@ -74,6 +91,13 @@ public class GerenciadorDeCardapio{
 		
 	}
 
+	/**
+	 * Método responsável por excluir um objeto do tipo Cardapio (um item do cardapio) existente no sistema.
+	 * 
+	 * @param cardapio Objeto referente ao item a ser editado.
+	 * 
+	 * @return true se a exclusão ocorrer com sucesso, false caso contrário.
+	 */
 	public boolean excluirCardapio(Cardapio cardapio) {
 		boolean excluido = false;
 		if(cardapio != null) {
@@ -109,7 +133,7 @@ public class GerenciadorDeCardapio{
 	 * estão cadastrado na lista de produtos.
 	 * 
 	 * @param listaDeProdutos Um ArraysList que contém todos os Produtos cadastrados.
-	 * @param itensCardapio HashMap conta.
+	 * @param itensCardapio String com o nome de um produto.
 	 * 
 	 * @return True caso os itens estejam cadastrados, caso contrário retorna false.
 	 */
@@ -121,38 +145,5 @@ public class GerenciadorDeCardapio{
 		}
 		return false;
 	}
-	/**
-	 * Método responsável por guardar os itens e suas quantidades digitados pelo usuario
-	 * em um HashMaP
-	 * 
-	 * @return HashMap contendo os itens e suas quantidades.
-	 */
-	public static HashMap<String, Double> pegarItens(){
-		HashMap<String, Double> itensCardapio = new HashMap<String, Double>();
-		//Variaveis
-		boolean sair = false;
-		String item = "";
-		double quant = 0;
-		double controle = 0;
-		int opcao;
-		do {
-			item = ViewMetodosGerais.pegarNomeItem();
-			ViewGerenciamentoCardapio.mensagemQuantidadeItens();
-			quant = ViewMetodosGerais.pegarValores();
-			
-			if (itensCardapio.containsKey(item)) {
-				controle = itensCardapio.get(item);
-				itensCardapio.remove(item);
-				quant += controle;
-			}
-			
-			itensCardapio.put(item, quant);
-			
-			opcao = ViewMetodosGerais.continuarAcao("adicionando itens");
-			if (opcao == 0) {
-			sair = true;}
-		}while(sair == false);
-		
-		return itensCardapio;
-	}
+	
 }

@@ -103,6 +103,23 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
+            <HBox alignment="CENTER_RIGHT" onMouseClicked="#abrirTelaClientes" prefHeight="40.0" prefWidth="126.0" styleClass="mouseOn" stylesheets="@../style/EstiloMenu.css">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/cliente.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" prefHeight="30.0" prefWidth="150.0" styleClass="itemMenu" text="Clientes">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
             <Separator prefWidth="200.0">
                <VBox.margin>
                   <Insets top="10.0" />

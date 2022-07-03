@@ -24,7 +24,7 @@ public class TelaListagemGeralController {
 	 */
     @FXML
     void abrirListagemCardapio(MouseEvent event) {
-    	
+    	mtc.abrirNovaJanela("/view/listagem/CardapioListagem.fxml", (Stage) ((Node) event.getTarget()).getScene().getWindow(), true);
     }
 
     /**

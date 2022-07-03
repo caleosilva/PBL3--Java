@@ -104,17 +104,25 @@ public class TelaPdfGeralController {
 
     @FXML
     void vendasPorPeriodo(ActionEvent event) {
-
+    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+    	mtc.abrirNovaJanela("/view/listagem/VendasPorPeriodo.fxml", stage, false);
     }
 
     @FXML
     void vendasPorTipoDePrato(ActionEvent event) {
-
+    	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
+    	mtc.abrirNovaJanela("/view/listagem/CardapioPorTipoDePrato.fxml", stage, false);
     }
 
     @FXML
     void vendasRealizadasNoGeral(ActionEvent event) {
-
+    	
+    	Paragraph paragrafo1 = gdr.tituloRelatorio("RELATORIO DE VENDAS");
+		PdfPTable tabela1 = gdr.tabelaVendasGerais(Dados.getListaVendas());
+		boolean sucesso = gdr.montarPDF(paragrafo1, tabela1, "Relatorio de Vendas");
+		
+		if(sucesso) alertasPdf.alertaPdfSucesso();
+		else alertasPdf.alertaPdfErro();
     }
 
 }

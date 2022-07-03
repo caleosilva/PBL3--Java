@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 /**
@@ -79,6 +80,9 @@ public class Vendas {
 		this.clienteVinculado = clienteVinculado;
 	}
 	
-	
+	public LocalDate getDataLocalDate() {
+        LocalDate ld = LocalDate.parse(getData(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        return ld;
+	}
 
 }

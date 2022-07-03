@@ -51,4 +51,9 @@ public class MenuGerenteController {
     void deslogarSistema(MouseEvent event) {
     	mtc.mudarTelaCompleta("/view/TelaLogin.fxml", scene, painelPrincipal);
     }
+    
+    @FXML
+    void abrirTelaClientes(MouseEvent event) {
+    	mtc.mudarSubTela("/view/ClienteTelaGeral.fxml", centroTela);
+    }
 }

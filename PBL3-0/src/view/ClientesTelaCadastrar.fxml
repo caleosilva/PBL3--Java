@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="700.0" styleClass="root" stylesheets="@../style/TelaDeOperacoes.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.views.ClientesTelaCadastrarController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="232.0" layoutY="40.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="80.0" prefWidth="900.0" styleClass="painelTop">
+               <children>
+                  <Label styleClass="tituloIdentificacao" text="Cadastrar Usuário">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="Nome" textAlignment="RIGHT" />
+                        <TextField fx:id="campoNome" alignment="CENTER" prefHeight="50.0" promptText="Digite o Nome" styleClass="receberInformacao" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="CPF" />
+                        <TextField fx:id="campoCPF" alignment="CENTER" prefHeight="50.0" promptText="Digite o CPF" styleClass="receberInformacao" />
+                     </children>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+               <children>
+                  <VBox prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="Email" textAlignment="RIGHT" />
+                        <TextField fx:id="campoEmail" alignment="CENTER" prefHeight="50.0" promptText="Digite o Email" styleClass="receberInformacao" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="50.0" prefWidth="300.0" styleClass="labelInformativa" text="Telefone" />
+                        <TextField fx:id="campoTelefone" alignment="CENTER" prefHeight="50.0" promptText="Digite o numero" styleClass="receberInformacao" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="13.0" prefWidth="700.0" />
+            <HBox alignment="CENTER" prefHeight="120.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#botaoConfirmarCadastro" prefHeight="40.0" prefWidth="200.0" text="Confirmar cadastro">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="botao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="idBotaoFechar" mnemonicParsing="false" onAction="#botaoCancelar" prefHeight="40.0" prefWidth="200.0" text="Cancelar ">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="botao" />
+                        <String fx:value="mouseOn" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

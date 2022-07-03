@@ -4,13 +4,15 @@ package model;
 public class Cliente {
 	
 	// Atributos:
+	String id;
 	String nome;
 	String cpf;
 	String email;
 	String telefone;
 	
 	// Construtor
-	public Cliente(String nome, String cpf, String email, String telefone) {
+	public Cliente(String id, String nome, String cpf, String email, String telefone) {
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
@@ -19,6 +21,13 @@ public class Cliente {
 	
 	
 	// Getters e Setters
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getNome() {
 		return nome;
 	}

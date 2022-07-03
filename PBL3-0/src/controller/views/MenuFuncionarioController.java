@@ -19,7 +19,7 @@ public class MenuFuncionarioController {
 
     @FXML
     void abrirVendas(MouseEvent event) {
-
+    	mtc.mudarSubTela("/view/VendasTelaGeral.fxml", centroTela);
     }
 
     @FXML
@@ -29,7 +29,7 @@ public class MenuFuncionarioController {
 
     @FXML
     void gerarPdf(MouseEvent event) {
-
+    	mtc.mudarSubTela("/view/listagem/TelaPdfGeral.fxml", centroTela);
     }
 
     @FXML

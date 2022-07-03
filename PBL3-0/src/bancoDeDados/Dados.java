@@ -30,7 +30,7 @@ public class Dados {
 	private static List <Usuario> listaUsuario = new ArrayList<>();
 
 	// Lista que armazena informacoes dos Clientes:
-		private static List <Cliente> listaCliente = new ArrayList<>();
+	private static List <Cliente> listaCliente = new ArrayList<>();
 		
 	// Getters:
 	

@@ -27,11 +27,11 @@ import model.facade.GerenciadorDeRelatorio;
  * 
  * @author Caleo Silva e Joao Pedro
  * 
- * Classe responsavel por ser o controller do fxml "CardapioPorTipoDePrato.fxml" e gerar
+ * Classe responsavel por ser o controller do fxml "VendasPorTipoDePrato.fxml" e gerar
  * o relatorio com as informacoes de um Prato selecionado.
  *
  */
-public class CardapioPorPratoController implements Initializable {
+public class VendasPorPratoController implements Initializable {
 
 	private ObservableList<String> dadosCardapioGeral;
 	private GerenciadorDeRelatorio gdr = new GerenciadorDeRelatorio();

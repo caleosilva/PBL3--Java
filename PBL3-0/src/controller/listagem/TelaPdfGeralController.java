@@ -111,7 +111,7 @@ public class TelaPdfGeralController {
     @FXML
     void vendasPorTipoDePrato(ActionEvent event) {
     	Stage stage = (Stage) ((Node) event.getTarget()).getScene().getWindow();
-    	mtc.abrirNovaJanela("/view/listagem/CardapioPorTipoDePrato.fxml", stage, false);
+    	mtc.abrirNovaJanela("/view/listagem/VendasPorTipoDePrato.fxml", stage, false);
     }
 
     @FXML
